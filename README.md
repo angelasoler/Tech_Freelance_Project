@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicação web com Framework Ruby Rails.
 
-Things you may want to cover:
+Serão usados os frameworks de teste Rspec e Capybara para desenvolver a apliçao atravez de TDD(Test Driven Development).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Objetivo: Permitirá postar projetos para contratar profissionais de tecnologia freelancers, os quais oferecerão propostas  e orçamentos a ser aprovados ou rejeitados pelo dono do projeto. 
