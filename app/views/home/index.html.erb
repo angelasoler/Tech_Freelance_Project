@@ -1,3 +1,8 @@
 <h1> Tech Freelancers </h1>
 
 <h2> Encontre profissionais de tecnologia para seus projetos! </h2>
+
+<% @projects.each do |titulo| %>
+  <%= link_to titulo.title, project_path(id: titulo.id) %>
+<% end %>
+

@@ -62,6 +62,7 @@ describe  'Visitor visits homepage' do
                                             região de atendimento e whatsapp com mensagem 
                                             para fazer pedido em domicilio',
                               desire_habilities: 'desenvolvimento fullstack para comercios'
+                            })
     marketing = Project.create!({title: 'Marketing em redes sociais', 
                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                 desire_habilities: 'Gerenciamento e marketing rede sociais'
