@@ -6,11 +6,13 @@ describe  'Visitor visits homepage' do
                               description: 'Um site com fotos dos produtos, localização, 
                                             região de atendimento e whatsapp com mensagem 
                                             para fazer pedido em domicilio',
-                              desire_habilities: 'desenvolvimento fullstack para comercios'                              
+                              desire_habilities: 'desenvolvimento fullstack para comercios', 
+                              max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                               })
     marketing = Project.create!({title: 'Marketing em redes sociais', 
                               description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                              desire_habilities: 'Gerenciamento e marketing rede sociais'
+                              desire_habilities: 'Gerenciamento e marketing rede sociais', 
+                              max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                               })
 
     visit root_path
@@ -28,11 +30,13 @@ describe  'Visitor visits homepage' do
   it 'and view project details' do
     web_site = Project.create!({title: 'Site para domicilios de comercio', 
                               description: 'Um site com fotos dos produtos, localização, região de atendimento e whatsapp com mensagem para fazer pedido em domicilio',
-                              desire_habilities: 'desenvolvimento fullstack para comercios'
+                              desire_habilities: 'desenvolvimento fullstack para comercios', 
+                              max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                               })
                               marketing = Project.create!({title: 'Marketing em redes sociais', 
                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                desire_habilities: 'Gerenciamento e marketing rede sociais'
+                                desire_habilities: 'Gerenciamento e marketing rede sociais', 
+                                max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                                 })
                               
                                 visit root_path
@@ -52,11 +56,13 @@ describe  'Visitor visits homepage' do
                                   description: 'Um site com fotos dos produtos, localização, 
                                   região de atendimento e whatsapp com mensagem 
                                   para fazer pedido em domicilio',
-                                  desire_habilities: 'desenvolvimento fullstack para comercios'
+                                  desire_habilities: 'desenvolvimento fullstack para comercios', 
+                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                                   })
     marketing = Project.create!({title: 'Marketing em redes sociais', 
                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                desire_habilities: 'Gerenciamento e marketing rede sociais'
+                                desire_habilities: 'Gerenciamento e marketing rede sociais', 
+                                max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month, remote: true
                                 })
                                 
                                 visit root_path

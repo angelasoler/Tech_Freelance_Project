@@ -3,7 +3,7 @@
 <h3><%= @project.description %></h3>
 
 <h3>Habilidades desejadas: <%= @project.desire_habilities %></h3>
-Valor maximo por hora: R<%= number_to_currency(@project.max_hour_payment) %>
+Valor maximo por hora: <%= number_to_currency(@project.max_hour_payment) %>
 <div>
 Presencial: 
 <% if @project.face_to_face? %>

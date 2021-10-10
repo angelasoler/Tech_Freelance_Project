@@ -1,6 +1,6 @@
-<% if @property.errors.any? %>
-  <% @property.errors.full_messages.each do |error| %>
-    <%= error %>
+<% if @project.errors.any? %>
+  <% @project.errors.full_messages.each do |error| %>
+    <div><%= error %></div>
   <%end%>
 <% end %>
 
@@ -13,7 +13,7 @@
   <%= form.text_field :desire_habilities %>
   <%= form.label :max_hour_payment, 'Valor maximo por hora:' %>
   <%= form.number_field :max_hour_payment %>
-  <%= form.label :deadline_for_proposals, 'Data limite proposta' %>
+  <%= form.label :deadline_for_proposals, 'Data limite proposta:' %>
   <%= form.date_field :deadline_for_proposals %>
   <%= form.check_box :face_to_face %>
   <%= form.label :face_to_face, 'Presencial:' %>
