@@ -1,0 +1,13 @@
+---
+pt-BR:
+  models:
+      project: 'Projeto'
+    attributes:
+      project:
+        title: 'Título'
+        description: 'Descrição'
+        desire_habilities: 'Habilidade desejadas'
+        max_hour_payment: 'Valor maximo por hora'
+        deadline_for_proposals: 'Fecha limite para proposta'
+        face_to_face: 'Presencial'
+        remote: 'Remoto'

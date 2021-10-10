@@ -1,0 +1,24 @@
+<% if @property.errors.any? %>
+  <% @property.errors.full_messages.each do |error| %>
+    <%= error %>
+  <%end%>
+<% end %>
+
+<%= form_with model: @project do |form| %>
+  <%= form.label :title, 'Título:' %>
+  <%= form.text_field :title %>
+  <%= form.label :description, 'Descrição:' %>
+  <%= form.text_field :description %>
+  <%= form.label :desire_habilities, 'Habilidades desejadas:' %>
+  <%= form.text_field :desire_habilities %>
+  <%= form.label :max_hour_payment, 'Valor maximo por hora:' %>
+  <%= form.number_field :max_hour_payment %>
+  <%= form.label :deadline_for_proposals, 'Data limite proposta' %>
+  <%= form.date_field :deadline_for_proposals %>
+  <%= form.check_box :face_to_face %>
+  <%= form.label :face_to_face, 'Presencial:' %>
+  <%= form.check_box :remote %>
+  <%= form.label :remote, 'Remoto:' %>
+  <%= form.submit 'Cadastrar' %>
+<% end %>
+
