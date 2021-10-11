@@ -1,10 +1,17 @@
 require 'rails_helper'
 
 describe 'projecto owner register a project' do
+  before do
+    user = project_owner.create!(email: 'user@mail.com', 
+                                 senha:'123456'
+                                )
+    login_as user, scope: project_owner
+  end
+  
   it 'successfully' do
     
     visit root_path
-    click_on 'Cadastrar Projeto'
+    click_on 'Publique um projeto'
     fill_in 'Título:', with: 'Site para comercio local'
     fill_in 'Descrição:', with: 'Site como fotos de produto e contato para pedido em domicilo'
     fill_in 'Habilidades desejadas:', with: 'Desenvolvedor fullstack com experiencia previa'
@@ -25,7 +32,7 @@ describe 'projecto owner register a project' do
   it 'and fields must be fill' do
 
   visit root_path
-  click_on 'Cadastrar Projeto'
+  click_on 'Publique um projeto'
   click_on 'Cadastrar'
 
   expect(page).to have_content('Título não pode ficar em branco')
