@@ -1,0 +1,10 @@
+---
+pt-BR:
+  activerecord:
+    models:
+        owner: 'Dono de projeto'
+    attributes:
+      owner:
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+        

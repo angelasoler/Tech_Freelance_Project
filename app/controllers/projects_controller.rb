@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_owner!, only: [:new]
   def show
     @project = Project.find(params[:id])
   end

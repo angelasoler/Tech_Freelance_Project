@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'projecto owner register a project' do
-  before do
-    user = project_owner.create!(email: 'user@mail.com', 
-                                 senha:'123456'
-                                )
-    login_as user, scope: project_owner
-  end
+  # before do
+  #   user = owner.create!(email: 'user@mail.com', 
+  #                                senha:'123456'
+  #                               )
+  #   login_as user, scope: owner
+  # end
   
   it 'successfully' do
     

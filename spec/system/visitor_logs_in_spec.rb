@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'visitor logs in' do
   context 'as project owner' do
     it 'succesfully' do
-      ana_paula = project_owner.create!(email: 'ana_paula@mail.com', 
+      ana_paula = owner.create!(email: 'ana_paula@mail.com', 
                                         senha: '123456')
       
       visit root_path
@@ -20,10 +20,10 @@ describe 'visitor logs in' do
     end
 
     it 'and logs out' do
-      ana_paula = project_owner.create!(email: 'ana_paula@mail.com', 
+      ana_paula = owner.create!(email: 'ana_paula@mail.com', 
                                         senha: '123456')
 
-      login_as ana_paula, scope: project_owner
+      login_as ana_paula, scope: owner
       
       visit root_path
       click_on 'logout'
@@ -40,15 +40,15 @@ describe 'visitor logs in' do
     it 'and sign in' do
 
       visit root_path
-      click_on 'Publicar um projeto'
-      click_on 'Faça o cadastro pfvr!'
+      click_on 'Publique um projeto'
+      click_on 'cadastro'
       fill_in 'Email', with: 'ana_paula@mail.com'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirmação de senha', with: '123456'
-      click_on 'Começar'
+      click_on 'Inscrever-se'
 
       expect(page).to have_content('Perfil cadastrado com sucesso!')
-      expect(page).to have_link('Publicar um projeto')
+      expect(page).to have_link('Publique um projeto')
       expect(page).to have_content(ana_paula.email)
       expect(page).to have_link('logout')
       expect(page).not_to have_link('Entrar')
@@ -57,7 +57,7 @@ describe 'visitor logs in' do
 
   context 'as freelancer' do
     it 'succesfully' do
-      erika = project_owner.create!(email: 'erika@mail.com', 
+      erika = freelancer.create!(email: 'erika@mail.com', 
                                         senha: '123456')
 
       visit root_path
@@ -74,10 +74,10 @@ describe 'visitor logs in' do
     end
 
     it 'and logs out' do
-      erika = project_owner.create!(email: 'erika@mail.com', 
+      erika = freelancer.create!(email: 'erika@mail.com', 
                                     senha: '123456')
 
-      login_as erika, scope: project_freelancer
+      login_as erika, scope: freelancer
       visit root_path
       click_on 'logout'
 
