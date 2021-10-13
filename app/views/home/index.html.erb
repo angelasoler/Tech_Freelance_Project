@@ -1,4 +1,3 @@
-<%= link_to 'Logout', destroy_owner_session_path, :method => :delete %>
 <h1> Tech Freelancers </h1>
 
 <h2> Encontre profissionais de tecnologia para seus projetos! </h2>
@@ -7,6 +6,8 @@
 
 
 <h2> Encontre um projeto e faça sua proposta!</h2>
+
+<%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %>
 
 <% @projects.each do |projeto| %>
   <%= link_to projeto.title, project_path(projeto.id) %>

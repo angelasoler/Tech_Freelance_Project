@@ -27,7 +27,8 @@ pt-BR:
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
     models:
-      owner: Usuário
+      owner: Dono de projeto
+      # freelancer: freelancer
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
@@ -90,7 +91,7 @@ pt-BR:
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
       updated: A sua senha foi alterada com sucesso. Você está autenticado.
       updated_not_active: Sua senha foi alterada com sucesso.
-    registrations:
+    owner_registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       edit:
         are_you_sure: Você tem certeza?

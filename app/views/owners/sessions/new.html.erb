@@ -19,8 +19,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit t('.sign_in') %>
+    <%= f.submit 'Entre' %>
   </div>
 <% end %>
-Se ainda não tem conta, faça o <%= link_to 'cadastro', new_owner_registration_path%>
+<div>Se ainda não tem conta, faça o <%= link_to 'cadastro', new_owner_registration_path%></div>
 <%= render "owners/shared/links" %>

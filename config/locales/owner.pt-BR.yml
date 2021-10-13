@@ -7,4 +7,5 @@ pt-BR:
       owner:
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
+
         

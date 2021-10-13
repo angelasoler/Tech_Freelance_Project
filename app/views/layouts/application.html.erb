@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= current_owner.try(:email) %>
+    <%= current_freelancer.try(:email) %>
+    <% if signed_in? %>
+      <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
+    <% end %>
+    <>
     <title>TechFreelancersProject</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>

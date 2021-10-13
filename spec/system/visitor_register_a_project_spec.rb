@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 describe 'projecto owner register a project' do
-  # before do
-  #   user = owner.create!(email: 'user@mail.com', 
-  #                                senha:'123456'
-  #                               )
-  #   login_as user, scope: owner
-  # end
+  before do
+    user = Owner.create!({email: 'user@mail.com', 
+                          password:'123456'}
+                        )
+    login_as user, :scope => :owner
+  end
   
   it 'successfully' do
-    
     visit root_path
     click_on 'Publique um projeto'
     fill_in 'Título:', with: 'Site para comercio local'
@@ -42,3 +41,5 @@ describe 'projecto owner register a project' do
   # expect(page).to have_content('Por favor selecione: Presencial ou Remoto')
   end
 end
+
+# [TODO] verificar formato da data, e preços com fracções
