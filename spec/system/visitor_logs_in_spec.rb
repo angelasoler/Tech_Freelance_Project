@@ -79,6 +79,7 @@ describe 'visitor ' do
                                  })
 
       login_as erika, scope: :freelancer
+      
       visit root_path
       click_on 'Logout'
 

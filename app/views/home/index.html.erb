@@ -7,13 +7,12 @@
 
 <h2> Encontre um projeto e faça sua proposta!</h2>
 
-<%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %>
-
 <% @projects.each do |projeto| %>
   <%= link_to projeto.title, project_path(projeto.id) %>
 <% end %>
 
-<% if @project.blank? %>
+<div><% if @project.blank? %>
     Não há projetos disponiveis no momento.
-<% end %>
+<% end %></div>
 
+<div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %></div>
