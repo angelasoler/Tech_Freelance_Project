@@ -108,3 +108,4 @@ describe 'visitor ' do
   end
 end
 # [TODO] ver uma forma melhor que --current_user.try-- no application view
+# [TODO] DRY --> formularios de registro e session owner e freelance, i18n gem
