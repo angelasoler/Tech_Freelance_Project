@@ -43,7 +43,7 @@ describe 'visitor ' do
       click_on 'cadastro'
       fill_in 'Email', with: 'ana_paula@mail.com'
       fill_in 'Senha', with: '123456'
-      fill_in 'Confirmação de senha', with: '123456'
+      fill_in 'Confirme sua senha', with: '123456'
       click_on 'Inscrever-se'
 
       expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
@@ -96,7 +96,7 @@ describe 'visitor ' do
       click_on 'cadastro'
       fill_in 'Email', with: 'erika@mail.com'
       fill_in 'Senha', with: '123456'
-      fill_in 'Confirmação de senha', with: '123456'
+      fill_in 'Confirme sua senha', with: '123456'
       click_on 'Inscrever-se'
 
       expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
