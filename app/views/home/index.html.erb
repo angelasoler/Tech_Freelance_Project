@@ -15,4 +15,10 @@
     Não há projetos disponiveis no momento.
 <% end %></div>
 
-<div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %></div>
+<% if !signed_in?%>
+  <div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %></div>
+<% end %>
+
+<% if scope = :freelancer %>
+  <div><%= link_to 'Candidate-se para um projeto!', freelancer_registration_path(current_freelancer.complete_profile) %></div>
+<% end %>

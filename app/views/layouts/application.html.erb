@@ -4,8 +4,9 @@
     <% if signed_in? %>
       <% if scope = :owner %>
         <%= current_owner.try(:email) %>
-      <% else %>
-      <%= current_freelancer.try(:email) %>
+      <% end %>
+      <% if scope = :freelancer %>
+        <%= current_freelancer.try(:email) %>
       <% end %>
       <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
     <% end %>
