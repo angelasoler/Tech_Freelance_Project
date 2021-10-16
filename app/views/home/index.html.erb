@@ -1,7 +1,9 @@
 <h1> Tech Freelancers </h1>
 
 <h2> Encontre profissionais de tecnologia para seus projetos! </h2>
-
+<% if owner_signed_in?%>
+  <%= link_to 'Meus Projetos', my_projects_projects_path %>
+<% end %>
 <%= link_to 'Publique um projeto', new_project_path %>
 
 

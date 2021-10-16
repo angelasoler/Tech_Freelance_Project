@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe 'projecto owner register a project' do
+describe 'project owner register a project' do
   before do
     user = Owner.create!({email: 'user@mail.com', 
-                          password:'123456'}
-                        )
+                          password:'123456'
+                          })
     login_as user, :scope => :owner
   end
   

@@ -1,0 +1,8 @@
+<% if @projects.empty? %>
+  <h3> Ainda não tem imoveis </h3>
+  <h2> <%= link_to 'Publique um projeto', new_project_path%>
+<% else %>
+  <% @projects.each do |p| %>
+    <h3><%= link_to p.title %></h3>
+  <% end %>
+<% end %>

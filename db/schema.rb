@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_234157) do
+ActiveRecord::Schema.define(version: 2021_10_16_180349) do
 
   create_table "freelancers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 2021_10_15_234157) do
     t.time "deadline_for_proposals"
     t.boolean "face_to_face"
     t.boolean "remote"
+    t.integer "owner_id", null: false
+    t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
+  add_foreign_key "projects", "owners"
 end

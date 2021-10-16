@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create(project_params)
+    @project.owner = current_owner
     if @project.save
       redirect_to project_path(@project.id)
     else
@@ -24,6 +25,10 @@ class ProjectsController < ApplicationController
                                     :deadline_for_proposals, 
                                     :face_to_face, :remote
                                     )
+  end
+
+  def my_projects
+    @projects = current_owner.projects
   end
 end
 
