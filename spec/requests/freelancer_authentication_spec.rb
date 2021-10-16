@@ -1,21 +1,27 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-describe 'freelancer authentication' do
-  it 'can´t open new profile form unless authenticated' do
-    get new_freelancer_profile_path
+# describe 'freelancer authentication' do
+#   it 'can`t acces complete view of project unless authenticated' do
+#     get 'projects/1'
 
-    expect(response).to redirect_to(new_freelancer_session_path)
-  end
+#     expect(response).to redirect_to(root_path)
+#   end
+  
+#   it 'can´t open new profile form unless authenticated' do
+#     get new_freelancer_profile_path
 
-  it 'can´t make a proposal without complete profile' do
-    post new_proposal_path
+#     expect(response).to redirect_to(new_freelancer_session_path)
+#   end
 
-    expect(response).to redirect_to(new_freelancer_profile_pat)
-  end
+#   it 'can´t make a proposal without complete profile' do
+#     post new_proposal_path
 
-  it 'can´t open new proposal form unless authenticated' do
-    get new_proposal_path
+#     expect(response).to redirect_to(new_freelancer_profile_pat)
+#   end
 
-    expect(response).to redirect_to(new_freelancer_session_path)
-  end
-end
+#   it 'can´t open new proposal form unless authenticated' do
+#     get new_proposal_path
+
+#     expect(response).to redirect_to(new_freelancer_session_path)
+#   end
+# end
