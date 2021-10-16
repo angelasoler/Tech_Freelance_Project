@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_owner!, only: [:new]
+  before_action :authenticate_owner!, only: [:new, :create]
   def show
     @project = Project.find(params[:id])
   end
@@ -22,11 +22,7 @@ class ProjectsController < ApplicationController
                                     :desire_habilities, 
                                     :max_hour_payment, 
                                     :deadline_for_proposals, 
-                                    :face_to_face, :remote, 
-                                    profile_attributes:[:full_name, :social_name, 
-                                                        :educational_background, 
-                                                        :work_field, :about_me, 
-                                                        :work_experience, :photo]
+                                    :face_to_face, :remote
                                     )
   end
 end

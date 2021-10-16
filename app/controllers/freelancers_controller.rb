@@ -8,6 +8,10 @@ class FreelancersController < ApplicationController
   # #   end
   # # end
 
-  # def update
+  # def freelancer_params
+  # params.require[:freelancer].permit(profile_attributes:[:full_name, :social_name, 
+  #                                                       :educational_background, 
+  #                                                       :work_field, :about_me, 
+  #                                                       :work_experience, :photo])
   # end
 end
