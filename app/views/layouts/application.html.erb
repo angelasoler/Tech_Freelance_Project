@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>   
+  <head>
     <% if signed_in? %>
-      <% if scope = :owner %>
+      <% if owner_signed_in? %>
         <%= current_owner.try(:email) %>
-      <% end %>
-      <% if scope = :freelancer %>
+        <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
+      <% else %>
         <%= current_freelancer.try(:email) %>
+        <div><%= link_to 'Logout', destroy_freelancer_session_path, :method => :delete %></div>
       <% end %>
-      <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
     <% end %>
     
     <title>TechFreelancersProject</title>

@@ -22,8 +22,12 @@ class ProjectsController < ApplicationController
                                     :desire_habilities, 
                                     :max_hour_payment, 
                                     :deadline_for_proposals, 
-                                    :face_to_face, :remote
-                                  )
+                                    :face_to_face, :remote, 
+                                    profile_attributes:[:full_name, :social_name, 
+                                                        :educational_background, 
+                                                        :work_field, :about_me, 
+                                                        :work_experience, :photo]
+                                    )
   end
 end
 

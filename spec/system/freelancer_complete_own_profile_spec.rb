@@ -16,11 +16,11 @@ describe 'freelancer complete profile' do
     fill_in 'Nome social', with: 'Paloma'
     fill_in 'Data de nacimento', with: 22.years.ago
     fill_in 'Formação', with: 'Ciencias da computação'
-    select 'Desenvolvedor', from: 'Aréa de atuação'
+    fill_in 'Aréa de atuação', with: 'Desenvolvedor'
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência', with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
-    attach_file 'image', '.image.jpg'
-    click_on 'Criar'
+    # attach_file 'image', '.image.jpg'
+    click_on 'Completar Perfil'
 
     expect(page).to have_content('Candidate-se para um projeto.')
     expect(page).to have_link('menu')
@@ -30,16 +30,16 @@ describe 'freelancer complete profile' do
   it 'most fill all fields' do
 
     visit root_path
-    click_on 'Criar'
+    click_on 'Completar Perfil'
 
     expect(freelancer.errors[:fullname]).to include('Nome completo não pode ficar em branco.')
     expect(freelancer.errors[:social_name]).to include('Nome social não pode ficar em branco.')
     expect(freelancer.errors[:birth_date]).to include('Data de nacimento não pode ficar em branco.')
     expect(freelancer.errors[:educational_background]).to include('Formaçao não pode ficar em branco.')
-    expect(freelancer.errors[:work_field]).to include('Por favor selecione Aréa de atuação.')
+    expect(freelancer.errors[:work_field_id]).to include('Por favor selecione Aréa de atuação.')
     expect(freelancer.errors[:about_me]).to include('Sobre mi não pode ficar em branco.')
     expect(freelancer.errors[:work_experience]).to include('Experiência não pode ficar em branco.')
-    expect(freelancer.errors[:photo]).to include('Deve subir uma photo.')
+    expect(freelancer.errors[:photo]).to include('Deve subir uma foto.')
   end
 
   it 'and can access to projects details' do
