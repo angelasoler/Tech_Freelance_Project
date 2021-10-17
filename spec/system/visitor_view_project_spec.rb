@@ -55,6 +55,7 @@ describe  'Visitor visits homepage' do
   expect(page).not_to have_content(marketing.title)
   expect(page).not_to have_content(marketing.description)
   expect(page).not_to have_content(marketing.desire_habilities)
+  expect(page).not_to have_link('Enviar Proposta')
 end
                               
   it 'and view project details and return to homepage' do
