@@ -40,7 +40,7 @@ describe 'visitor ' do
 
       visit root_path
       click_on 'Publique um projeto'
-      click_on 'cadastro'
+      click_on 'Inscrever-se'
       fill_in 'Email', with: 'ana_paula@mail.com'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirme sua senha', with: '123456'
@@ -94,7 +94,7 @@ describe 'visitor ' do
 
       visit root_path
       click_on 'Candidate-se para um projeto'
-      click_on 'cadastro'
+      click_on 'Inscrever-se'
       fill_in 'Email', with: 'erika@mail.com'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirme sua senha', with: '123456'
@@ -102,7 +102,7 @@ describe 'visitor ' do
 
       expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
       expect(page).to have_current_path(root_path)
-      # expect(page).to have_content('Complete seu perfil')
+      expect(page).to have_content('Complete seu perfil')
       expect(page).to have_content('erika@mail.com')
       expect(page).to have_link('Logout')
     end
