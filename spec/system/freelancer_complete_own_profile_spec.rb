@@ -23,7 +23,7 @@ describe 'freelancer complete profile' do
     click_on 'Candidate-se para um projeto!'
     fill_in 'Nome completo', with: 'Antonio Silva'
     fill_in 'Nome social', with: 'Paloma'
-    fill_in 'Data de nacimento', with: 19900508
+    fill_in 'Data de nascimento', with: 19900508
     fill_in 'Formação', with: 'Ciencias da computação'
     fill_in 'Aréa de atuação', with: 'Dev'
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
@@ -43,6 +43,11 @@ describe 'freelancer complete profile' do
     click_on 'Completar Perfil'
 
     expect(page).to have_content('Nome completo não pode ficar em branco')
+    expect(page).to have_content('Data de nascimento não pode ficar em branco')
+    expect(page).to have_content('Formação não pode ficar em branco')
+    expect(page).to have_content('Aréa de atuação não pode ficar em branco')
+    expect(page).to have_content('Sobre mi não pode ficar em branco')
+    expect(page).to have_content('Experiência não pode ficar em branco')\
   end
 
   it 'and can access to projects details' do
