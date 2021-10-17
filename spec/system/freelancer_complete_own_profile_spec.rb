@@ -25,7 +25,7 @@ describe 'freelancer complete profile' do
     fill_in 'Nome social', with: 'Paloma'
     fill_in 'Data de nascimento', with: 19900508
     fill_in 'Formação', with: 'Ciencias da computação'
-    fill_in 'Aréa de atuação', with: 'Dev'
+    select 'Dev', from: 'Aréa de atuação' 
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência', with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
     # attach_file 'image', '.image.jpg'

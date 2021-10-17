@@ -16,7 +16,12 @@
   <%= form.label :educational_background, 'Formação' %>
   <%= form.text_field :educational_background %><br>
   <%= form.label :work_field, 'Aréa de atuação' %>
-  <%= form.text_field :work_field %><br>
+  <%= form.select :work_field, ['Dev', 'Web Design', 'Segurança', 'Suporte Técnico', 
+                                'Midias Sociais', 'Sistemas', 'Gerenciamento de projetos', 
+                                'Jogos digitais', 'E-commerce', 'Redes de informática', 
+                                'Computação em nuvem', 'Qualidade de software', 'Análise de dados', 
+                                'Inteligência de negócios', 'UX Design', 
+                                'Gestão de processos e qualidade'], prompt: true %><br>
   <%= form.label :about_me, 'Sobre mi' %>
   <%= form.text_field :about_me %><br>
   <%= form.label :work_experience, 'Experiência' %>
