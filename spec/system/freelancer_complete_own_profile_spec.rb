@@ -28,7 +28,7 @@ describe 'freelancer complete profile' do
     select 'Dev', from: 'Aréa de atuação' 
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência', with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
-    # attach_file 'image', '.image.jpg'
+    page.attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
     click_on 'Completar Perfil'
 
     expect(page).to have_link('Candidate-se para um projeto.')

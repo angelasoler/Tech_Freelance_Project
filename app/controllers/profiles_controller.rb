@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.create(profile_params)
     @profile.freelancer = current_freelancer
+    @profile.photo.attach(params[:photo])
     if @profile.save
       redirect_to profile_path(@profile.id)
     else
@@ -22,7 +23,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:full_name, :social_name, 
                                     :birth_date, :educational_background, 
                                     :work_field, :about_me, 
-                                    :work_experience, :photo
+                                    :work_experience
                                    )
   end
 
