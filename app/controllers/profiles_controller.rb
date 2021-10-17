@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  # before_action :authenticate_freelancer!, only: [:new, :create]
+  before_action :authenticate_freelancer!, only: [:new, :create, :show]
   def show
     @profile = Profile.find(params[:id])
   end
