@@ -23,7 +23,7 @@ describe 'freelancer complete profile' do
     click_on 'Candidate-se para um projeto!'
     fill_in 'Nome completo', with: 'Antonio Silva'
     fill_in 'Nome social', with: 'Paloma'
-    fill_in 'Data de nacimento', with: 22.years.ago
+    fill_in 'Data de nacimento', with: 19900508
     fill_in 'Formação', with: 'Ciencias da computação'
     fill_in 'Aréa de atuação', with: 'Dev'
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
@@ -51,11 +51,10 @@ describe 'freelancer complete profile' do
     click_on 'Marketing em redes sociais'
   
     expect(page).to have_content('Valor maximo por hora: R$ 60')
-    expect(page).to have_content('Fecha limite para proposta 14/12/2021')
+    expect(page).to have_content('Data limite para proposta:')
     expect(page).to have_content('Presencial: Não')
     expect(page).to have_content('Remoto: Sim')
     expect(page).to have_link('Enviar Proposta')
-    expect(page).to have_content('Mande um proposta')
   end    
 end
 

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_143636) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_name"
     t.string "social_name"
-    t.datetime "birth_date"
+    t.date "birth_date"
     t.string "educational_background"
     t.string "work_field"
     t.string "about_me"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_143636) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "max_hour_payment"
-    t.datetime "deadline_for_proposals"
+    t.date "deadline_for_proposals"
     t.boolean "face_to_face"
     t.boolean "remote"
     t.integer "owner_id", null: false
