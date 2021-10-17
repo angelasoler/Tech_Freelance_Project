@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :freelancers, path: 'freelancers'
+  devise_for :freelancers, path: 'freelancers', controllers: { registrations: "registrations" }
   devise_for :owners, path: 'owners'
   root to: 'home#index'
   resources :profiles, only: [:new, :create, :show] do

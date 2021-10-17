@@ -101,8 +101,7 @@ describe 'visitor ' do
       click_on 'Inscrever-se'
 
       expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso.')
-      expect(page).to have_current_path(root_path)
-      expect(page).to have_content('Complete seu perfil')
+      expect(page).to have_content('Preencha seu perfil completo para começar a criar propostas!')
       expect(page).to have_content('erika@mail.com')
       expect(page).to have_link('Logout')
     end
