@@ -8,6 +8,8 @@ class FreelancersController < ApplicationController
   # #   end
   # # end
 
+  
+
   # def freelancer_params
   # params.require[:freelancer].permit(profile_attributes:[:full_name, :social_name, 
   #                                                       :educational_background, 

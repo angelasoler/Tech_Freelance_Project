@@ -1,3 +1,3 @@
 class Profile < ApplicationRecord
-  belongs_to :freelancers
+  belongs_to :freelancer
 end

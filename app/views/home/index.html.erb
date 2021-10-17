@@ -18,7 +18,7 @@
 <% end %></div>
 
 <% if freelancer_signed_in? %>
-  <div><%= link_to 'Candidate-se para um projeto!', my_profile_profile_index_path %></div>
+  <div><%= link_to 'Candidate-se para um projeto!', new_profile_path %></div>
 <% else %>
   <div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %></div>
 <% end %>

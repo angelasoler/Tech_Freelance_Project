@@ -1,5 +1,11 @@
 <h3>Preencha seu perfil completo para começar a criar propostas!</h3>
 
+<% if @profile.errors.any? %>
+  <% @profile.errors.full_messages.each do |error| %>
+    <div><%= error %></div>
+  <%end%>
+<% end %>
+
 <%= form_with model: @profile do |form| %>
   <%= form.label :full_name, 'Nome completo' %>
   <%= form.text_field :full_name %><br>

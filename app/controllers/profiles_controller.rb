@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+  # before_action :authenticate_freelancer!, only: [:new, :create]
+  def show
+    @profile = Profile.find(params[:id])
+  end
   
   def new
     @profile = Profile.new
@@ -6,13 +10,23 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.create(profile_params)
+    @profile.freelancer = current_freelancer
+    if @profile.save
+      redirect_to profile_path(@profile.id)
+    else
+      render :new
+    end
   end
 
   def profile_params
     params.require(:profile).permit(:full_name, :social_name, 
-                                    :educational_background, 
+                                    :birth_date, :educational_background, 
                                     :work_field, :about_me, 
                                     :work_experience, :photo
-                                    )
+                                   )
+  end
+
+  def my_profile
+    @my_profile = current_freelancer.profile
   end
 end

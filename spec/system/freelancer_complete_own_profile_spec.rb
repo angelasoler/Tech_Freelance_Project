@@ -4,7 +4,7 @@ describe 'freelancer complete profile' do
   before do
     user = Freelancer.create!({email: 'user@mail.com', 
                                 password: '123456'
-                                })
+                              })
     login_as user, scope: :freelancer
   end
 
@@ -16,15 +16,15 @@ describe 'freelancer complete profile' do
     fill_in 'Nome social', with: 'Paloma'
     fill_in 'Data de nacimento', with: 22.years.ago
     fill_in 'Formação', with: 'Ciencias da computação'
-    fill_in 'Aréa de atuação', with: 'Desenvolvedor'
+    fill_in 'Aréa de atuação', with: 'Dev'
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência', with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
     # attach_file 'image', '.image.jpg'
     click_on 'Completar Perfil'
 
-    expect(page).to have_content('Candidate-se para um projeto.')
+    expect(page).to have_link('Candidate-se para um projeto.')
     expect(page).to have_link('menu')
-    expect(page).to have_content(Project.all)
+    expect(page).to have_content('Sou uma pessoa comprimetida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia')
   end
 
   it 'most fill all fields' do
