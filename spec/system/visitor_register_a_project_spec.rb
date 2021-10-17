@@ -15,7 +15,7 @@ describe 'project owner register a project' do
     fill_in 'Descrição:', with: 'Site como fotos de produto e contato para pedido em domicilo'
     fill_in 'Habilidades desejadas:', with: 'Desenvolvedor fullstack com experiencia previa'
     fill_in 'Valor maximo por hora:', with: 60
-    fill_in 'Data limite proposta:', with: Time.now + 2.month
+    fill_in 'Data limite para proposta:', with: Time.now + 2.month
     check 'Presencial:'
     check 'Remoto:'
     click_on 'Cadastrar'

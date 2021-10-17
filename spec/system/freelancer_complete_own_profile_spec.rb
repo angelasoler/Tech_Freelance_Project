@@ -6,6 +6,15 @@ describe 'freelancer complete profile' do
                                 password: '123456'
                               })
     login_as user, scope: :freelancer
+    user_owner = Owner.create!({email: 'user_owner@mail.com', 
+                                password: '123456'
+                                })
+    marketing = Project.create!({title: 'Marketing em redes sociais', 
+                                description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                                desire_habilities: 'Gerenciamento e marketing rede sociais', 
+                                max_hour_payment: 60, deadline_for_proposals: Time.now + 2.month, 
+                                remote: true, owner: user_owner
+                                })
   end
 
   it 'successfully' do
@@ -30,34 +39,23 @@ describe 'freelancer complete profile' do
   it 'most fill all fields' do
 
     visit root_path
+    click_on 'Candidate-se para um projeto!'
     click_on 'Completar Perfil'
 
-    expect(freelancer.errors[:fullname]).to include('Nome completo não pode ficar em branco.')
-    expect(freelancer.errors[:social_name]).to include('Nome social não pode ficar em branco.')
-    expect(freelancer.errors[:birth_date]).to include('Data de nacimento não pode ficar em branco.')
-    expect(freelancer.errors[:educational_background]).to include('Formaçao não pode ficar em branco.')
-    expect(freelancer.errors[:work_field_id]).to include('Por favor selecione Aréa de atuação.')
-    expect(freelancer.errors[:about_me]).to include('Sobre mi não pode ficar em branco.')
-    expect(freelancer.errors[:work_experience]).to include('Experiência não pode ficar em branco.')
-    expect(freelancer.errors[:photo]).to include('Deve subir uma foto.')
+    expect(page).to have_content('Nome completo não pode ficar em branco')
   end
 
   it 'and can access to projects details' do
-    marketing = Project.create!({title: 'Marketing em redes sociais', 
-                                description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                desire_habilities: 'Gerenciamento e marketing rede sociais', 
-                                max_hour_payment: 60, deadline_for_proposals: 2.months.from_now, remote: true
-                                })
       
     visit root_path
     click_on 'Marketing em redes sociais'
   
-    expect(page).to have_link('Enviar Proposta')
-    expect(page).to have_content('Mande um proposta')
-    expect(page).to have_content('Valor maximo por hora R$ 60')
+    expect(page).to have_content('Valor maximo por hora: R$ 60')
     expect(page).to have_content('Fecha limite para proposta 14/12/2021')
     expect(page).to have_content('Presencial: Não')
     expect(page).to have_content('Remoto: Sim')
+    expect(page).to have_link('Enviar Proposta')
+    expect(page).to have_content('Mande um proposta')
   end    
 end
 

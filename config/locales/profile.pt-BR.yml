@@ -1,0 +1,8 @@
+---
+pt-BR:
+  activerecord:
+    models:
+        profile: 'Perfil'
+    attributes:
+      profile:
+        full_name: 'Nome completo'

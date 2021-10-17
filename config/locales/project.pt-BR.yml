@@ -9,6 +9,6 @@ pt-BR:
         description: 'Descrição'
         desire_habilities: 'Habilidades desejadas'
         max_hour_payment: 'Valor maximo por hora'
-        deadline_for_proposals: 'Fecha limite para proposta'
+        deadline_for_proposals: 'Data limite para proposta'
         face_to_face: 'Presencial'
         remote: 'Remoto'
