@@ -23,20 +23,30 @@ describe 'freelancer authentication:' do
   end
 
 #   context 'without complete profile' do
+    # before do
+    #   angela = Freelancer.create!(email: 'angela@mail.com', password: '123456')
+    #   login_as angela, scope: :freelancer
+    # end
 #     it 'can´t send a proposal' do
 #       post new_proposal_path
 
 #       expect(response).to redirect_to(new_freelancer_profile_pat)
 #     end
 #   end
-  # context 'authenticated freelancer' do
   #   it 'cannot access new project url' do
-  #     angela = Freelancer.create!(email: 'angela@mail.com', password: '123456')
-  #     login_as angela, scope: :freelancer
+  #     
 
   #     get new_project_path
 
   #     expect(response).to redirect_to(root_path)
   #   end
+
+    # it 'profile_path redirect to complete profile form' do
+      
+    #   get profile_path
+
+    #   expect(response).to redirect_to(new_profile_path)
+    # end
+  # end
   # end
 end

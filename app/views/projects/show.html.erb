@@ -1,8 +1,8 @@
 <h1><%= @project.title %></h1>
 
-<h3><%= @project.description %></h3>
+<h5><%= @project.description %></h5>
 
-<h3>Habilidades desejadas: <%= @project.desire_habilities %></h3>
+<div>Habilidades desejadas: <%= @project.desire_habilities %></div>
 <div>Valor maximo por hora: <%= number_to_currency(@project.max_hour_payment) %></div>
 <div>Data limite para proposta: <%= l(@project.deadline_for_proposals) %></div>
 <div>

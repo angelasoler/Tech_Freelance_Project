@@ -11,6 +11,8 @@
 <div><%= @profile.work_field %></div>
 <div><%= @profile.about_me %></div>
 <div><%= @profile.work_experience %></div>
-<div><%= @profile.photo %></div>
+<% if @profile.photo.attached? %>
+  <div><%= image_tag(@profile.freelancer.photo) %></div>
+<% end %>
 
 <%= link_to 'Candidate-se para um projeto.' %>
