@@ -1,32 +1,36 @@
-<h3>Preencha seu perfil completo para começar a criar propostas!</h3>
+<div class="container-fluid">
+  <h3>Preencha seu perfil completo para começar a criar propostas!</h3>
 
-<% if @profile.errors.any? %>
-  <% @profile.errors.full_messages.each do |error| %>
-    <div><%= error %></div>
-  <%end%>
-<% end %>
+  <% if @profile.errors.any? %>
+    <% @profile.errors.full_messages.each do |error| %>
+      <div><%= error %></div>
+    <%end%>
+  <% end %>
 
-<%= form_with model: @profile do |form| %>
-  <%= form.label :full_name, 'Nome completo' %>
-  <%= form.text_field :full_name %><br>
-  <%= form.label :social_name, 'Nome social' %>
-  <%= form.text_field :social_name %><br>
-  <%= form.label :birth_date, 'Data de nascimento' %>
-  <%= form.text_field :birth_date %><br>
-  <%= form.label :educational_background, 'Formação' %>
-  <%= form.text_field :educational_background %><br>
-  <%= form.label :work_field, 'Aréa de atuação' %>
-  <%= form.select :work_field, ['Dev', 'Web Design', 'Segurança', 'Suporte Técnico', 
-                                'Midias Sociais', 'Sistemas', 'Gerenciamento de projetos', 
-                                'Jogos digitais', 'E-commerce', 'Redes de informática', 
-                                'Computação em nuvem', 'Qualidade de software', 'Análise de dados', 
-                                'Inteligência de negócios', 'UX Design', 
-                                'Gestão de processos e qualidade'], prompt: true %><br>
-  <%= form.label :about_me, 'Sobre mi' %>
-  <%= form.text_field :about_me %><br>
-  <%= form.label :work_experience, 'Experiência' %>
-  <%= form.text_field :work_experience %><br>
-  <%= form.label :photo, 'Foto' %>
-  <%= form.file_field :photo %><br>
-  <%= form.submit 'Completar Perfil' %>
-<% end %>
+  <%= form_with model: @profile do |form| %>
+    <%= form.label :full_name, 'Nome completo' %>
+    <%= form.text_field :full_name %><br>
+    <%= form.label :social_name, 'Nome social' %>
+    <%= form.text_field :social_name %><br>
+    <%= form.label :birth_date, 'Data de nascimento' %>
+    <%= form.text_field :birth_date %><br>
+    <%= form.label :educational_background, 'Formação' %>
+    <%= form.text_field :educational_background %><br>
+    <%= form.label :work_field, 'Aréa de atuação' %>
+    <%= form.select :work_field, ['Dev', 'Web Design', 'Segurança', 'Suporte Técnico', 
+                                  'Midias Sociais', 'Sistemas', 'Gerenciamento de projetos', 
+                                  'Jogos digitais', 'E-commerce', 'Redes de informática', 
+                                  'Computação em nuvem', 'Qualidade de software', 'Análise de dados', 
+                                  'Inteligência de negócios', 'UX Design', 
+                                  'Gestão de processos e qualidade'], prompt: true %><br>
+    <%= form.label :about_me, 'Sobre mi' %>
+    <%= form.text_field :about_me %><br>
+    <%= form.label :work_experience, 'Experiência' %>
+    <%= form.text_field :work_experience %><br>
+    <div class="mb-3">
+      <%= form.label :photo, 'Foto', class: "form-label"%>
+      <%= form.file_field :photo, class: "form-control" %><br>
+    </div>
+    <%= form.submit 'Completar Perfil', class: "btn btn-success" %>
+  <% end %>
+<div>

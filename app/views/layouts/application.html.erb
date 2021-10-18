@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% if signed_in? %>
-      <% if owner_signed_in? %>
-        <%= current_owner.try(:email) %>
-        <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
-      <% else %>
-        <%= current_freelancer.try(:email) %>
-        <div><%= link_to 'Logout', destroy_freelancer_session_path, :method => :delete %></div>
+  <div class="container-fluid">
+    <head>
+      <% if signed_in? %>
+        <% if owner_signed_in? %>
+          <%= current_owner.try(:email) %>
+          <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
+        <% else %>
+          <%= current_freelancer.try(:email) %>
+          <div><%= link_to 'Logout', destroy_freelancer_session_path, :method => :delete %></div>
+        <% end %>
       <% end %>
-    <% end %>
-    
-    <title>TechFreelancersProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      
+      <title>TechFreelancersProject</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> 
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <body>
+      <%= yield %>
+    </body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> 
+  </div>
 </html>
