@@ -14,6 +14,7 @@ gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'bootstrap', '~> 4.1.3'
 # gem "image_processing", ">= 1.2"
 
 
