@@ -67,7 +67,7 @@ describe 'visitor ' do
 
       expect(page).to have_content('Login efetuado com sucesso.')
       expect(page).to have_content('erika@mail.com')
-      # expect(page).to have_current_path(complete_profile_freelancer_path.id)
+      # expect(current_path).to eq(new_profile_path)
       # expect(page).to have_content('Preencha seu perfil completo para começar a criar propostas!')
       # expect(page).to have_link('Criar propostas')
       # expect(page).not_to have_link('Candidate-se para um projeto!')
@@ -86,6 +86,7 @@ describe 'visitor ' do
       expect(page).to have_content('Logout efetuado com sucesso.')
       expect(page).to have_link('Candidate-se para um projeto!', href: new_freelancer_session_path)
       expect(page).to have_current_path(root_path)
+      # expect(page).not_to have_link('Publique um projeto')
       expect(page).not_to have_content('erika@mail.com')
       expect(page).not_to have_link('Logout')
     end

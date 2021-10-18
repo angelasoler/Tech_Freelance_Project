@@ -1,10 +1,15 @@
 <h1> Tech Freelancers </h1>
 
 <h2> Encontre profissionais de tecnologia para seus projetos! </h2>
-<% if owner_signed_in?%>
+<% if owner_signed_in? %>
   <%= link_to 'Meus Projetos', my_projects_projects_path %>
+  <%= link_to 'Publique um projeto', new_project_path %>
+<% else %>
+  <%= link_to 'Publique um projeto', new_owner_session_path %>
 <% end %>
-<%= link_to 'Publique um projeto', new_project_path %>
+
+
+
 
 
 <h2> Encontre um projeto e faça sua proposta!</h2>
@@ -13,7 +18,7 @@
   <%= link_to projeto.title, project_path(projeto.id) %>
 <% end %>
 
-<div><% if @project.blank? %>
+<div><% if @projects.blank? %>
     Não há projetos disponiveis no momento.
 <% end %></div>
 
