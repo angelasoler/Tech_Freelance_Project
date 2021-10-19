@@ -3,4 +3,5 @@ class Profile < ApplicationRecord
             :work_field, :about_me, :work_experience, presence: true
   belongs_to :freelancer
   has_one_attached :photo
+  has_many :proposals
 end

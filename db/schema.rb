@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_213325) do
+ActiveRecord::Schema.define(version: 2021_10_19_032705) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -92,8 +92,23 @@ ActiveRecord::Schema.define(version: 2021_10_17_213325) do
     t.index ["owner_id"], name: "index_projects_on_owner_id"
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.string "motivation"
+    t.integer "hourly_rate"
+    t.integer "hours_per_week"
+    t.integer "weeks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "profile_id", null: false
+    t.integer "project_id", null: false
+    t.index ["profile_id"], name: "index_proposals_on_profile_id"
+    t.index ["project_id"], name: "index_proposals_on_project_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profiles", "freelancers"
   add_foreign_key "projects", "owners"
+  add_foreign_key "proposals", "profiles"
+  add_foreign_key "proposals", "projects"
 end

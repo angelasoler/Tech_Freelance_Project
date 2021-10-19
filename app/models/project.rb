@@ -5,4 +5,5 @@ class Project < ApplicationRecord
             :deadline_for_proposals,
             presence: true
   belongs_to :owner
+  has_many :proposals
 end

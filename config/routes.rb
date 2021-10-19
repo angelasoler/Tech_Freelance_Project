@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :projects, only: [:show, :new, :create] do
     get 'my_projects', on: :collection
   end
+  resources :proposals, only: [:new]
 end
