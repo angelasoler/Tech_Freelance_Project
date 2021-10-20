@@ -1,23 +1,25 @@
 class ProposalsController < ApplicationController
-  def show
-    
-  end
+  # def show
+  #   @proposal = Proposal.find(params[:id])
+  # end
 
-  def create
-    @project = Project.find(params[:proposal][:project_id])
-    @proposal = @project.proposal.build(proposal_params) 
-    @proposal.profile = current_freelancer.profile_id
-   
-    
-    @proposal.save
+  # def create
+  #   @proposal = Proposal.create(proposal_params) 
+  #   @proposal.project = Project.ids 
+  #   @proposal.profile = Profile.ids
+  #   @proposal.save!
 
-    redirect_to proposal_path
-  end
+  #   if @proposal.save
+  #     redirect_to proposal_path(@proposal.id)
+  #   else
+  #     render 'nao foi possivel enviar proposta'
+  #   end
+  # end
 
-  def proposal_params
-    params.require(:proposal).permit(:motivation, :hourly_rate, 
-                                      :hours_per_week, :weeks,
-                                      :project_id, :profile_id
-                                    )
-  end
+  # def proposal_params
+  #   params.require(:proposal).permit(:motivation, :hourly_rate, 
+  #                                     :hours_per_week, :weeks, :project, 
+  #                                     :proposal
+  #                                   )
+  # end
 end

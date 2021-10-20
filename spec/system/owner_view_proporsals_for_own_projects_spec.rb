@@ -22,7 +22,8 @@ describe 'owner view proposals on his projects' do
                                           remote: true, owner: avaliador
                                           })
     propasta = Proposal.create!({motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia', 
-                                hourly_rate: 60, hours_per_week: 10, weeks: 6, profile: perfil_propositor
+                                hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing, 
+                                profile: perfil_propositor
                                 })
   end
 
