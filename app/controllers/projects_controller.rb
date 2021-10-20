@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_owner!, only: [:new, :create]
   def show
     @project = Project.find(params[:id])
+    @proposal = Proposal.new
   end
   
   def new

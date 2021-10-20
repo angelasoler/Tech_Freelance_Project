@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   devise_for :owners, path: 'owners'
   root to: 'home#index'
   resources :profiles, only: [:new, :create, :show] do
-    get 'my_profile', on: :collection
   end
-  resources :projects, only: [:show, :new, :create] do
+  resources :projects, only: [:new, :show, :create] do
     get 'my_projects', on: :collection
+    resources :proposals, only: [:create, :show], shallow:true
   end
-  resources :proposals, only: [:new]
 end

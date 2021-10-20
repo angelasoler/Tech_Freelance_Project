@@ -4,4 +4,5 @@ class Profile < ApplicationRecord
   belongs_to :freelancer
   has_one_attached :photo
   has_many :proposals
+  has_many :projects
 end
