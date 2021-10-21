@@ -48,7 +48,7 @@ describe 'project owner views own projects' do
       visit root_path
       click_on 'Meus Projetos'
 
-      expect(page).to have_content('Ainda não tem imoveis')
+      expect(page).to have_content('Ainda não tem projetos')
       expect(page).to have_link('Publique um projeto', href: new_project_path )
     end
   end

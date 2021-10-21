@@ -1,4 +1,4 @@
 class Proposal < ApplicationRecord
-  belongs_to :Project
-  belongs_to :Profile
+  belongs_to :project
+  belongs_to :profile
 end

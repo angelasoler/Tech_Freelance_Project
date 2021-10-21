@@ -29,8 +29,8 @@ describe 'owner view proposals on his projects' do
 
   it 'successfully' do
     visit my_projects_projects_path
-    click_on projecto_marketing.title
-    click_on perfil_propositor.full_name
+    click_on 'Marketing em redes sociais'
+    click_on 'Propositor Garcia'
     click_on 'Veja a proposta'
 
     expect(page).to have_content('Sou expecialista em redes sociais com 6 anos de experiencia')

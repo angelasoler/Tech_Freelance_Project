@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   resources :projects, only: [:new, :show, :create] do
     get 'my_projects', on: :collection
-    resources :proposals, only: [:create, :show], shallow:true
+    resources :proposals, only: [:create]
   end
+  resources :proposals, only: [:show]
 end

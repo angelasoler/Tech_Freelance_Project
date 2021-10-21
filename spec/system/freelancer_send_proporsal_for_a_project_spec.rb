@@ -15,6 +15,12 @@ describe 'freelancer send proposal' do
                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 2.month, 
                                 remote: true, owner: project_owner
                                 })
+    perfil_propositor = Profile.create!({full_name: 'Propositor Garcia', social_name: '', 
+                                        birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                                        work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                                        work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                                        freelancer: propositor
+                                        })
   end
 
   it 'successfully' do
@@ -27,6 +33,7 @@ describe 'freelancer send proposal' do
     fill_in 'Semanas para termino', with: 6
     click_on 'Enviar'
 
+    expect(page).to have_content('Sou expecialista em redes sociais com 6 anos de experiencia')
     expect(page).to have_content('Sua proposta foi enviada para ser avaliada pelo dono do projeto!')
   end
 
