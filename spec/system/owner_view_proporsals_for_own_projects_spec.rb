@@ -42,16 +42,23 @@ describe 'owner view proposals on his projects' do
   end
 
   it 'and accept' do
-    visit proposta_path
+    visit my_projects_projects_path
+    click_on 'Marketing em redes sociais'
+    click_on 'Propositor Garcia'
     click_on 'Aceitar'
 
     expect(page).to have_link('mande uma mensagem')
+    #status da proposta vira aceita
   end
 
   it 'and turn down' do
-    visit proposta_path
+    visit proposal_path
     click_on 'Recusar'
+    fill_in 'Porfavor escreva um feedback de porque você recusou', with: 'Não é o perfil que estamos procurando'
+    click_on 'Enviar'
 
     expect(page).to have_current_path(feedback_path)
+    expet(page).to have_content('Seu feedback foi enviado com sucesso')
+    #status da proposta vira recusado
   end    
 end

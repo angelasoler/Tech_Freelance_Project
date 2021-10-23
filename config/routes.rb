@@ -9,7 +9,4 @@ Rails.application.routes.draw do
     resources :proposals, only: [:create]
   end
   resources :proposals, only: [:show] 
-  # do
-  #   get 'my_proposal', on:collection
-  # end
 end
