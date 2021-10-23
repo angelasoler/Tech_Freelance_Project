@@ -3,6 +3,6 @@
   <h2> <%= link_to 'Publique um projeto', new_project_path%>
 <% else %>
   <% @projects.each do |projeto| %>
-    <h3><%= link_to projeto.title %></h3>
+    <h3><%= link_to projeto.title, project_path(projeto) %></h3>
   <% end %>
 <% end %>

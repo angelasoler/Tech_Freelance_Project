@@ -31,12 +31,12 @@ describe 'owner view proposals on his projects' do
     visit my_projects_projects_path
     click_on 'Marketing em redes sociais'
     click_on 'Propositor Garcia'
-    click_on 'Veja a proposta'
 
     expect(page).to have_content('Sou expecialista em redes sociais com 6 anos de experiencia')
     expect(page).to have_content('Tarifa por hora: R$ 60')
     expect(page).to have_content('Horas disponiveis por semana: 10')
     expect(page).to have_content('Expectativa de praço: 6 semanas')
+    expect(page).to have_link('Propositor Garcia')
     expect(page).to have_link('Aceitar')
     expect(page).to have_link('Recusar')
   end

@@ -1,0 +1,11 @@
+---
+pt-BR:
+  activerecord:
+    models:
+        proposal: 'Proposta'
+    attributes:
+      proposal:
+        motivation: 'Morivação:'
+        hourly_rate: 'Tarifa por hora:'
+        hours_per_week: 'Horas por semana:'
+        weeks: 'Semanas'

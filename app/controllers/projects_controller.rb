@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @proposal = Proposal.new
+    @proposals = @project.proposals.all
   end
   
   def new

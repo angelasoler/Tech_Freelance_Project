@@ -26,7 +26,6 @@ describe 'freelancer send proposal' do
   it 'successfully' do
     visit root_path
     click_on 'Marketing em redes sociais'
-    # click_on 'Enviar Proposta'
     fill_in 'Conte porque está aplicando para o projeto', with: 'Sou expecialista em redes sociais com 6 anos de experiencia'
     fill_in 'Valor hora', with: 60
     fill_in 'Horas diponiveis por semana', with: 10
@@ -38,8 +37,7 @@ describe 'freelancer send proposal' do
   end
 
   it 'and it is accepted' do
-
-
+    
   end
 
   it '' do

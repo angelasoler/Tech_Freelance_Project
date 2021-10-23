@@ -1,4 +1,10 @@
-<%= @proposal.motivation %>
-<%= @proposal.hourly_rate %>
-<%= @proposal.hours_per_week %>
-<%= @proposal.weeks %>
+<div><%=  @proposal.motivation %></div>
+<div>Tarifa por hora: <%= number_to_currency(@proposal.hourly_rate) %></div>
+<div>Horas disponiveis por semana: <%= @proposal.hours_per_week %></div>
+<div>Expectativa de praço: <%= @proposal.weeks %> semanas</div>
+
+<% if owner_signed_in? %>
+  <div><%= link_to @proposal.profile.full_name, profile_path(@proposal.profile.id) %></div>
+  <div><%= link_to 'Aceitar'%></div>
+  <div><%= link_to 'Recusar'%></div>
+<% end %>
