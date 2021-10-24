@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     get 'my_projects', on: :collection
     resources :proposals, only: [:create]
   end
-  resources :proposals, only: [:show] 
+  resources :proposals, only: [:show] do
+    post 'status_accepted', on: :collection
+    post 'status_turned_down', on: :collection
+  end
 end

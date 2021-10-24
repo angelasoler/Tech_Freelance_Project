@@ -54,7 +54,6 @@ describe 'owner view proposals on his projects' do
   it 'and turn down' do
     visit my_projects_projects_path
     click_on 'Marketing em redes sociais'
-    click_on 'Propositor Garcia'
     click_on 'Recusar'
     fill_in 'Porfavor escreva um feedback de porque você recusou', with: 'Não é o perfil que estamos procurando'
     click_on 'Enviar'
@@ -62,6 +61,9 @@ describe 'owner view proposals on his projects' do
     expect(page).to have_current_path(feedback_path)
     expet(page).to have_content('Seu feedback foi enviado com sucesso')
     #status da proposta vira recusado
-  end    
+  end
+  
+  it 'and view profile of freelancer that send proposal' do
+  end
 end
 #[TODO]ve outros projetos que o freelancer que mandou a proposta participo

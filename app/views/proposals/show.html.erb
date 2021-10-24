@@ -4,11 +4,17 @@
 <div>Expectativa de praço: <%= @proposal.weeks %> semanas</div>
 
 <% if owner_signed_in? %>
+  <h5>Veja o perfil da</h5>
   <div><%= link_to @proposal.profile.full_name, profile_path(@proposal.profile.id) %></div>
   <div>
   <% if @proposal.draft? %>
-    <%= link_to 'Aceitar', @proposal.accepted! %>
-    <%= link_to 'Recusar', @proposal.turned_down! %>
+    <%= button_to 'Aceitar', status_accepted_proposals_path(@proposal), method: @proposal.accepted! %>
+    <%= button_to 'Recusar', status_turned_down_proposals_path(@proposal) %>
+  <% elsif @proposal.accepted? %>
+    <div><%= link_to 'mande uma mensagem' %></div>
+  <% else %>
+    <% reirect_to feedback_path %>
   <% end %>
   </div>
 <% end %>
+
