@@ -21,7 +21,7 @@ describe 'owner view proposals on his projects' do
                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.month, 
                                           remote: true, owner: avaliador
                                           })
-    propasta = Proposal.create!({motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia', 
+    proposta = Proposal.create!({motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia', 
                                 hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing, 
                                 profile: perfil_propositor
                                 })
@@ -52,7 +52,9 @@ describe 'owner view proposals on his projects' do
   end
 
   it 'and turn down' do
-    visit proposal_path
+    visit my_projects_projects_path
+    click_on 'Marketing em redes sociais'
+    click_on 'Propositor Garcia'
     click_on 'Recusar'
     fill_in 'Porfavor escreva um feedback de porque você recusou', with: 'Não é o perfil que estamos procurando'
     click_on 'Enviar'
@@ -62,3 +64,4 @@ describe 'owner view proposals on his projects' do
     #status da proposta vira recusado
   end    
 end
+#[TODO]ve outros projetos que o freelancer que mandou a proposta participo

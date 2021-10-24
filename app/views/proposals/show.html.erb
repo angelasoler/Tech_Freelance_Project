@@ -5,6 +5,10 @@
 
 <% if owner_signed_in? %>
   <div><%= link_to @proposal.profile.full_name, profile_path(@proposal.profile.id) %></div>
-  <div><%= link_to 'Aceitar'%></div>
-  <div><%= link_to 'Recusar'%></div>
+  <div>
+  <% if @proposal.draft? %>
+    <%= link_to 'Aceitar', @proposal.accepted! %>
+    <%= link_to 'Recusar', @proposal.turned_down! %>
+  <% end %>
+  </div>
 <% end %>
