@@ -1,15 +1,7 @@
 class ProposalsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:status_accepted, :status_turned_down, :show]
   def show
     @proposal = Proposal.find(params[:id])
     @proposals = Proposal.all
-    if @proposal.accepted?
-      render :show
-      flash.alert = 'Proposta Aceita!'
-    elsif @proposal.turned_down?
-      render :show
-      flash.alert = 'Pfvr retorne um feedback!'
-    end
   end
 
   def create
@@ -28,9 +20,29 @@ class ProposalsController < ApplicationController
                                     )
   end
 
-  def status_accepted 
+  def accept
+    @proposal = Proposal.find(params[:id])
+    @proposal.accepted!
+    flash[:notice] = 'Proposta Aceita!'
+    render :show
   end
 
-  def status_turned_down
+  def turn_down
+    @proposal = Proposal.find(params[:id])
+    @proposal.turned_down!
+    @proposal.save
+    redirect_to edit_proposal_path(@proposal)
+  end
+
+  
+  def edit
+    @proposal = Proposal.find(params[:id])
+  end
+
+  
+  def update
+    @proposal = Proposal.find(params[:id])
+    @proposal.update(params.require(:proposal).permit(:feed_back))
+    redirect_to proposal_path
   end
 end

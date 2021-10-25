@@ -49,6 +49,7 @@ describe 'owner view proposals on his projects' do
 
     expect(page).to have_link('mande uma mensagem')
     expect(page).to have_content('Proposta Aceita!')
+    expect(page).not_to have_button('Aceitar')
   end
 
   it 'and turn down' do
@@ -59,8 +60,12 @@ describe 'owner view proposals on his projects' do
     fill_in 'Porfavor escreva um feedback de porque você recusou', with: 'Não é o perfil que estamos procurando'
     click_on 'Enviar'
 
-    expect(page).to have_current_path(feedback_path)
-    expet(page).to have_content('Seu feedback foi enviado com sucesso')
+    expect(page).to have_current_path('/proposals/1')
+    expect(page).not_to have_link('mande uma mensagem')
+    expect(page).not_to have_button('Aceitar')
+    expect(page).not_to have_content('Porfavor escreva um feedback de porque você recusou')
+    expect(page).to have_content('Seu feedback foi enviado com sucesso')
+    expect(page).to have_content('Não é o perfil que estamos procurando')
   end
   
   it 'and view profile of freelancer that send proposal' do

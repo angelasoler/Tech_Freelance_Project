@@ -6,16 +6,13 @@
 <% if owner_signed_in? %>
 <div><h5>Veja o perfil de <%= link_to @proposal.profile.full_name, profile_path(@proposal.profile.id) %></h5></div>
   <% if @proposal.draft? %>
-    <%= button_to 'Aceitar', status_accepted_proposals_path(@proposal), method: @proposal.accepted! %>
-    <%= button_to 'Recusar', status_turned_down_proposals_path(@proposal), method: @proposal.turned_down! %>
+    <%= button_to 'Aceitar', {action: 'accept', id: @proposal.id }, method: :patch %>
+    <%= button_to 'Recusar', {action: 'turn_down', id: @proposal.id }, method: :patch %>
   <% elsif @proposal.accepted? %>
-     <div><%= link_to 'mande uma mensagem' %></div>
+    <div><%= link_to 'mande uma mensagem' %></div>
   <% else %>
-    <%= form_with model: @proposal do |form| %>
-      <%= form.label :feed_back, 'Porfavor escreva um feedback de porque você recusou' %>
-      <%= form.text_field :feed_back %>
-      <%= form.submit 'Enviar' %><br>
-    <% end %>
+    <div><%= 'Seu feedback foi enviado com sucesso' %></div>
+    <div><%= @proposal.feed_back %></div>
   <% end %>
 <% end %>
 

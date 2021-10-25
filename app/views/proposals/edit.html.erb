@@ -1,0 +1,5 @@
+<%= form_with model: @proposal do |form| %>
+    <%= form.label :feed_back, 'Porfavor escreva um feedback de porque você recusou' %>
+    <%= form.text_field :feed_back %>
+    <%= form.submit 'Enviar' %><br>
+<% end %>
