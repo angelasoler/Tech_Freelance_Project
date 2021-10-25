@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'my_projects', on: :collection
     resources :proposals, only: [:create]
   end
-  resources :proposals,  only: [:new, :create, :show, :update, :edit] do
+  resources :proposals,  only: [:create, :show, :update, :edit] do
     patch 'accept', on: :collection
     patch 'turn_down', on: :collection
   end

@@ -53,6 +53,16 @@ describe 'freelancer complete profile' do
   end
 
   it 'and can access to projects details' do
+    user2 = Freelancer.create!({email: 'user2@mail.com', 
+                                password: '123456'
+                              })
+    login_as user2, scope: :freelancer                         
+    Profile.create!({full_name: 'Propositor Garcia', social_name: '', 
+                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                    freelancer: user2
+                    })
       
     visit root_path
     click_on 'Marketing em redes sociais'
