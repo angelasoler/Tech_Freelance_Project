@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
     @proposals = @project.proposals.all
     if freelancer_signed_in?
       if current_freelancer.profile.blank? 
-        current_freelancer.profile.blank?
         redirect_to new_profile_path
       end
     end

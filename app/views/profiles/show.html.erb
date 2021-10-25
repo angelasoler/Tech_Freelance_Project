@@ -1,5 +1,3 @@
-<%= link_to 'menu'%>
-
 <% if @profile.social_name.blank? %>
   <h1> <%= @profile.full_name %> </h1>
 <% end %>
@@ -15,4 +13,6 @@
   <div><%= image_tag(@profile.freelancer.photo) %></div>
 <% end %>
 
-<%= link_to 'Candidate-se para um projeto.', root_path %>
+<% if freelancer_signed_in? %>
+  <%= link_to 'Candidate-se para um projeto.', root_path %>
+<% end %>

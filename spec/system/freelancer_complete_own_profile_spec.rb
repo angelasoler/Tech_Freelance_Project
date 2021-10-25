@@ -32,7 +32,6 @@ describe 'freelancer complete profile' do
     click_on 'Completar Perfil'
 
     expect(page).to have_link('Candidate-se para um projeto.')
-    expect(page).to have_link('menu')
     expect(page).to have_content('Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia')
     # expect(page.find('image.jpg'))
 
