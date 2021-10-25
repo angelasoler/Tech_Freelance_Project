@@ -25,7 +25,7 @@ Remoto:
 
 <% if current_freelancer.present? %>
   <h1><%= 'Mande uma proposta para esse projeto!' %></h1>
-   <%= form_with model: [@project, @proposal] do |form| %>
+  <%= form_with model: [@project, @proposal] do |form| %>
     <%= form.label :motivation, 'Conte porque está aplicando para o projeto' %>
     <%= form.text_field :motivation %><br>
     <%= form.label :hourly_rate, 'Valor hora' %>
@@ -37,8 +37,9 @@ Remoto:
     <%= form.submit 'Enviar', class: "btn btn-success" %>
   <% end %>
 <% elsif current_owner.present? %>
+    <h5>Veja as propostas desse freelancer para seu porjeto</h5>
     <% current_owner.proposals.each do |proposta| %>
-      <%= link_to proposta.profile.full_name, proposal_path(proposta.id) %>
+      <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
     <% end %>
 <% end %>
 

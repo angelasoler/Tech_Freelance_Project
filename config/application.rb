@@ -35,5 +35,6 @@ module TechFreelancersProject
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.i18n.default_locale = :'pt-BR'
+    # config.action_controller.default_protect_from_forgery = true
   end
 end

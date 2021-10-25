@@ -7,8 +7,8 @@ describe 'owner view proposals on his projects' do
                               })
     login_as avaliador, scope: :owner
     propositor = Freelancer.create!({email: 'propositor@mail.com', 
-                                        password: '123456'
-                                        })
+                                    password: '123456'
+                                    })
     perfil_propositor = Profile.create!({full_name: 'Propositor Garcia', social_name: '', 
                                         birth_date: 19950608, educational_background: 'Publicidade na PUC', 
                                         work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
@@ -37,8 +37,8 @@ describe 'owner view proposals on his projects' do
     expect(page).to have_content('Horas disponiveis por semana: 10')
     expect(page).to have_content('Expectativa de praço: 6 semanas')
     expect(page).to have_link('Propositor Garcia')
-    expect(page).to have_link('Aceitar')
-    expect(page).to have_link('Recusar')
+    expect(page).to have_button('Aceitar')
+    expect(page).to have_button('Recusar')
   end
 
   it 'and accept' do
@@ -48,19 +48,19 @@ describe 'owner view proposals on his projects' do
     click_on 'Aceitar'
 
     expect(page).to have_link('mande uma mensagem')
-    #status da proposta vira aceita
+    expect(page).to have_content('Proposta Aceita!')
   end
 
   it 'and turn down' do
     visit my_projects_projects_path
     click_on 'Marketing em redes sociais'
+    click_on 'Propositor Garcia'
     click_on 'Recusar'
     fill_in 'Porfavor escreva um feedback de porque você recusou', with: 'Não é o perfil que estamos procurando'
     click_on 'Enviar'
 
     expect(page).to have_current_path(feedback_path)
     expet(page).to have_content('Seu feedback foi enviado com sucesso')
-    #status da proposta vira recusado
   end
   
   it 'and view profile of freelancer that send proposal' do
