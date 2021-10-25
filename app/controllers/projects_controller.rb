@@ -2,12 +2,14 @@ class ProjectsController < ApplicationController
   before_action :authenticate_owner!, only: [:new, :create]
   # before_action :authenticate_freelancer!, only: [:new, :create, :show]
   def show
-    if owner_signed_in?
-      @project = Project.find(params[:id])
-      @proposal = Proposal.new
-      @proposals = @project.proposals.all
-    elsif current_freelancer.profile.blank?
-      redirect_to new_profile_path
+    @project = Project.find(params[:id])
+    @proposal = Proposal.new
+    @proposals = @project.proposals.all
+    if freelancer_signed_in?
+      if current_freelancer.profile.blank? 
+        current_freelancer.profile.blank?
+        redirect_to new_profile_path
+      end
     end
   end
   
