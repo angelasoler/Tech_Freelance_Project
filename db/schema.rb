@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_181930) do
+ActiveRecord::Schema.define(version: 2021_10_27_035038) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_181930) do
     t.string "about_me"
     t.string "work_experience"
     t.integer "freelancer_id", null: false
+    t.binary "photo"
     t.index ["freelancer_id"], name: "index_profiles_on_freelancer_id"
   end
 

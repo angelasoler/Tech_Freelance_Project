@@ -8,6 +8,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.create(proposal_params) 
     @proposal.project = Project.find(params[:project_id])
     @proposal.profile = current_freelancer.profile
+    @proposal.feed_back = ''
     @proposal.save!
 
     redirect_to proposal_path(@proposal.id)
@@ -16,7 +17,8 @@ class ProposalsController < ApplicationController
 
   def proposal_params
     params.require(:proposal).permit(:motivation, :hourly_rate, 
-                                      :hours_per_week, :weeks
+                                      :hours_per_week, :weeks, 
+                                      :feed_back
                                     )
   end
 

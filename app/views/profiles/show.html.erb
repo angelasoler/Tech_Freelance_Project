@@ -10,7 +10,7 @@
 <div><%= @profile.about_me %></div>
 <div><%= @profile.work_experience %></div>
 <% if @profile.photo.attached? %>
-  <div><%= image_tag(@profile.freelancer.photo) %></div>
+  <div><%= image_tag(@profile.photo) %></div>
 <% end %>
 
 <% if freelancer_signed_in? %>

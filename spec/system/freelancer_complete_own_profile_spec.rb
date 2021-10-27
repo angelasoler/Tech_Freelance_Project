@@ -28,12 +28,12 @@ describe 'freelancer complete profile' do
     select 'Dev', from: 'Aréa de atuação' 
     fill_in 'Sobre mi', with: 'Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência', with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
-    # attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
+    attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
     click_on 'Completar Perfil'
 
     expect(page).to have_link('Candidate-se para um projeto.')
     expect(page).to have_content('Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia')
-    # expect(page.find('image.jpg'))
+    expect(page).to have_xpath('image.jpg')
 
   end
 
