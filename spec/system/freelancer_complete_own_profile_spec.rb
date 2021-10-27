@@ -33,7 +33,7 @@ describe 'freelancer complete profile' do
 
     expect(page).to have_link('Candidate-se para um projeto.')
     expect(page).to have_content('Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia')
-    expect(page).to have_xpath('image.jpg')
+    expect(page.has_xpath?('app/assets/images/image.jpg'))
 
   end
 
