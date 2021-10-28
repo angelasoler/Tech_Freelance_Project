@@ -1,12 +1,11 @@
 <h1><%= @project.title %></h1>
 
-<h5><%= @project.description %></h5>
-
-<div>Habilidades desejadas: <%= @project.desire_habilities %></div>
-<div>Valor maximo por hora: <%= number_to_currency(@project.max_hour_payment) %></div>
-<div>Data limite para proposta: <%= l(@project.deadline_for_proposals) %></div>
+<h5><div><%= t('.description') %><%= @project.description %></div></h5>
+<div><%= t('.desire_habilities')%><%= @project.desire_habilities %></div>
+<div><%= t('.max_hour_payment')%><%= number_to_currency(@project.max_hour_payment) %></div>
+<div><%= t('.deadline_for_proposals')%><%= l(@project.deadline_for_proposals) %></div>
 <div>
-Presencial: 
+<%= t('.face_to_face')%> 
 <% if @project.face_to_face? %>
   Sim 
 <% else %>
@@ -14,7 +13,7 @@ Presencial:
 <% end %>
 </div>
 <div>
-Remoto: 
+<%= t('.remote')%>
 <% if @project.remote? %>
   Sim 
 <% else %>
@@ -35,7 +34,7 @@ Remoto:
     <%= form.label :weeks, 'Semanas para termino' %>
     <%= form.number_field :weeks %><br>
     <%= form.submit 'Enviar', class: "btn btn-success" %>
-  <% end %>
+<% end %>
 <% elsif current_owner.present? %>
     <h5>Veja as propostas desse freelancer para seu porjeto</h5>
     <% current_owner.proposals.each do |proposta| %>

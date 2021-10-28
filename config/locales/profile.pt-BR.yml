@@ -2,12 +2,20 @@
 pt-BR:
   activerecord:
     models:
-        profile: 'Perfil'
+      profile: 'Perfil'
     attributes:
       profile:
         full_name: 'Nome completo'
         birth_date: 'Data de nascimento'
         educational_background: 'Formação'
         work_field: 'Aréa de atuação'
-        about_me: 'Sobre mi'
+        about_me: 'Sobre mim'
         work_experience: 'Experiência'
+  profiles:
+    show:
+      full_name: 'Nome completo: '
+      birth_date: 'Data de nascimento: '
+      educational_background: 'Formação: '
+      work_field: 'Aréa de atuação: '
+      about_me: 'Sobre mim: '
+      work_experience: 'Experiência: '

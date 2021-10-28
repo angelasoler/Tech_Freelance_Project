@@ -21,11 +21,10 @@ describe 'freelancer authentication:' do
   end
 
   context 'without complete profile' do
-    before do
-      angela = Freelancer.create!(email: 'angela@mail.com', password: '123456')
-      login_as angela, scope: :freelancer
-    end
     it 'can´t send a proposal' do
+    angela = Freelancer.create!(email: 'angela@mail.com', password: '123456')
+    login_as angela, scope: :freelancer
+
      get '/projects/1'
 
       expect(response).to redirect_to(new_profile_path)

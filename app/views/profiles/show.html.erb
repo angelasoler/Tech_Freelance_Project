@@ -1,16 +1,16 @@
 <% if @profile.social_name.blank? %>
   <h1> <%= @profile.full_name %> </h1>
+<% else %>
+  <h1><%= @profile.social_name %></h1>
 <% end %>
 
-<h3><%= @profile.social_name %></h3>
-
-<div><%= l(@profile.birth_date) %></div>
-<div><%= @profile.educational_background %></div>
-<div><%= @profile.work_field %></div>
-<div><%= @profile.about_me %></div>
-<div><%= @profile.work_experience %></div>
+<div><%= t('.birth_date') %><%= l(@profile.birth_date) %></div>
+<div><%=t('.educational_background')%><%= @profile.educational_background %></div>
+<div><%=t('.work_field')%><%= @profile.work_field %></div>
+<div><%=t('.about_me')%><%= @profile.about_me %></div>
+<div><%=t('.work_experience')%><%= @profile.work_experience %></div>
 <% if @profile.photo.attached? %>
-  <div><%= image_tag(@profile.photo) %></div>
+  <div><%=t('.photo')%><%= image_tag(@profile.photo) %></div>
 <% end %>
 
 <% if freelancer_signed_in? %>
