@@ -36,7 +36,7 @@ describe 'visitor ' do
       expect(page).not_to have_link('Logout')
     end
 
-    it 'sign in successfully' do
+    it 'sign up successfully' do
 
       visit root_path
       click_on 'Publique um projeto'
@@ -67,10 +67,9 @@ describe 'visitor ' do
 
       expect(page).to have_content('Login efetuado com sucesso.')
       expect(page).to have_content('erika@mail.com')
-      # expect(current_path).to eq(new_profile_path)
-      # expect(page).to have_content('Preencha seu perfil completo para começar a criar propostas!')
-      # expect(page).to have_link('Criar propostas')
-      # expect(page).not_to have_link('Candidate-se para um projeto!')
+      expect(current_path).to eq(new_profile_path)
+      expect(page).to have_content('Preencha seu perfil completo para começar a criar propostas!')
+      expect(page).not_to have_link('Candidate-se para um projeto!')
     end
 
     it 'logs out succesfully' do
@@ -86,7 +85,6 @@ describe 'visitor ' do
       expect(page).to have_content('Logout efetuado com sucesso.')
       expect(page).to have_link('Candidate-se para um projeto!', href: new_freelancer_session_path)
       expect(page).to have_current_path(root_path)
-      # expect(page).not_to have_link('Publique um projeto')
       expect(page).not_to have_content('erika@mail.com')
       expect(page).not_to have_link('Logout')
     end
@@ -108,5 +106,3 @@ describe 'visitor ' do
     end
   end
 end
-# [TODO] ver uma forma melhor que --current_user.try-- no application view
-# [TODO] DRY --> formularios de registro e session owner e freelance, i18n gem

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe  'Visitor visits homepage' do
-  before do
-    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})
-                     
+  it 'and view avaliable projects' do
+    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})                
     Profile.create!({full_name: 'angela', social_name: '', 
                     birth_date: 19950608, educational_background: 'Publicidade na PUC', 
                     work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
@@ -11,8 +10,6 @@ describe  'Visitor visits homepage' do
                     freelancer: visitor
                     })
     login_as visitor, scope: :freelancer
-  end
-  it 'and view avaliable projects' do
     jeff = Owner.create!(email: 'jeff@mail.com', password: '123456')
     web_site = Project.create!({title: 'Site para domicilios de comercio local', 
                               description: 'Um site com fotos dos produtos, localização, 
@@ -42,6 +39,15 @@ describe  'Visitor visits homepage' do
   end
 
   it 'and view project details' do
+    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})
+                     
+    Profile.create!({full_name: 'angela', social_name: '', 
+                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                    freelancer: visitor
+                    })
+    login_as visitor, scope: :freelancer
     jeff = Owner.create!(email: 'jeff@mail.com', password: '123456')
     web_site = Project.create!({title: 'Site para domicilios de comercio', 
                               description: 'Um site com fotos dos produtos, localização, região de atendimento e whatsapp com mensagem para fazer pedido em domicilio',
@@ -70,6 +76,15 @@ describe  'Visitor visits homepage' do
   end
                               
   it 'and view project details and return to homepage' do
+    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})
+                     
+    Profile.create!({full_name: 'angela', social_name: '', 
+                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                    freelancer: visitor
+                    })
+    login_as visitor, scope: :freelancer
     jeff = Owner.create!(email: 'jeff@mail.com', password: '123456')
     web_site = Project.create!({title: 'Site para domicilios de comercio', 
                                   description: 'Um site com fotos dos produtos, localização, 
@@ -102,6 +117,15 @@ describe  'Visitor visits homepage' do
   end
   
   it 'and there is no project still' do
+    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})
+                     
+    Profile.create!({full_name: 'angela', social_name: '', 
+                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                    freelancer: visitor
+                    })
+    login_as visitor, scope: :freelancer
   
     visit root_path
   

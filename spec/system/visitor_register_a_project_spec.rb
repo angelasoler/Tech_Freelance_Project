@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe 'project owner register a project' do
   before do
+
+  end
+  
+  it 'successfully' do
     user = Owner.create!({email: 'user@mail.com', 
                           password:'123456'
                           })
     login_as user, :scope => :owner
-  end
-  
-  it 'successfully' do
     data_limite = (DateTime.now + 2.months).strftime('%Y%m%d').to_i
 
     visit root_path
@@ -31,17 +32,18 @@ describe 'project owner register a project' do
   end
 
   it 'and fields must be fill' do
+    user = Owner.create!({email: 'user@mail.com', 
+                          password:'123456'
+                          })
+    login_as user, :scope => :owner
 
-  visit root_path
-  click_on 'Publique um projeto'
-  click_on 'Cadastrar'
+    visit root_path
+    click_on 'Publique um projeto'
+    click_on 'Cadastrar'
 
-  expect(page).to have_content('Título não pode ficar em branco')
-  expect(page).to have_content('Descrição não pode ficar em branco')
-  expect(page).to have_content('Habilidades desejadas não pode ficar em branco')
-  expect(page).to have_content('Valor maximo por hora não pode ficar em branco')
-  # expect(page).to have_content('Por favor selecione: Presencial ou Remoto')
+    expect(page).to have_content('Título não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Habilidades desejadas não pode ficar em branco')
+    expect(page).to have_content('Valor maximo por hora não pode ficar em branco')
   end
 end
-
-# [TODO] verificar formato da data, e preços com fracções
