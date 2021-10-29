@@ -111,5 +111,5 @@ describe 'freelancer send proposal' do
     expect(page).to have_content('Sua proposta foi recusada.')
     expect(page).to have_content('Feed Back: Estamos procurando praços mais curtos')
     expect(page).not_to have_link('Enviar menssagem para o dono do projeto')
-  end    
+  end
 end

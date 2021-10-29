@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  describe 'not athenticated user' do
+  describe 'not athenticated' do
     it 'can´t create project without login' do
       get new_project_path
 

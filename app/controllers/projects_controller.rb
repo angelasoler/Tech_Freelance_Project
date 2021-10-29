@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_owner!, only: [:new, :create]
-  # before_action :authenticate_freelancer!, only: [:new, :create, :show]
   def show
     @project = Project.find(params[:id])
     @proposal = Proposal.new

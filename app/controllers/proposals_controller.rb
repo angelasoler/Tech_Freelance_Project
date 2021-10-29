@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  # before_action :authenticate_freelancer!, only: [:new, :create, :show]
+  # before_action :authenticate_freelancer!, only: [:show, :accept, :turn_down]
   def show
     @proposal = Proposal.find(params[:id])
     @proposals = Proposal.all
