@@ -61,7 +61,7 @@ describe 'freelancer complete profile' do
                                 password: '123456'
                               })
     Profile.create!({full_name: 'João', social_name: '', 
-                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
+                    birth_date: '19950608', educational_background: 'Publicidade na PUC', 
                     work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
                     work_experience: 'veja portafolio, https://portafolio.com/ ', 
                     freelancer: user
