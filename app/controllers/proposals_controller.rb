@@ -47,4 +47,8 @@ class ProposalsController < ApplicationController
     @proposal.update(params.require(:proposal).permit(:feed_back))
     redirect_to proposal_path
   end
+
+  def my_proposals_freelancer
+    @proposals = current_freelancer.profile.proposals.all
+  end
 end

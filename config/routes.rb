@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :proposals,  only: [:create, :show, :update, :edit] do
     patch 'accept', on: :collection
     patch 'turn_down', on: :collection
+    get 'my_proposals_freelancer', on: :collection
   end
 end

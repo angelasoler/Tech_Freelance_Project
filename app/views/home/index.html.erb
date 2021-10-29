@@ -25,10 +25,12 @@
 <% if freelancer_signed_in? %>
   <% if !current_freelancer.profile.blank? %>
     <%= 'Procure um projeto para se candidatar' %>
+    <% if current_freelancer.profile.proposals.any? %>
+      <%= link_to 'Propostas enviadas', my_proposals_freelancer_proposals_path %>
+    <% end %>
   <% else %>
     <div><%= link_to 'Candidate-se para um projeto!', new_profile_path %></div>
   <% end %>
 <% else %>
   <div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path %></div>
 <% end %>
-

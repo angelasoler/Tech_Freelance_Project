@@ -1,0 +1,3 @@
+<% @proposals.each do |proposal| %>
+  <%= link_to proposal.project.title, proposal_path(proposal) %>
+<% end %>

@@ -27,7 +27,7 @@
   <%= form_with model: [@project, @proposal] do |form| %>
     <%= form.label :motivation, 'Conte porque está aplicando para o projeto' %>
     <%= form.text_field :motivation %><br>
-    <%= form.label :hourly_rate, 'Valor hora' %>
+    <%= form.label :hourly_rate, 'Tarifa por hora' %>
     <%= form.number_field :hourly_rate %><br>
     <%= form.label :hours_per_week, 'Horas diponiveis por semana' %>
     <%= form.number_field :hours_per_week %><br>

@@ -1,7 +1,7 @@
 <div><%=  @proposal.motivation %></div>
-<div>Tarifa por hora: <%= number_to_currency(@proposal.hourly_rate) %></div>
-<div>Horas disponiveis por semana: <%= @proposal.hours_per_week %></div>
-<div>Expectativa de praço: <%= @proposal.weeks %> semanas</div>
+<div><%= t('.hourly_rate')%> <%= number_to_currency(@proposal.hourly_rate) %></div>
+<div><%= t('.hours_per_week')%><%= @proposal.hours_per_week %></div>
+<div><%= t('.weeks')%><%= @proposal.weeks %> semanas</div>
 
 <% if owner_signed_in? %>
 <div><h5>Veja o perfil de <%= link_to @proposal.profile.full_name, profile_path(@proposal.profile.id) %></h5></div>
@@ -9,10 +9,19 @@
     <%= button_to 'Aceitar', {action: 'accept', id: @proposal.id }, method: :patch %>
     <%= button_to 'Recusar', {action: 'turn_down', id: @proposal.id }, method: :patch %>
   <% elsif @proposal.accepted? %>
-    <div><%= link_to 'mande uma mensagem' %></div>
+    <div><%= link_to 'Mande uma mensagem' %></div>
   <% else %>
     <div><%= 'Seu feedback foi enviado com sucesso' %></div>
     <div><%= @proposal.feed_back %></div>
   <% end %>
 <% end %>
 
+<% if @proposal.accepted? %>
+  <%= 'Sua proposta foi aceita!' %>
+  <%= link_to 'Enviar menssagem para o dono do projeto' %>
+<% elsif @proposal.turned_down? %>
+  <div><%= 'Sua proposta foi recusada.' %></div>
+  <div><%= t('.feed_back') + ': '%><%= @proposal.feed_back %></div>
+<% else %>
+  <%= 'Sua proposta está sendo avaliada pelo dono do projeto' %>
+<% end  %>

@@ -5,7 +5,13 @@ pt-BR:
         proposal: 'Proposta'
     attributes:
       proposal:
-        motivation: 'Motivação:'
-        hourly_rate: 'Tarifa por hora:'
-        hours_per_week: 'Horas por semana:'
-        weeks: 'Semanas'
+        motivation: 'Conte porque está aplicando para o projeto'
+        hourly_rate: 'Tarifa por hora'
+        hours_per_week: 'Horas disponiveis por semana'
+        weeks: 'Semanas para termino'
+  proposals:
+   show:
+    motivation: 'Motivação: '
+    hourly_rate: 'Tarifa por hora: '
+    hours_per_week: 'Horas disponiveis por semana: '
+    weeks: 'Semanas para termino: '
