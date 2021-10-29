@@ -1,13 +1,13 @@
 # README
 
-#PRE-REQUISITOS DE CONFIGURAÇÃO RECOMENDADOS
+## PRE-REQUISITOS DE CONFIGURAÇÃO RECOMENDADOS
   Ruby
   SQLite3
   Node.js
   Yarn
   Veja a documentação [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails para mais detalhes.)
   
-#PASSO A PASSO PARA CLONAR E NAVEGAR NO PROJETO
+## PASSO A PASSO PARA CLONAR E NAVEGAR NO PROJETO
 - Para intalar o projeto rode os seguintes comandos no seu terminal: 
 ```bash
 git clone https://github.com/angelasoler/Tech_Freelance_Project.git
@@ -34,7 +34,7 @@ Abra este [link]http://localhost:3000/ no seu navegador
     * O comando  ```rspec``` roda os testes.
 
 
-#DESCRIÇÃO DO PROJETO
+## DESCRIÇÃO DO PROJETO
 
 Aplicação web com Framework Ruby Rails.
 
