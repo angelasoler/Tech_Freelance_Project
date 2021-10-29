@@ -48,7 +48,6 @@ Para melhorar o visual do Front-End é usado o framework [BootStrap](https://git
 
 Outras gems adicionais:
 
-
-
+[should matchers]https://matchers.shoulda.io/ para testes unitarios mais resumidos
 
 
