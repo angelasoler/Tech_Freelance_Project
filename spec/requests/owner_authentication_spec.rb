@@ -35,7 +35,7 @@ RSpec.describe 'Users', type: :request do
                                             })
       get proposal_path(proposta_jerry_tom)
 
-      expect(response).to have_http_status(401)
+      expect(response).to redirect_to(root_path)
     end
 
     it 'can´t accept or turn down proposals' do
@@ -57,10 +57,10 @@ RSpec.describe 'Users', type: :request do
                                             hourly_rate: 60, hours_per_week: 10, weeks: 6, project: marketin, 
                                             profile: perfil_jerry
                                           })
-    
-      patch proposta_jerry_tom.accepted!
+  
+      patch proposal_path(proposta_jerry_tom)
 
-      expect(response).to have_http_status(401)
+      expect(response).to redirect_to(root_path)
     end
   end
 end

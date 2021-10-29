@@ -1,9 +1,12 @@
 class ProposalsController < ApplicationController
-  # before_action :authenticate_freelancer!, only: [:new, :create, :show]
-  # before_action :authenticate_freelancer!, only: [:show, :accept, :turn_down]
+  before_action :authenticate_owner!, only: [:accept, :turn_down]
   def show
-    @proposal = Proposal.find(params[:id])
-    @proposals = Proposal.all
+    if signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposals = Proposal.all
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -45,9 +48,13 @@ class ProposalsController < ApplicationController
 
   
   def update
-    @proposal = Proposal.find(params[:id])
-    @proposal.update(params.require(:proposal).permit(:feed_back))
-    redirect_to proposal_path
+    if owner_signed_in?
+      @proposal = Proposal.find(params[:id])
+      @proposal.update(params.require(:proposal).permit(:feed_back))
+      redirect_to proposal_path
+    else
+      redirect_to root_path
+    end
   end
 
   def my_proposals_freelancer
