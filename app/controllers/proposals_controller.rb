@@ -36,22 +36,30 @@ class ProposalsController < ApplicationController
 
   def turn_down
     @proposal = Proposal.find(params[:id])
-    @proposal.turned_down!
-    @proposal.save
     redirect_to edit_proposal_path(@proposal)
   end
 
   
   def edit
-    @proposal = Proposal.find(params[:id])
+    if owner_signed_in?
+      @proposal = Proposal.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   
   def update
     if owner_signed_in?
       @proposal = Proposal.find(params[:id])
-      @proposal.update(params.require(:proposal).permit(:feed_back))
-      redirect_to proposal_path
+      if @proposal.feed_back.blank?
+        redirect_to edit_proposal_path(@proposal)
+        flash[:alert] = 'Deve dar um feedback para recusar'
+      else
+        @proposal.update!(params.require(:proposal).permit(:feed_back))
+        @proposal.turned_down!
+        @proposal.save
+      end
     else
       redirect_to root_path
     end

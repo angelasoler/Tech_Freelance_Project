@@ -21,6 +21,11 @@
 <% end %>
 </div>
 
+<% if @proposal.errors.any? %>
+  <% @proposal.errors.full_messages.each do |error| %>
+    <div><%= error %></div>
+  <%end%>
+<% end %>
 
 <% if current_freelancer.present? %>
   <h1><%= 'Mande uma proposta para esse projeto!' %></h1>

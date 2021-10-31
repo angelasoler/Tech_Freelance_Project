@@ -16,12 +16,14 @@
   <% end %>
 <% end %>
 
-<% if @proposal.accepted? %>
-  <%= 'Sua proposta foi aceita!' %>
-  <%= link_to 'Enviar menssagem para o dono do projeto' %>
-<% elsif @proposal.turned_down? %>
-  <div><%= 'Sua proposta foi recusada.' %></div>
-  <div><%= t('.feed_back') + ': '%><%= @proposal.feed_back %></div>
-<% else %>
-  <%= 'Sua proposta está sendo avaliada pelo dono do projeto' %>
-<% end  %>
+<% if freelancer_signed_in? %>
+  <% if @proposal.accepted? %>
+    <%= 'Sua proposta foi aceita!' %>
+    <%= link_to 'Enviar menssagem para o dono do projeto' %>
+  <% elsif @proposal.turned_down? %>
+    <div><%= 'Sua proposta foi recusada.' %></div>
+    <div><%= t('.feed_back') + ': '%><%= @proposal.feed_back %></div>
+  <% else %>
+    <%= 'Sua proposta está sendo avaliada pelo dono do projeto' %>
+  <% end  %>
+<% end %>
