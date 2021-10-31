@@ -57,8 +57,8 @@ class ProposalsController < ApplicationController
       if !@proposal.feed_back.blank?
         redirect_to proposal_path(@proposal)
       else
-        redirect_to edit_proposal_path(@proposal)
         flash[:alert] = 'Deve dar um feedback para recusar'
+        render :edit
       end
     else
       redirect_to root_path

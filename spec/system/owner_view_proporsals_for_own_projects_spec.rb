@@ -187,7 +187,6 @@ describe 'owner view proposals on his projects' do
     click_on 'Recusar'
     click_on 'Enviar'
 
-    expect(page).to have_current_path('/proposals/1/edit')
     expect(page).to have_content('Porfavor escreva um feedback de porque você recusou')
     expect(page).to have_content('Deve dar um feedback para recusar')
   end
