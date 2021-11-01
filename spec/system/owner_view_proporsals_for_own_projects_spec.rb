@@ -114,6 +114,7 @@ describe 'owner view proposals on his projects' do
     expect(page).to have_link('Mande uma mensagem')
     expect(page).to have_content('Proposta Aceita!')
     expect(page).not_to have_button('Aceitar')
+    expect(page).not_to have_content('Feed back não pode ficar em branco')
   end
 
   it 'and turn down' do

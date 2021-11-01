@@ -41,9 +41,11 @@
     <%= form.submit 'Enviar', class: "btn btn-success" %>
 <% end %>
 <% elsif current_owner.present? %>
-    <h5>Veja as propostas desse freelancer para seu porjeto</h5>
+    <h5>Veja as propostas desse freelancer para seu projeto</h5>
     <% current_owner.proposals.each do |proposta| %>
-      <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
+      <% if proposta.draft? || proposta.accepted? %>
+        <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
+      <% end %>
     <% end %>
 <% end %>
 
