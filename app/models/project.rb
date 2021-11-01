@@ -7,6 +7,8 @@ class Project < ApplicationRecord
   validate :greater_than_two_months, on: :create
   belongs_to :owner
   has_many :proposals
+
+  private
   
   def greater_than_two_months
     if !deadline_for_proposals.nil?
