@@ -1,10 +1,10 @@
 # README
 
 ## PRE-REQUISITOS DE CONFIGURAÇÃO RECOMENDADOS
-  Ruby
-  SQLite3
-  Node.js
-  Yarn
+  - Ruby
+  - SQLite3
+  - Node.js
+  - Yarn
   Veja a documentação [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails para mais detalhes.)
   
 ## PASSO A PASSO PARA CLONAR E NAVEGAR NO PROJETO
@@ -16,7 +16,17 @@ git clone https://github.com/angelasoler/Tech_Freelance_Project.git
 cd Tech_Freelance_Project
 ```
 ```bash
-bin/setup
+bundle install
+```
+```bash
+yarn install
+```
+```bash
+rails db:create
+``````bash
+rails db:migrate
+``````bash
+rails db:seed
 ```
 - Para navegar no projeto
 ```bash
@@ -49,5 +59,6 @@ Para melhorar o visual do Front-End é usado o framework [BootStrap](https://git
 Outras gems adicionais:
 
 [should matchers](https://matchers.shoulda.io/) para testes unitarios mais resumidos
+[cancan](https://github.com/ryanb/cancan/#readme) libraria de autorização que restringe quais recursos determinado usuario é permitido acessar
 
 
