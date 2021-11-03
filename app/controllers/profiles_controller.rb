@@ -5,7 +5,11 @@ class ProfilesController < ApplicationController
   end
   
   def new
-    @profile = Profile.new
+    if current_freelancer.profile.nil?
+      @profile = Profile.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
