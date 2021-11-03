@@ -59,10 +59,10 @@ Tambem são usados os gems [Devise](https://github.com/heartcombo/devise) para a
 
 Para melhorar o visual do Front-End é usado o framework [BootStrap](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md#a-ruby-on-rails), veja tambem mais documentação sobre installação e uso [aqui].
 
- # Outras gems adicionais:
+### Outras gems adicionais:
 
-[should matchers](https://matchers.shoulda.io/) para testes unitarios mais resumidos
+-[should matchers](https://matchers.shoulda.io/) para testes unitarios mais resumidos
 
-[cancan](https://github.com/ryanb/cancan/#readme) libraria de autorização que restringe quais recursos determinado usuario é permitido acessar
+-[cancan](https://github.com/ryanb/cancan/#readme) libraria de autorização que restringe quais recursos determinado usuario é permitido acessar
 
 
