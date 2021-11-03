@@ -86,4 +86,25 @@ describe 'freelancer complete profile' do
     expect(page).to have_content('Remoto: Sim')
     expect(page).to have_content('Mande uma proposta para esse projeto!')
   end    
+
+  it 'and can login successfully' do
+    user = Freelancer.create!({email: 'user@mail.com', 
+                                password: '123456'
+                              })
+    Profile.create!({full_name: 'João', social_name: '', 
+                    birth_date: '19950608', educational_background: 'Publicidade na PUC', 
+                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
+                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
+                    freelancer: user
+                    })
+
+    visit new_freelancer_session_path
+    fill_in 'Email', with: 'user@mail.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Entre'
+
+    expect( current_path).to eq(root_path)
+    expect(page).to have_link('Procure um projeto para se candidatar')
+    expect(page).to have_content('Login efetuado com sucesso.')
+  end
 end

@@ -1,36 +1,47 @@
-<h1> Tech Freelancers </h1>
-
-<h2> Encontre profissionais de tecnologia para seus projetos! </h2>
+<head>
+<h1 class="text-center"> Tech Freelancers </h1>
+</head>
+<section>
+<p><h2> Encontre profissionais de tecnologia para seus projetos! </h2></p>
 <% if owner_signed_in? %>
+<nav  class="text-center">
   <%= link_to 'Meus Projetos', my_projects_projects_path, class: "btn btn-success" %>
   <%= link_to 'Publique um projeto', new_project_path, class: "btn btn-success" %>
+</nav>
 <% else %>
+<nav>
   <%= link_to 'Publique um projeto', new_owner_session_path, class: "btn btn-success" %>
+</nav>
 <% end %>
+</section>
 
+<section>
+<% if !owner_signed_in? %>
+  <p><h2> Encontre um projeto e faça sua proposta!</h2></p>
+  <% if current_freelancer.present? %>
+    <% if !current_freelancer.profile.blank? %>
+      <div><%= link_to 'Procure um projeto para se candidatar' %></div>
+    <% end %>
+  <% end %>
 
+  <% @projects.each do |projeto| %>
+    <span><%= link_to projeto.title, project_path(projeto.id) %><br/></span>
+  <% end %>
 
+  <div><% if @projects.blank? %>
+      Não há projetos disponiveis no momento.
+  <% end %><br/>
 
-
-<h2> Encontre um projeto e faça sua proposta!</h2>
-
-<% @projects.each do |projeto| %>
-  <div><%= link_to projeto.title, project_path(projeto.id) %></div>
-<% end %>
-
-<div><% if @projects.blank? %>
-    Não há projetos disponiveis no momento.
-<% end %></div>
-
-<% if freelancer_signed_in? %>
-  <% if !current_freelancer.profile.blank? %>
-    <%= 'Procure um projeto para se candidatar' %>
-    <% if current_freelancer.profile.proposals.any? %>
-      <%= link_to 'Propostas enviadas', my_proposals_freelancer_proposals_path, class: "btn btn-success" %>
+  <% if freelancer_signed_in? %>
+    <% if !current_freelancer.profile.blank? %>
+      <% if current_freelancer.profile.proposals.any? %>
+        <nav><%= link_to 'Propostas enviadas', my_proposals_freelancer_proposals_path, class: "btn btn-success" %></nav>
+      <% end %>
+    <% else %>
+      <nav><%= link_to 'Candidate-se para um projeto!', new_profile_path, class: "btn btn-success" %><br/></nav>
     <% end %>
   <% else %>
-    <div><%= link_to 'Candidate-se para um projeto!', new_profile_path, class: "btn btn-success" %></div>
+    <nav><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path, class: "btn btn-success" %><br/></nav>
   <% end %>
-<% else %>
-  <div><%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path, class: "btn btn-success" %></div>
 <% end %>
+</section>

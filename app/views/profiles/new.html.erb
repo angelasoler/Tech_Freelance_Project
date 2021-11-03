@@ -3,7 +3,7 @@
 
   <% if @profile.errors.any? %>
     <% @profile.errors.full_messages.each do |error| %>
-      <div><%= error %></div>
+      <div class="alert alert-info"><%= error %></div>
     <%end%>
   <% end %>
 

@@ -82,6 +82,7 @@ RSpec.describe 'accept and truned down actions,', type: :request do
         outro_owner = Owner.create!({email: 'ovacilao@mail.com', password: 'O vacilão'})
         login_as outro_owner, scope: :owner
 
+        get proposal_path(proposta_jerry)
         patch turn_down_proposals_path(proposta_jerry)
 
         expect(response).not_to redirect_to(edit_proposal_path(proposta_jerry))
