@@ -5,6 +5,9 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 begin
@@ -16,7 +19,7 @@ end
 RSpec.configure do |config|
   config.before(type: :system) do
     driven_by :rack_test
-  end
+end
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!

@@ -20,11 +20,11 @@ describe  'Visitor visits homepage' do
                               remote: true, owner: jeff
                               })
     marketing = Project.create!({title: 'Marketing em redes sociais', 
-                              description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                              desire_habilities: 'Gerenciamento e marketing rede sociais', 
-                              max_hour_payment: 60, deadline_for_proposals: Time.now + 3.month, 
-                              remote: true, owner: jeff
-                              })
+                                description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                                desire_habilities: 'Gerenciamento e marketing rede sociais', 
+                                max_hour_payment: 60, deadline_for_proposals: Time.now + 3.month, 
+                                remote: true, owner: jeff
+                                })
 
     visit root_path
 
@@ -87,13 +87,13 @@ describe  'Visitor visits homepage' do
     login_as visitor, scope: :freelancer
     jeff = Owner.create!(email: 'jeff@mail.com', password: '123456')
     web_site = Project.create!({title: 'Site para domicilios de comercio', 
-                                  description: 'Um site com fotos dos produtos, localização, 
-                                  região de atendimento e whatsapp com mensagem 
-                                  para fazer pedido em domicilio',
-                                  desire_habilities: 'desenvolvimento fullstack para comercios', 
-                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 3.month, 
-                                  remote: true, owner: jeff
-                                  })
+                                description: 'Um site com fotos dos produtos, localização, 
+                                região de atendimento e whatsapp com mensagem 
+                                para fazer pedido em domicilio',
+                                desire_habilities: 'desenvolvimento fullstack para comercios', 
+                                max_hour_payment: 60, deadline_for_proposals: Time.now + 3.month, 
+                                remote: true, owner: jeff
+                                })
     marketing = Project.create!({title: 'Marketing em redes sociais', 
                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                 desire_habilities: 'Gerenciamento e marketing rede sociais', 
@@ -117,14 +117,8 @@ describe  'Visitor visits homepage' do
   end
   
   it 'and there is no project still' do
-    visitor = Freelancer.create!({email: 'angela@mail.com', password: '25156dfgdf'})
-                     
-    Profile.create!({full_name: 'angela', social_name: '', 
-                    birth_date: 19950608, educational_background: 'Publicidade na PUC', 
-                    work_field: 'Midias Sociais', about_me:'Sou muito marketero', 
-                    work_experience: 'veja portafolio, https://portafolio.com/ ', 
-                    freelancer: visitor
-                    })
+    visitor = create(:freelancer)
+    create(:profile)
     login_as visitor, scope: :freelancer
   
     visit root_path

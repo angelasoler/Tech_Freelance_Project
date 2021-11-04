@@ -30,8 +30,4 @@ class ProfilesController < ApplicationController
                                     :work_experience, :photo
                                    )
   end
-
-  def my_profile
-    @my_profile = current_freelancer.profile
-  end
 end

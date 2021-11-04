@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'project owner register a project' do
-  before do
-
-  end
-  
   it 'successfully' do
     user = Owner.create!({email: 'user@mail.com', 
                           password:'123456'
@@ -19,8 +15,8 @@ describe 'project owner register a project' do
     fill_in 'Habilidades desejadas:', with: 'Desenvolvedor fullstack com experiencia previa'
     fill_in 'Valor maximo por hora:', with: 60
     fill_in 'Data limite para proposta:', with: data_limite
-    check 'Presencial:'
-    check 'Remoto:'
+    check 'Presencial'
+    check 'Remoto'
     click_on 'Cadastrar'
     
     expect(page).to have_css('h1', text: 'Site para comercio local')

@@ -39,8 +39,6 @@ describe 'project owner views own projects' do
     visit root_path
     click_on 'Meus Projetos'
     
-    
-
     expect(current_path).to eq(my_projects_projects_path)
     expect(page).to have_link('Marketing em redes sociais')
     expect(page).to have_link('Site para domicilios de comercio local')
