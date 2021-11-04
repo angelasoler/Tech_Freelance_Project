@@ -6,7 +6,7 @@
   - Node.js
   - Yarn
   
-  Veja a documentação [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails para mais detalhes.)
+  Veja a documentação [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) para mais detalhes.
   
 ## PASSO A PASSO PARA CLONAR E NAVEGAR NO PROJETO
 - Para intalar o projeto rode os seguintes comandos no seu terminal: 
@@ -57,7 +57,7 @@ São usados os frameworks de teste e navegação [Rspec](https://relishapp.com/r
 
 Tambem são usados os gems [Devise](https://github.com/heartcombo/devise) para autenticação de usuarios e [devise-i18n](https://github.com/tigrish/devise-i18n) para tradução automatica do Devise ao pt-BR.
 
-Para melhorar o visual do Front-End é usado o framework [BootStrap](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md#a-ruby-on-rails), veja tambem mais documentação sobre installação e uso [aqui].
+Para melhorar o visual do Front-End é usado o framework [BootStrap](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md#a-ruby-on-rails), veja tambem mais documentação sobre installação e uso [aqui](https://getbootstrap.com/docs/4.3/getting-started/download/#rubygems).
 
 ### Outras gems adicionais:
 
