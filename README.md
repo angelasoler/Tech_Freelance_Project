@@ -1,6 +1,6 @@
 # README
 
-## PRE-REQUISITOS DE CONFIGURAÇÃO RECOMENDADOS
+## PRE-REQUISITOS
   - Ruby
   - SQLite3
   - Node.js
@@ -38,7 +38,8 @@ rails db:reset
 ```bash
 rails s
 ```
-Abra este [link]http://localhost:3000/ no seu navegador
+Abra este [link](http://localhost:3000/) no seu navegador
+
   ** Para verificar os dados com os quais está populado o banco de dados    
       ```
       cat db/seeds.rb
