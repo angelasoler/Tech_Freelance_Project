@@ -1,5 +1,5 @@
 class ProposalsController < ApplicationController
-  before_action :authenticate_owner!, only: [:accept, :turn_down]
+  before_action :authenticate_owner!, only: %i[accept turn_down]
   before_action :authenticate_freelancer!, only: [:create]
   def show
     if signed_in?
@@ -11,7 +11,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.create(proposal_params) 
+    @proposal = Proposal.create(proposal_params)
     @proposal.project = Project.find(params[:project_id])
     @proposal.profile = current_freelancer.profile
     @proposal.feed_back = ''
@@ -22,10 +22,9 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:motivation, :hourly_rate, 
-                                      :hours_per_week, :weeks, 
-                                      :feed_back
-                                    )
+    params.require(:proposal).permit(:motivation, :hourly_rate,
+                                     :hours_per_week, :weeks,
+                                     :feed_back)
   end
 
   def accept
@@ -48,7 +47,6 @@ class ProposalsController < ApplicationController
     end
   end
 
-  
   def edit
     if owner_signed_in?
       @proposal = Proposal.find(params[:id])
@@ -57,13 +55,12 @@ class ProposalsController < ApplicationController
     end
   end
 
-  
   def update
     if owner_signed_in?
       @proposal = Proposal.find(params[:id])
       @proposal.update!(params.require(:proposal).permit(:feed_back))
       @proposal.turned_down!
-      if !@proposal.feed_back.blank?
+      if @proposal.feed_back.present?
         redirect_to proposal_path(@proposal)
       else
         flash[:alert] = 'Deve dar um feedback para recusar'
@@ -75,8 +72,6 @@ class ProposalsController < ApplicationController
   end
 
   def my_proposals_freelancer
-    if signed_in?
-      @proposals = current_freelancer.profile.proposals.all
-    end
+    @proposals = current_freelancer.profile.proposals.all if signed_in?
   end
 end

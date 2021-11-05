@@ -10,4 +10,4 @@ class Proposal < ApplicationRecord
   def skip_validation
     Proposal.accepted
   end
-end   
+end

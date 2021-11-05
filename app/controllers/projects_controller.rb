@@ -1,16 +1,14 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_owner!, only: [:new, :create]
+  before_action :authenticate_owner!, only: %i[new create]
   def show
     @project = Project.find(params[:id])
     @proposal = Proposal.new
     @proposals = @project.proposals.all
-    if freelancer_signed_in?
-      if current_freelancer.profile.blank? 
-        redirect_to new_profile_path
-      end
+    if freelancer_signed_in? && current_freelancer.profile.blank?
+      redirect_to new_profile_path
     end
   end
-  
+
   def new
     @project = Project.new
   end
@@ -26,17 +24,14 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, 
-                                    :desire_habilities, 
-                                    :max_hour_payment, 
-                                    :deadline_for_proposals, 
-                                    :face_to_face, :remote
-                                    )
+    params.require(:project).permit(:title, :description,
+                                    :desire_habilities,
+                                    :max_hour_payment,
+                                    :deadline_for_proposals,
+                                    :face_to_face, :remote)
   end
 
   def my_projects
     @projects = current_owner.projects
   end
 end
-
-  

@@ -3,10 +3,9 @@ require 'rails_helper'
 describe 'visitor ' do
   context 'as project owner' do
     it 'logs in succesfully' do
-      ana_paula = Owner.create!(email: 'ana_paula@mail.com', 
-                                password: '123456'
-                                )
-      
+      ana_paula = Owner.create!(email: 'ana_paula@mail.com',
+                                password: '123456')
+
       visit root_path
       click_on 'Publique um projeto'
       fill_in 'Email', with: 'ana_paula@mail.com'
@@ -19,12 +18,11 @@ describe 'visitor ' do
     end
 
     it 'logs out successfully' do
-      ana_paula = Owner.create!(email: 'ana_paula@mail.com', 
-                                password: '123456'
-                                )
+      ana_paula = Owner.create!(email: 'ana_paula@mail.com',
+                                password: '123456')
 
-      login_as ana_paula, :scope => :owner
-      
+      login_as ana_paula, scope: :owner
+
       visit root_path
       click_on 'Logout'
 
@@ -37,7 +35,6 @@ describe 'visitor ' do
     end
 
     it 'sign up successfully' do
-
       visit root_path
       click_on 'Publique um projeto'
       click_on 'Inscrever-se'
@@ -55,9 +52,8 @@ describe 'visitor ' do
 
   context 'as freelancer' do
     it 'logs in succesfully' do
-      erika = Freelancer.create!({email: 'erika@mail.com', 
-                                  password: '123456'
-                                  })
+      erika = Freelancer.create!({ email: 'erika@mail.com',
+                                   password: '123456' })
 
       visit root_path
       click_on 'Candidate-se para um projeto!'
@@ -73,24 +69,23 @@ describe 'visitor ' do
     end
 
     it 'logs out succesfully' do
-      erika = Freelancer.create!({email: 'erika@mail.com', 
-                                 password: '123456'
-                                 })
+      erika = Freelancer.create!({ email: 'erika@mail.com',
+                                   password: '123456' })
 
       login_as erika, scope: :freelancer
-      
+
       visit root_path
       click_on 'Logout'
 
       expect(page).to have_content('Logout efetuado com sucesso.')
-      expect(page).to have_link('Candidate-se para um projeto!', href: new_freelancer_session_path)
+      expect(page).to have_link('Candidate-se para um projeto!',
+                                href: new_freelancer_session_path)
       expect(page).to have_current_path(root_path)
       expect(page).not_to have_content('erika@mail.com')
       expect(page).not_to have_link('Logout')
     end
 
     it 'sign in succesfully' do
-
       visit root_path
       click_on 'Candidate-se para um projeto'
       click_on 'Inscrever-se'

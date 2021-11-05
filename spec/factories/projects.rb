@@ -4,7 +4,7 @@ FactoryBot.define do
     description { 'gerenciar stocks, fotos e vendas' }
     desire_habilities { 'Back-end dev' }
     max_hour_payment { 80 }
-    deadline_for_proposals {Time.now + 2.months}
+    deadline_for_proposals { Time.now + 2.months }
     face_to_face { false }
     remote { true }
     owner

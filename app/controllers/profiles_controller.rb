@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_freelancer!, only: [:new, :create]
+  before_action :authenticate_freelancer!, only: %i[new create]
   def show
     @profile = Profile.find(params[:id])
   end
-  
+
   def new
     if current_freelancer.profile.nil?
       @profile = Profile.new
@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.create(profile_params)
     @profile.freelancer = current_freelancer
-    
+
     if @profile.save
       redirect_to profile_path(@profile.id)
     else
@@ -24,10 +24,9 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:full_name, :social_name, 
-                                    :birth_date, :educational_background, 
-                                    :work_field, :about_me, 
-                                    :work_experience, :photo
-                                   )
+    params.require(:profile).permit(:full_name, :social_name,
+                                    :birth_date, :educational_background,
+                                    :work_field, :about_me,
+                                    :work_experience, :photo)
   end
 end
