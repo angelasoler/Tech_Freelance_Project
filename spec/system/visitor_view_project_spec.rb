@@ -16,12 +16,12 @@ describe  'Visitor visits homepage' do
                                             região de atendimento e whatsapp com mensagem
                                             para fazer pedido em domicilio',
                                  desire_habilities: 'desenvolvimento fullstack para comercios',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 5.months,
+                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                                  remote: true, owner: jeff })
     marketing = Project.create!({ title: 'Marketing em redes sociais',
                                   description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                   desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                   remote: true, owner: jeff })
 
     visit root_path
@@ -49,12 +49,12 @@ describe  'Visitor visits homepage' do
     web_site = Project.create!({ title: 'Site para domicilios de comercio',
                                  description: 'Um site com fotos dos produtos, localização, região de atendimento e whatsapp com mensagem para fazer pedido em domicilio',
                                  desire_habilities: 'desenvolvimento fullstack para comercios',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 6.months,
+                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 6.months,
                                  remote: true, owner: jeff })
     marketing = Project.create!({ title: 'Marketing em redes sociais',
                                   description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                   desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 4.months,
+                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 4.months,
                                   remote: true, owner: jeff })
 
     visit root_path
@@ -86,12 +86,12 @@ describe  'Visitor visits homepage' do
                                 região de atendimento e whatsapp com mensagem
                                 para fazer pedido em domicilio',
                                  desire_habilities: 'desenvolvimento fullstack para comercios',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                  remote: true, owner: jeff })
     marketing = Project.create!({ title: 'Marketing em redes sociais',
                                   description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                   desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 7.months,
+                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 7.months,
                                   remote: true, owner: jeff })
 
     visit root_path

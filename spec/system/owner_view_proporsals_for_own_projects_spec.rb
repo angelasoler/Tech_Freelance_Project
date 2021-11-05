@@ -15,7 +15,7 @@ describe 'owner view proposals on his projects' do
     projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                           max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                            remote: true, owner: avaliador })
     proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
@@ -48,7 +48,7 @@ describe 'owner view proposals on his projects' do
     projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                           max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                            remote: true, owner: avaliador })
     proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
@@ -85,7 +85,7 @@ describe 'owner view proposals on his projects' do
     projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                           max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                            remote: true, owner: avaliador })
     proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
@@ -116,7 +116,7 @@ describe 'owner view proposals on his projects' do
     projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                           max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                            remote: true, owner: avaliador })
     proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
@@ -152,7 +152,7 @@ describe 'owner view proposals on his projects' do
     projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                           max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                           max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                            remote: true, owner: avaliador })
     proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,

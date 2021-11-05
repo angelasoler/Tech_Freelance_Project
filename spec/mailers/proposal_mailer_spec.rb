@@ -7,7 +7,7 @@ RSpec.describe ProposalMailer, type: :mailer do
       felipa_project = create(:project, title: 'Marketing em redes sociais',
                                         description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                         desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                        max_hour_payment: 80, deadline_for_proposals: Time.now + 7.months,
+                                        max_hour_payment: 80, deadline_for_proposals: Time.zone.now + 7.months,
                                         remote: true, owner: felipa)
       genoveva = Freelancer.create!(email: 'geno@mail.com',
                                     password: 'achbdiwjf;...  --')

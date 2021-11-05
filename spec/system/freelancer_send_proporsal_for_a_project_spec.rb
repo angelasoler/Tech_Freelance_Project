@@ -10,7 +10,7 @@ describe 'freelancer send proposal' do
     marketing = Project.create!({ title: 'Marketing em redes sociais',
                                   description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                   desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                   remote: true, owner: project_owner })
     perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',
@@ -42,7 +42,7 @@ describe 'freelancer send proposal' do
     marketin = Project.create!({ title: 'Marketing em redes sociais',
                                  description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                  desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                  remote: true, owner: project_owner })
     perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',
@@ -75,7 +75,7 @@ describe 'freelancer send proposal' do
     marketin = Project.create!({ title: 'Marketing em redes sociais',
                                  description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                  desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                  remote: true, owner: project_owner })
     perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',

@@ -19,7 +19,7 @@ RSpec.describe 'Users', type: :request do
       marketin = Project.create!({ title: 'Marketing em redes sociais',
                                    description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                    desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                   max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                   max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                    remote: true, owner: tom })
       jerry = Freelancer.create!({ email: 'jerry@mail.com',
                                    password: 'uma senha forte' })
@@ -41,7 +41,7 @@ RSpec.describe 'Users', type: :request do
       marketin = Project.create!({ title: 'Marketing em redes sociais',
                                    description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                    desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                   max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                   max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                    remote: true, owner: tom })
       jerry = Freelancer.create!({ email: 'jerry@mail.com',
                                    password: 'uma senha forte' })

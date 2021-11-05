@@ -8,7 +8,7 @@ describe 'freelancer authentication:' do
       marketing = Project.create!({ title: 'Marketing em redes sociais',
                                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                     desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                    max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                    max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                     remote: true, owner: project_owner })
 
       get new_profile_path
@@ -24,7 +24,7 @@ describe 'freelancer authentication:' do
       marketing = Project.create!({ title: 'Marketing em redes sociais',
                                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                     desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                    max_hour_payment: 60, deadline_for_proposals: Time.now + 2.months,
+                                    max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                                     remote: true, owner: project_owner })
       angela = Freelancer.create!(email: 'angela@mail.com', password: '123456')
       login_as angela, scope: :freelancer

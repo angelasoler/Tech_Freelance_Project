@@ -10,7 +10,7 @@ RSpec.describe Project, type: :model do
         projeto = Project.create({ title: 'Marketing em redes sociais',
                                    description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                    desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                   max_hour_payment: 60, deadline_for_proposals: Time.now - 1.month,
+                                   max_hour_payment: 60, deadline_for_proposals: Time.zone.now - 1.month,
                                    remote: true, owner: dono_de_projeto })
 
         projeto.valid?
@@ -26,7 +26,7 @@ RSpec.describe Project, type: :model do
         projeto = Project.create({ title: 'Marketing em redes sociais',
                                    description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                    desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                   max_hour_payment: 60, deadline_for_proposals: Time.now + 1.month,
+                                   max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 1.month,
                                    remote: true, owner: dono_de_projeto })
 
         projeto.valid?

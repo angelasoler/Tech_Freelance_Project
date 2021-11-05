@@ -8,26 +8,26 @@ describe 'project owner views own projects' do
     projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
                                           description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                           desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                           remote: true, owner: pedro })
     outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
                                                 description: 'Um site com fotos dos produtos, localização,
                                                             região de atendimento e whatsapp com mensagem
                                                             para fazer pedido em domicilio',
                                                 desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 60, deadline_for_proposals: Time.now + 5.months,
+                                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                                                 remote: true, owner: pedro })
     jason = Owner.create!({ email: 'jason@mail.com',
                             password: '123456' })
     projeto_de_jason = Project.create!({ title: 'Desenvolvimento web',
                                          description: 'Applição web para vendas',
                                          desire_habilities: 'Experiencia com ecommerce',
-                                         max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                         max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                          remote: true, owner: jason })
     outro_projeto_de_jason = Project.create!({ title: 'Back-end de sistema de vendas',
                                                description: 'manutencion em sistema feito com cobol',
                                                desire_habilities: 'experiencias previas similares',
-                                               max_hour_payment: 60, deadline_for_proposals: Time.now + 5.months,
+                                               max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                                                remote: true, owner: jason })
 
     visit root_path
@@ -54,16 +54,16 @@ describe 'project owner views own projects' do
     projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
                                           description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                           desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                           remote: true, owner: pedro })
     outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
                                                 description: 'Um site com fotos dos produtos, localização,
                                                             região de atendimento e whatsapp com mensagem
                                                             para fazer pedido em domicilio',
                                                 desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 70, deadline_for_proposals: Time.now + 5.months,
+                                                max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 5.months,
                                                 face_to_face: true, owner: pedro })
-    data = Time.now + 3.months
+    data = Time.zone.now + 3.months
 
     visit my_projects_projects_path
     click_on 'Marketing em redes sociais'
@@ -72,7 +72,7 @@ describe 'project owner views own projects' do
     expect(page).to have_content('Descrição: Atrair clientes atravez das nossas redes e criar promoções.')
     expect(page).to have_content('Habilidades desejadas: Gerenciamento e marketing rede sociais')
     expect(page).to have_content('Valor maximo por hora: R$ 60')
-    expect(page).to have_content('Data limite para proposta: ' + data.strftime('%d/%m/%Y'))
+    expect(page).to have_content("Data limite para proposta: #{data.strftime('%d/%m/%Y')}")
     expect(page).to have_content('Remoto: Sim')
     expect(page).to have_content('Presencial: Não')
     expect(page).not_to have_link('Marketing em redes sociais')
@@ -82,7 +82,7 @@ describe 'project owner views own projects' do
                                       para fazer pedido em domicilio')
     expect(page).not_to have_content('Habilidades desejadas: desenvolvimento fullstack para comercios')
     expect(page).not_to have_content('Valor maximo por hora: R$ 70')
-    expect(page).not_to have_content('Data limite para proposta: ' + (data + 2.months).strftime('%d/%m/%Y'))
+    expect(page).not_to have_content("Data limite para proposta: #{(data + 2.months).strftime('%d/%m/%Y')}")
     expect(page).not_to have_content('Remoto: Não')
     expect(page).not_to have_content('Presencial: Sim')
   end
@@ -93,26 +93,26 @@ describe 'project owner views own projects' do
     projeto_de_jason = Project.create!({ title: 'Desenvolvimento web',
                                          description: 'Applição web para vendas',
                                          desire_habilities: 'Experiencia com ecommerce',
-                                         max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                         max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                          remote: true, owner: jason })
     outro_projeto_de_jason = Project.create!({ title: 'Back-end de sistema de vendas',
                                                description: 'manutencion em sistema feito com cobol',
                                                desire_habilities: 'experiencias previas similares',
-                                               max_hour_payment: 60, deadline_for_proposals: Time.now + 5.months,
+                                               max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                                                remote: true, owner: jason })
     pedro = Owner.create!({ email: 'pedro@mail.com',
                             password: '123456' })
     projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
                                           description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                           desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.now + 3.months,
+                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
                                           remote: true, owner: pedro })
     outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
                                                 description: 'Um site com fotos dos produtos, localização,
                                                             região de atendimento e whatsapp com mensagem
                                                             para fazer pedido em domicilio',
                                                 desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 60, deadline_for_proposals: Time.now + 5.months,
+                                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                                                 remote: true, owner: pedro })
     ana = Owner.create!({ email: 'ana@mail.com',
                           password: '123456' })

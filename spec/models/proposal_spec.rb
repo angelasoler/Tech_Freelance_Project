@@ -15,7 +15,7 @@ RSpec.describe Proposal, type: :model do
                                                 região de atendimento e whatsapp com mensagem
                                                 para fazer pedido em domicilio',
                                   desire_habilities: 'desenvolvimento fullstack para comercios',
-                                  max_hour_payment: 40, deadline_for_proposals: Time.now + 5.months,
+                                  max_hour_payment: 40, deadline_for_proposals: Time.zone.now + 5.months,
                                   remote: true, owner: panaderia)
       Proposal.create!(motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                        hourly_rate: 40, hours_per_week: 8, weeks: 10, project: project_1,
@@ -43,7 +43,7 @@ RSpec.describe Proposal, type: :model do
                                                 região de atendimento e whatsapp com mensagem
                                                 para fazer pedido em domicilio',
                                   desire_habilities: 'desenvolvimento fullstack para comercios',
-                                  max_hour_payment: 40, deadline_for_proposals: Time.now + 5.months,
+                                  max_hour_payment: 40, deadline_for_proposals: Time.zone.now + 5.months,
                                   remote: true, owner: panaderia)
       proposta = Proposal.create!(motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
                                   hourly_rate: 40, hours_per_week: 8, weeks: 10, project: project_1,
