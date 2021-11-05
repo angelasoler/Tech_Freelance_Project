@@ -1,0 +1,6 @@
+<h6 class="text-center"><%=  @proposal.motivation %></h6>
+<p>
+<div><%= 'Tarifa por hora:'%> <%= number_to_currency(@proposal.hourly_rate) %></div>
+<div><%= 'Horas disponiveis por semana: ' %><%= @proposal.hours_per_week %></div>
+<div><%= 'Semanas para termino: ' %><%= @proposal.weeks %> semanas</div>
+</p>

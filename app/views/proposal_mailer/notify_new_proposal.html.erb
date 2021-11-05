@@ -1,1 +1,9 @@
-<%= 'Tem proposta nova' %>
+<h1><%= 'Tem nova para um dos seus projetos!' %></h1>
+<p>
+Seu projeto <%= @proposal.project.title %> acabou de receber uma proposta do frelancer <%= @proposal.profile.full_name %>
+</p>
+<p>
+<%= render 'proposal' %>
+</p>
+
+<div><%= 'Vai no menu meus projetos para aceitar ou rejeitar.' %></div>

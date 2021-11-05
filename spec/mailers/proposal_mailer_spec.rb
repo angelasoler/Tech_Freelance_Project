@@ -20,8 +20,14 @@ RSpec.describe ProposalMailer, type: :mailer do
 
       expect(mail.to).to eq ['felipa@mail.com']
       expect(mail.from).to eq ['aviso@techfreelancer.com']
-      expect(mail.subject).to eq 'Tem uma proposta nova para seu projeto!'
-      expect(mail.body).to eq ''
+      expect(mail.subject).to eq 'Tem uma proposta nova para seu projeto Marketing em redes sociais!'
+      expect(mail.body).to include 'Tem nova para um dos seus projetos!'
+      expect(mail.body).to include 'Seu projeto Marketing em redes sociais acabou de receber uma proposta do frelancer Genoveva Dos Santos'
+      expect(mail.body).to include 'Sou expecialista em redes sociais com 6 anos de experiencia'
+      expect(mail.body).to include 'Tarifa por hora: R$ 40'
+      expect(mail.body).to include 'Horas disponiveis por semana: 8'
+      expect(mail.body).to include 'Semanas para termino: 10'
+      expect(mail.body).to include 'Vai no menu meus projetos para aceitar ou rejeitar.'
     end
   end
 end
