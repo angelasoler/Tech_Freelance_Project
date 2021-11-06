@@ -7,7 +7,7 @@ end
 
 # FactoryBot.define do
 #   sequence :email do |n|
-#     "owner#{n}@email.com"
+#     "email_que_nao_ta_em_uso#{n}@email.com"
 #   end
 # end
 ### actoryBot::DuplicateDefinitionError: Sequence already registered: email

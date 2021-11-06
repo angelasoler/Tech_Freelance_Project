@@ -6,6 +6,5 @@ FactoryBot.define do
     weeks { 5 }
     project
     profile
-    owner
   end
 end

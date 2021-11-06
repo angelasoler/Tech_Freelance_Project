@@ -29,7 +29,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   # Store files locally.
   config.active_storage.service = :local
-
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
