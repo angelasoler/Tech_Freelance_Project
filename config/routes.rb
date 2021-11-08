@@ -12,4 +12,10 @@ Rails.application.routes.draw do
     patch 'turn_down', on: :collection
     get 'my_proposals_freelancer', on: :collection
   end
+
+  namespace :api do 
+    namespace :v1 do
+      resources :project, only: %i[index show]
+    end
+  end
 end

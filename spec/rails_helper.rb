@@ -20,6 +20,9 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  # [TODO]chamar ele só para o request
+  config.include ApiMacro
+
   config.before(type: :system) do
     driven_by :rack_test
 end
