@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'owner view proposals on his projects' do
   it 'successfully' do
-    avaliador = Owner.create!({ email: 'avaliador@mail.com',
-                                password: '123456' })
+    avaliador = create(:owner)
     login_as avaliador, scope: :owner
     propositor = Freelancer.create!({ email: 'propositor@mail.com',
                                       password: '123456' })

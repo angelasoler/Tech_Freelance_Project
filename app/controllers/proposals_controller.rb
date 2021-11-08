@@ -15,8 +15,11 @@ class ProposalsController < ApplicationController
     @proposal.project = Project.find(params[:project_id])
     @proposal.profile = current_freelancer.profile
     @proposal.feed_back = ''
-    @proposal.save!
-
+    @proposal.save
+    ProposalMailer
+      .with(proposal: @proposal)
+      .notify_new_proposal
+      .deliver_now
     redirect_to proposal_path(@proposal.id)
     flash.alert = 'Sua proposta foi enviada para ser avaliada pelo dono do projeto!'
   end
