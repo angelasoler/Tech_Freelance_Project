@@ -28,6 +28,7 @@ describe 'owner view proposals on his projects' do
     expect(page).to have_content('Tarifa por hora: R$ 60')
     expect(page).to have_content('Horas disponiveis por semana: 10')
     expect(page).to have_content('Semanas para termino: 6 semanas')
+    expect(page).to have_content('Valor total da proposta: R$ 3.600')
     expect(page).to have_link('Propositor Garcia')
     expect(page).to have_button('Aceitar')
     expect(page).to have_button('Recusar')

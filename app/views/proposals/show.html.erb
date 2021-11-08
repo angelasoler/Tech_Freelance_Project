@@ -1,10 +1,11 @@
 <section class="text-body">
 <h6 class="text-center"><%=  @proposal.motivation %></h6>
-<p>
-<div><%= t('.hourly_rate')%> <%= number_to_currency(@proposal.hourly_rate) %></div>
-<div><%= t('.hours_per_week')%><%= @proposal.hours_per_week %></div>
-<div><%= t('.weeks')%><%= @proposal.weeks %> semanas</div>
-</p>
+<dl>
+<dt><%= t('.hourly_rate')%> <%= number_to_currency(@proposal.hourly_rate) %></dt>
+<dt><%= t('.hours_per_week')%><%= @proposal.hours_per_week %></dt>
+<dt><%= t('.weeks')%><%= @proposal.weeks %> semanas</dt>
+<b><i><dt><%= 'Valor total da proposta: ' %><%=  number_to_currency @proposal.total_value%></dd></b></i>
+</dd>
 </section>
 
 <% if owner_signed_in? %>
