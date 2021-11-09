@@ -13,7 +13,7 @@ describe 'freelancer authentication:' do
 
       get new_profile_path
 
-      expect(response).to redirect_to(new_freelancer_session_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 

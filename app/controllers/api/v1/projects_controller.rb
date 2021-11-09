@@ -1,12 +1,12 @@
-Class Api::V1::ProjectsController < ActionController::API
+class Api::V1::ProjectsController < ActionController::API
   def index
-    @projects = Projects.all
+    @projects = Project.all
     render json: @projects.to_json(except: %i[created_at update_at proposal_id],
-                                  include: { proposal: { only: %i[motivation] } })
+                                  include: { proposals: { only: %i[motivation] } })
   end
 
   def show
     @project = Project.find(params[:id])
-    render JSON
+    render json: @project
   end
 end

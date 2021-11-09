@@ -31,37 +31,25 @@ class ProposalsController < ApplicationController
   end
 
   def accept
-    if owner_signed_in?
-      @proposal = Proposal.find(params[:id])
-      @proposal.accepted!
-      flash[:notice] = 'Proposta Aceita!'
-      render :show
-    else
-      redirect_to root_path
-    end
+    @proposal = Proposal.find(params[:id])
+    @proposal.accepted!
+    flash[:notice] = 'Proposta Aceita!'
+    render :show
   end
 
   def turn_down
-    if owner_signed_in?
-      @proposal = Proposal.find(params[:id])
-      redirect_to edit_proposal_path(@proposal)
-    else
-      redirect_to root_path
-    end
+    @proposal = Proposal.find(params[:id])
+    redirect_to edit_proposal_path(@proposal)
   end
 
   def edit
-    if owner_signed_in?
-      @proposal = Proposal.find(params[:id])
-    else
-      redirect_to root_path
-    end
+    @proposal = Proposal.find(params[:id])
   end
 
   def update
     if owner_signed_in?
       @proposal = Proposal.find(params[:id])
-      @proposal.update!(params.require(:proposal).permit(:feed_back))
+      @proposal.update(params.require(:proposal).permit(:feed_back))
       @proposal.turned_down!
       if @proposal.feed_back.present?
         redirect_to proposal_path(@proposal)
