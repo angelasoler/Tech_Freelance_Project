@@ -12,6 +12,7 @@ RSpec.describe 'Users', type: :request do
       get new_project_path
 
       expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to be_present
     end
 
     it 'can´t see proposals' do

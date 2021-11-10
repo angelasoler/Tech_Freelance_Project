@@ -14,6 +14,7 @@ describe 'freelancer authentication:' do
       get new_profile_path
 
       expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to be_present
     end
   end
 
