@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
-  before_action :authenticate_owner!, only: %i[accept turn_down]
-  before_action :authenticate_freelancer!, only: [:create]
+  before_action :authenticate_owner!, only: %i[accept turn_down :show :update]
+  before_action :authenticate_freelancer!, only: %i[:create :show]
   def show
     if signed_in?
       @proposal = Proposal.find(params[:id])

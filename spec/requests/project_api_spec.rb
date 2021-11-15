@@ -32,7 +32,7 @@ describe 'Project API' do
                                       região de atendimento e whatsapp com mensagem 
                                       para fazer pedido em domicilio',
                         desire_habilities: 'desenvolvimento fullstack para comercios', 
-                        max_hour_payment: 40, deadline_for_proposals: 5.months.from_now, remote: true)
+                        max_hour_payment: 40, remote: true)
 
       get "/api/v1/projects/#{project.id}"
 
@@ -44,22 +44,15 @@ describe 'Project API' do
                                       para fazer pedido em domicilio')
       expect(parsed_body[:desire_habilities]).to eq('desenvolvimento fullstack para comercios')                                         
       expect(parsed_body[:max_hour_payment]).to eq('40.0')
-      # expect(parsed_body[:deadline_for_proposals]).to eq(I18n.localize 5.months.from_now)
       expect(parsed_body[:remote]).to eq(true)
     end
 
-    it 'shoul return 404 if projects does not exit' do
+    it 'should return 404 if projects does not exit' do
+      allow(Project).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
       
-      get '/api/v1/projects/999'
+      get '/api/v1/projects/999', params: { page: 3 }
 
       expect(response).to have_http_status(404)
-      expect(response.content_type).to be_nil
-      expect(parsed_body[:title]).not_to eq('Site para domicilios de comercio local')
-      expect(parsed_body[:description]).not_to eq('Um site com fotos dos produtos, localização, 
-                                      região de atendimento e whatsapp com mensagem 
-                                      para fazer pedido em domicilio')
-      expect(parsed_body[:desire_habilities]).not_to eq('desenvolvimento fullstack para comercios')                                         
-      expect(parsed_body[:max_hour_payment]).not_to eq('40.0')
     end
 
     it 'shoul return 500 if data base is not available' do
@@ -68,26 +61,19 @@ describe 'Project API' do
                                       região de atendimento e whatsapp com mensagem 
                                       para fazer pedido em domicilio',
                         desire_habilities: 'desenvolvimento fullstack para comercios', 
-                        max_hour_payment: 40, deadline_for_proposals: 5.months.from_now, remote: true)
+                        max_hour_payment: 40, remote: true)
       allow(Project).to receive(:find).with(project.id.to_s)
                                       .and_raise(ActiveRecord::ActiveRecordError)
 
       get "/api/v1/projects/#{project.id}"
 
       expect(response).to have_http_status(500)
-      expect(parsed_body[:title]).not_to eq('Site para domicilios de comercio local')
-      expect(parsed_body[:description]).not_to eq('Um site com fotos dos produtos, localização, 
-                                      região de atendimento e whatsapp com mensagem 
-                                      para fazer pedido em domicilio')
-      expect(parsed_body[:desire_habilities]).not_to eq('desenvolvimento fullstack para comercios')                                         
-      expect(parsed_body[:max_hour_payment]).not_to eq('40.0')
     end
   end
 
   context 'POST /api/v1/projects' do
     it 'should return 201' do
-      owner = create(:owner)
-
+      owner = Owner.create(email: 'aleatorio@mail.com', password: '123456')
       project_params = { project: { title: 'Site para domicilios de comercio local', 
                                     description: 'Um site com fotos dos produtos, localização, 
                                                   região de atendimento e whatsapp com mensagem 
@@ -107,12 +93,8 @@ describe 'Project API' do
                                                   para fazer pedido em domicilio')
       expect(parsed_body[:desire_habilities]).to eq('desenvolvimento fullstack para comercios')
       expect(parsed_body[:max_hour_payment]).to eq('40.0')
-      # expect(parsed_body[:deadline_for_proposals]).to eq(5.months.from_now)
       expect(parsed_body[:remote]).to eq(true)
-      expect(parsed_body[:proposal_id]).to eq(Proposal.last.id)
       expect(parsed_body[:owner_id]).to eq(Owner.last.id)
     end
   end
 end
-
-# [TODO] completar testes, especialmente de 400 e 500

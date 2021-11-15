@@ -23,6 +23,6 @@ class Api::V1::ProjectsController < Api::V1::ApiController
                                     :desire_habilities,
                                     :max_hour_payment,
                                     :deadline_for_proposals,
-                                    :face_to_face, :remote)
+                                    :face_to_face, :remote, :owner_id)
   end
 end
