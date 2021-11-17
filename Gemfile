@@ -7,7 +7,6 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap', '~> 4.1.3'
-gem 'cancan'
 gem 'devise'
 gem 'devise-i18n'
 gem 'jbuilder', '~> 2.7'

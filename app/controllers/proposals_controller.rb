@@ -1,13 +1,13 @@
 class ProposalsController < ApplicationController
-  before_action :authenticate_owner!, only: %i[accept turn_down :show :update]
-  before_action :authenticate_freelancer!, only: %i[:create :show]
+  before_action :authenticate_owner!, only: %i[accept turn_down update]
+  before_action :authenticate_freelancer!, only: %i[create]
+  before_action only: %i[show] do
+    @proposal = Proposal.find(params[:id])
+    redirect_to root_path unless current_owner == @proposal.project.owner || current_freelancer == @proposal.profile.freelancer
+  end
   def show
-    if signed_in?
-      @proposal = Proposal.find(params[:id])
-      @proposals = Proposal.all
-    else
-      redirect_to root_path
-    end
+    @proposal = Proposal.find(params[:id])
+    @proposals = Proposal.all
   end
 
   def create
