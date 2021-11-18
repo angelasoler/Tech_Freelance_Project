@@ -64,8 +64,6 @@ Para melhorar o visual do Front-End é usado o framework [BootStrap](https://git
 
 - [should matchers](https://matchers.shoulda.io/) para testes unitarios mais resumidos
 
-- [cancan](https://github.com/ryanb/cancan/#readme) libraria de autorização que restringe quais recursos determinado usuario é permitido acessar
-
 - [simplecov](https://github.com/simplecov-ruby/simplecov) para ver dados sobre covertura de testes do projeto
 
 - [factorybot](https://github.com/thoughtbot/factory_bot) cria variaves para nossos testes facilitando a legibilidade e poupando tempo
