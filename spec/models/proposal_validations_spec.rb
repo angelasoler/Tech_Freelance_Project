@@ -30,7 +30,7 @@ RSpec.describe Proposal, type: :model do
       expect(proposta2.valid?).to eq(false)
     end
 
-    it 'accept does not need feed back' do
+    it 'action accept does not need feed back' do
       pablo = Freelancer.create!(email: 'pablo@mail.com', password: '123456')
       Profile.create!(full_name: 'Pablo', social_name: '',
                       birth_date: '19950608', educational_background: 'Publicidade na PUC',
