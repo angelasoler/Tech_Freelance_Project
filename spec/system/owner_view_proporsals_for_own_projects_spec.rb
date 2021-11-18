@@ -1,5 +1,4 @@
 require 'rails_helper'
-require "cancan/matchers"
 
 describe 'owner view proposals for projects' do
   context 'that owns' do
