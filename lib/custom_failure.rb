@@ -1,6 +1,6 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-     root_url
+    root_url
   end
 
   def respond
@@ -8,7 +8,7 @@ class CustomFailure < Devise::FailureApp
       http_auth
     else
       redirect
-      flash[:alert] = ' URLS não atorizada.' 
+      flash[:alert] = ' URLS não atorizada.'
     end
   end
 end

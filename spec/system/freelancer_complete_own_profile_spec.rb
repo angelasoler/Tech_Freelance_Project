@@ -16,7 +16,7 @@ describe 'freelancer complete profile' do
             with: 'Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
     fill_in 'Experiência',
             with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
-              attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
+    attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
     click_on 'Completar Perfil'
 
     expect(page).to have_link('Candidate-se para um projeto.')
@@ -49,11 +49,11 @@ describe 'freelancer complete profile' do
     user = create(:freelancer)
     create(:profile, freelancer: user)
     login_as user, scope: :freelancer
-    marketing = create(:project, title: 'Marketing em redes sociais',
-                        description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                        desire_habilities: 'Gerenciamento e marketing rede sociais',
-                        max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                        remote: true)
+    create(:project, title: 'Marketing em redes sociais',
+                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                     desire_habilities: 'Gerenciamento e marketing rede sociais',
+                     max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
+                     remote: true)
 
     visit root_path
     click_on 'Marketing em redes sociais'

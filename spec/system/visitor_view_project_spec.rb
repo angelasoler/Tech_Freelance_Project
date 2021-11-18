@@ -7,17 +7,17 @@ describe  'Visitor visits homepage' do
     login_as visitor, scope: :freelancer
     jeff = create(:owner)
     create(:project, title: 'Site para domicilios de comercio local',
-            description: 'Um site com fotos dos produtos, localização,
+                     description: 'Um site com fotos dos produtos, localização,
                       região de atendimento e whatsapp com mensagem
                       para fazer pedido em domicilio',
-            desire_habilities: 'desenvolvimento fullstack para comercios',
-            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-            remote: true, owner: jeff)
+                     desire_habilities: 'desenvolvimento fullstack para comercios',
+                     max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
+                     remote: true, owner: jeff)
     create(:project, title: 'Marketing em redes sociais',
-            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-            desire_habilities: 'Gerenciamento e marketing rede sociais',
-            max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
-            remote: true, owner: jeff)
+                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                     desire_habilities: 'Gerenciamento e marketing rede sociais',
+                     max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
+                     remote: true, owner: jeff)
 
     visit root_path
 
@@ -43,17 +43,17 @@ describe  'Visitor visits homepage' do
     login_as visitor, scope: :freelancer
     jeff = create(:owner)
     create(:project, title: 'Site para domicilios de comercio local',
-            description: 'Um site com fotos dos produtos, localização,
+                     description: 'Um site com fotos dos produtos, localização,
                       região de atendimento e whatsapp com mensagem
                       para fazer pedido em domicilio',
-            desire_habilities: 'desenvolvimento fullstack para comercios',
-            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-            remote: true, owner: jeff)
+                     desire_habilities: 'desenvolvimento fullstack para comercios',
+                     max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
+                     remote: true, owner: jeff)
     create(:project, title: 'Marketing em redes sociais',
-            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-            desire_habilities: 'Gerenciamento e marketing rede sociais',
-            max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
-            remote: true, owner: jeff)
+                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                     desire_habilities: 'Gerenciamento e marketing rede sociais',
+                     max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
+                     remote: true, owner: jeff)
 
     visit root_path
     click_on 'Site para domicilios de comercio'
@@ -80,17 +80,17 @@ describe  'Visitor visits homepage' do
     login_as visitor, scope: :freelancer
     jeff = create(:owner)
     create(:project, title: 'Site para domicilios de comercio local',
-            description: 'Um site com fotos dos produtos, localização,
+                     description: 'Um site com fotos dos produtos, localização,
                       região de atendimento e whatsapp com mensagem
                       para fazer pedido em domicilio',
-            desire_habilities: 'desenvolvimento fullstack para comercios',
-            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-            remote: true, owner: jeff)
+                     desire_habilities: 'desenvolvimento fullstack para comercios',
+                     max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
+                     remote: true, owner: jeff)
     create(:project, title: 'Marketing em redes sociais',
-            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-            desire_habilities: 'Gerenciamento e marketing rede sociais',
-            max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
-            remote: true, owner: jeff)
+                     description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                     desire_habilities: 'Gerenciamento e marketing rede sociais',
+                     max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 3.months,
+                     remote: true, owner: jeff)
     visit root_path
     click_on 'Site para domicilios de comercio'
     click_on 'Voltar'

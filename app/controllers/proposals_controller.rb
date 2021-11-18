@@ -3,7 +3,9 @@ class ProposalsController < ApplicationController
   before_action :authenticate_freelancer!, only: %i[create]
   before_action only: %i[show] do
     @proposal = Proposal.find(params[:id])
-    redirect_to root_path unless current_owner == @proposal.project.owner || current_freelancer == @proposal.profile.freelancer
+    unless current_owner == @proposal.project.owner || current_freelancer == @proposal.profile.freelancer
+      redirect_to root_path
+    end
   end
   def show
     @proposal = Proposal.find(params[:id])
@@ -63,6 +65,6 @@ class ProposalsController < ApplicationController
   end
 
   def my_proposals_freelancer
-    @proposals = current_freelancer.profile.proposals.all if signed_in?
+    @proposals = current_freelancer.profile.proposals.all if freelancer_signed_in?
   end
 end

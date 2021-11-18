@@ -20,7 +20,8 @@ RSpec.describe 'Users', type: :request do
       marketin = create(:project, owner: tom)
       jerry = create(:freelancer)
       perfil_jerry = create(:profile, freelancer: jerry)
-      proposta_jerry_tom = create(:proposal, project: marketin, profile: perfil_jerry)
+      proposta_jerry_tom = create(:proposal, project: marketin,
+                                             profile: perfil_jerry)
 
       get proposal_path(proposta_jerry_tom)
 
@@ -32,7 +33,8 @@ RSpec.describe 'Users', type: :request do
       marketin = create(:project, owner: tom)
       jerry = create(:freelancer)
       perfil_jerry = create(:profile, freelancer: jerry)
-      proposta_jerry_tom = create(:proposal, project: marketin, profile: perfil_jerry)
+      proposta_jerry_tom = create(:proposal, project: marketin,
+                                             profile: perfil_jerry)
 
       patch proposal_path(proposta_jerry_tom)
 

@@ -4,9 +4,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @proposal = Proposal.new
     @proposals = @project.proposals.all
-    if freelancer_signed_in? && current_freelancer.profile.blank?
-      redirect_to new_profile_path
-    end
+    redirect_to new_profile_path if freelancer_signed_in? && current_freelancer.profile.blank?
   end
 
   def new

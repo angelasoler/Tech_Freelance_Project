@@ -17,7 +17,8 @@ describe 'visitor ' do
     end
 
     it 'logs out successfully' do
-      ana_paula = create(:owner, email: 'ana_paula@mail.com', password: '123456')
+      ana_paula = create(:owner, email: 'ana_paula@mail.com',
+                                 password: '123456')
 
       login_as ana_paula, scope: :owner
 
@@ -50,7 +51,7 @@ describe 'visitor ' do
 
   context 'as freelancer' do
     it 'logs in succesfully' do
-      erika = create(:freelancer, email: 'erika@mail.com', password: '123456' )
+      create(:freelancer, email: 'erika@mail.com', password: '123456')
 
       visit root_path
       click_on 'Candidate-se para um projeto!'
@@ -66,7 +67,7 @@ describe 'visitor ' do
     end
 
     it 'logs out succesfully' do
-      erika = create(:freelancer, email: 'erika@mail.com', password: '123456' )
+      erika = create(:freelancer, email: 'erika@mail.com', password: '123456')
 
       login_as erika, scope: :freelancer
 
