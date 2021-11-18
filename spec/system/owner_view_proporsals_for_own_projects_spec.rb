@@ -5,21 +5,12 @@ describe 'owner view proposals for projects' do
     it 'successfully' do
       avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                        password: '123456' })
-      perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                            birth_date: 19_950_608, educational_background: 'Publicidade na PUC',
-                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                            work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                            freelancer: propositor })
-      projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                            remote: true, owner: avaliador })
-      proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                    hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
-                                    profile: perfil_propositor })
+      perfil_propositor = create(:profile, full_name: 'Propositor Garcia')
+      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
+                                  owner: avaliador )
+      proposta = create(:proposal, motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
+                        hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
+                        profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
@@ -36,24 +27,15 @@ describe 'owner view proposals for projects' do
     end
 
     it 'and view profile of freelancer that send proposal' do
-      avaliador = Owner.create!({ email: 'avaliador@mail.com',
-                                  password: '123456' })
+      avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                        password: '123456' })
-      perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                            birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                            work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                            freelancer: propositor })
-      projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                            remote: true, owner: avaliador })
-      proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                    hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
-                                    profile: perfil_propositor })
+      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
+                                  birth_date: '19950608', educational_background: 'Publicidade na PUC',
+                                  work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
+                                  work_experience: 'veja portafolio, https://portafolio.com/ ')
+      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
+                                  owner: avaliador )
+      proposta = create(:proposal, project: projecto_marketing, profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
@@ -73,24 +55,15 @@ describe 'owner view proposals for projects' do
     end
 
     it 'and accept' do
-      avaliador = Owner.create!({ email: 'avaliador@mail.com',
-                                  password: '123456' })
+      avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                        password: '123456' })
-      perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                            birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                            work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                            freelancer: propositor })
-      projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                            remote: true, owner: avaliador })
-      proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                    hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
-                                    profile: perfil_propositor })
+      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
+                                  birth_date: '19950608', educational_background: 'Publicidade na PUC',
+                                  work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
+                                  work_experience: 'veja portafolio, https://portafolio.com/ ')
+      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
+                                  owner: avaliador )
+      proposta = create(:proposal, project: projecto_marketing, profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
@@ -104,24 +77,15 @@ describe 'owner view proposals for projects' do
     end
 
     it 'and turn down' do
-      avaliador = Owner.create!({ email: 'avaliador@mail.com',
-                                  password: '123456' })
+      avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                        password: '123456' })
-      perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                            birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                            work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                            freelancer: propositor })
-      projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                            remote: true, owner: avaliador })
-      proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                    hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
-                                    profile: perfil_propositor })
+      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
+                                  birth_date: '19950608', educational_background: 'Publicidade na PUC',
+                                  work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
+                                  work_experience: 'veja portafolio, https://portafolio.com/ ')
+      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
+                                  owner: avaliador )
+      proposta = create(:proposal, project: projecto_marketing, profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
@@ -140,24 +104,15 @@ describe 'owner view proposals for projects' do
     end
 
     it 'and cannot turn down without feedback' do
-      avaliador = Owner.create!({ email: 'avaliador@mail.com',
-                                  password: '123456' })
+      avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                        password: '123456' })
-      perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                            birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                            work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                            freelancer: propositor })
-      projecto_marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                            description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                            desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                            max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                            remote: true, owner: avaliador })
-      proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                    hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
-                                    profile: perfil_propositor })
+      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
+                                  birth_date: '19950608', educational_background: 'Publicidade na PUC',
+                                  work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
+                                  work_experience: 'veja portafolio, https://portafolio.com/ ')
+      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
+                                  owner: avaliador )
+      proposta = create(:proposal, project: projecto_marketing, profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
@@ -179,7 +134,7 @@ describe 'owner view proposals for projects' do
       proposta_jerry = create(:proposal, project: projeto,
                                 profile: perfil_jerry
                                 )
-      outro_owner = Owner.create(email: 'ovacilao@mail.com', password: 'O vacilão')
+      outro_owner = create(:owner, email: 'ovacilao@mail.com', password: 'O vacilão')
       login_as outro_owner, scope: :owner
 
       visit proposal_path(proposta_jerry) 

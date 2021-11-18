@@ -3,8 +3,7 @@ require 'rails_helper'
 describe 'visitor ' do
   context 'as project owner' do
     it 'logs in succesfully' do
-      ana_paula = Owner.create!(email: 'ana_paula@mail.com',
-                                password: '123456')
+      create(:owner, email: 'ana_paula@mail.com', password: '123456')
 
       visit root_path
       click_on 'Publique um projeto'
@@ -13,13 +12,12 @@ describe 'visitor ' do
       click_on 'Entre'
 
       expect(page).to have_content('Login efetuado com sucesso.')
-      expect(page).to have_content(ana_paula.email)
+      expect(page).to have_content('ana_paula@mail.com')
       expect(page).to have_link('Logout')
     end
 
     it 'logs out successfully' do
-      ana_paula = Owner.create!(email: 'ana_paula@mail.com',
-                                password: '123456')
+      ana_paula = create(:owner, email: 'ana_paula@mail.com', password: '123456')
 
       login_as ana_paula, scope: :owner
 
@@ -30,7 +28,7 @@ describe 'visitor ' do
       expect(page).to have_link('Publique um projeto')
       expect(page).to have_content('Encontre profissionais de tecnologia para seus projetos!')
       expect(page).to have_content('Encontre um projeto e faça sua proposta!')
-      expect(page).not_to have_content(ana_paula.email)
+      expect(page).not_to have_content('ana_paula@mail.com')
       expect(page).not_to have_link('Logout')
     end
 
@@ -52,8 +50,7 @@ describe 'visitor ' do
 
   context 'as freelancer' do
     it 'logs in succesfully' do
-      erika = Freelancer.create!({ email: 'erika@mail.com',
-                                   password: '123456' })
+      erika = create(:freelancer, email: 'erika@mail.com', password: '123456' )
 
       visit root_path
       click_on 'Candidate-se para um projeto!'
@@ -69,8 +66,7 @@ describe 'visitor ' do
     end
 
     it 'logs out succesfully' do
-      erika = Freelancer.create!({ email: 'erika@mail.com',
-                                   password: '123456' })
+      erika = create(:freelancer, email: 'erika@mail.com', password: '123456' )
 
       login_as erika, scope: :freelancer
 

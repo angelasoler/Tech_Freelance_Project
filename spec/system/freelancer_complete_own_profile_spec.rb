@@ -2,16 +2,8 @@ require 'rails_helper'
 
 describe 'freelancer complete profile' do
   it 'successfully' do
-    user = Freelancer.create!({ email: 'user@mail.com',
-                                password: '123456' })
+    user = create(:freelancer)
     login_as user, scope: :freelancer
-    user_owner = Owner.create!({ email: 'user_owner@mail.com',
-                                 password: '123456' })
-    marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                  description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                  desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                  remote: true, owner: user_owner })
 
     visit root_path
     click_on 'Candidate-se para um projeto!'
@@ -39,8 +31,7 @@ describe 'freelancer complete profile' do
   end
 
   it 'most fill all fields' do
-    user = Freelancer.create!({ email: 'user@mail.com',
-                                password: '123456' })
+    user = create(:freelancer)
     login_as user, scope: :freelancer
 
     visit new_profile_path
@@ -55,40 +46,30 @@ describe 'freelancer complete profile' do
   end
 
   it 'and can access to projects details' do
-    user = Freelancer.create!({ email: 'user@mail.com',
-                                password: '123456' })
-    Profile.create!({ full_name: 'João', social_name: '',
-                      birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                      work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                      work_experience: 'veja portafolio, https://portafolio.com/ ',
-                      freelancer: user })
+    user = create(:freelancer)
+    create(:profile, freelancer: user)
     login_as user, scope: :freelancer
-    user_owner = Owner.create!({ email: 'user_owner@mail.com',
-                                 password: '123456' })
-    marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                  description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                  desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                  remote: true, owner: user_owner })
+    marketing = create(:project, title: 'Marketing em redes sociais',
+                        description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                        desire_habilities: 'Gerenciamento e marketing rede sociais',
+                        max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
+                        remote: true)
 
     visit root_path
     click_on 'Marketing em redes sociais'
 
+    expect(page).to have_content('Marketing em redes sociais')
+    expect(page).to have_content('Descrição: Atrair clientes atravez das nossas redes e criar promoções.')
     expect(page).to have_content('Valor maximo por hora: R$ 60')
-    expect(page).to have_content('Data limite para proposta:')
+    expect(page).to have_content("Data limite para proposta: #{(Time.zone.now + 2.months).strftime('%d/%m/%Y')}")
     expect(page).to have_content('Presencial: Não')
     expect(page).to have_content('Remoto: Sim')
     expect(page).to have_content('Mande uma proposta para esse projeto!')
   end
 
   it 'and can login successfully' do
-    user = Freelancer.create!({ email: 'user@mail.com',
-                                password: '123456' })
-    Profile.create!({ full_name: 'João', social_name: '',
-                      birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                      work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                      work_experience: 'veja portafolio, https://portafolio.com/ ',
-                      freelancer: user })
+    user = create(:freelancer, email: 'user@mail.com', password: '123456')
+    create(:profile, freelancer: user)
 
     visit new_freelancer_session_path
     fill_in 'Email', with: 'user@mail.com'

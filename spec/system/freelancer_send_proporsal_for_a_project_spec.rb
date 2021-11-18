@@ -2,27 +2,24 @@ require 'rails_helper'
 
 describe 'freelancer send proposal' do
   it 'successfully' do
-    propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                      password: '123456' })
+    propositor = create(:freelancer)
     login_as propositor, scope: :freelancer
-    project_owner = Owner.create!({ email: 'user_owner@mail.com',
-                                    password: '123456' })
-    marketing = Project.create!({ title: 'Marketing em redes sociais',
-                                  description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                  desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                  max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                  remote: true, owner: project_owner })
-    perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                          birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                          work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                          work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                          freelancer: propositor })
+    marketing = create(:project, title: 'Marketing em redes sociais',
+                        description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                        desire_habilities: 'Gerenciamento e marketing rede sociais',
+                        max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
+                        remote: true)
+    perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
+                                birth_date: '19950608', educational_background: 'Publicidade na PUC',
+                                work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
+                                work_experience: 'veja portafolio, https://portafolio.com/ ',
+                                freelancer: propositor)
     mailer_spy = class_spy(ProposalMailer)
-    stub_const('ProposalMailer', mailer_spy)
+                  stub_const('ProposalMailer', mailer_spy)
     mail = double('ProposalMailer')
-    allow(ProposalMailer)
-      .to receive(:notify_new_proposal).and_return(mail)
-    allow(mail).to receive(:deliver_now)
+            allow(ProposalMailer)
+              .to receive(:notify_new_proposal).and_return(mail)
+            allow(mail).to receive(:deliver_now)
 
     visit root_path
     click_on 'Marketing em redes sociais'
@@ -43,24 +40,13 @@ describe 'freelancer send proposal' do
   end
 
   it 'and it is accepted' do
-    propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                      password: '123456' })
+    propositor = create(:freelancer)
     login_as propositor, scope: :freelancer
-    project_owner = Owner.create!({ email: 'user_owner@mail.com',
-                                    password: '123456' })
-    marketin = Project.create!({ title: 'Marketing em redes sociais',
-                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                 desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                 remote: true, owner: project_owner })
-    perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                          birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                          work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                          work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                          freelancer: propositor })
-    proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                  hourly_rate: 60, hours_per_week: 10, weeks: 6, project: marketin,
-                                  profile: perfil_propositor, status: 'accepted' })
+    marketing = create(:project, title: 'Marketing em redes sociais')
+    perfil_propositor = create(:profile, freelancer: propositor)
+    proposta = create(:proposal, motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
+                      hourly_rate: 60, hours_per_week: 10, weeks: 6, project: marketing,
+                      profile: perfil_propositor, status: 'accepted')
 
     visit root_path
     click_on 'Propostas enviadas'
@@ -76,24 +62,14 @@ describe 'freelancer send proposal' do
   end
 
   it 'and it is turned down' do
-    propositor = Freelancer.create!({ email: 'propositor@mail.com',
-                                      password: '123456' })
+    propositor = create(:freelancer)
     login_as propositor, scope: :freelancer
-    project_owner = Owner.create!({ email: 'user_owner@mail.com',
-                                    password: '123456' })
-    marketin = Project.create!({ title: 'Marketing em redes sociais',
-                                 description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                 desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                 max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
-                                 remote: true, owner: project_owner })
-    perfil_propositor = Profile.create!({ full_name: 'Propositor Garcia', social_name: '',
-                                          birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                          work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                          work_experience: 'veja portafolio, https://portafolio.com/ ',
-                                          freelancer: propositor })
-    proposta = Proposal.create!({ motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                  hourly_rate: 60, hours_per_week: 10, weeks: 6, project: marketin,
-                                  profile: perfil_propositor, status: 'turned_down', feed_back: 'Estamos procurando praços mais curtos' })
+    marketing = create(:project, title: 'Marketing em redes sociais')
+    perfil_propositor = create(:profile, freelancer: propositor)
+    proposta = create(:proposal, motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
+                      hourly_rate: 60, hours_per_week: 10, weeks: 6, project: marketing,
+                      profile: perfil_propositor, feed_back: 'Estamos procurando praços mais curtos',
+                      status: 'turned_down')
 
     visit root_path
     click_on 'Propostas enviadas'

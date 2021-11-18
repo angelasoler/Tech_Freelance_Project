@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'project owner register a project' do
   it 'successfully' do
-    user = Owner.create!({ email: 'user@mail.com',
-                           password: '123456' })
+    user = create(:owner)
     login_as user, scope: :owner
     data_limite = (DateTime.now + 2.months).strftime('%Y%m%d').to_i
 
@@ -30,8 +29,7 @@ describe 'project owner register a project' do
   end
 
   it 'and fields must be fill' do
-    user = Owner.create!({ email: 'user@mail.com',
-                           password: '123456' })
+    user = create(:owner)
     login_as user, scope: :owner
 
     visit root_path

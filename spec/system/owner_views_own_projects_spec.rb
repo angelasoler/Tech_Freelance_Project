@@ -2,33 +2,31 @@ require 'rails_helper'
 
 describe 'project owner views own projects' do
   it 'using link meus projetos' do
-    pedro = Owner.create!({ email: 'pedro@mail.com',
-                            password: '123456' })
+    pedro = create(:owner, email: 'pedro@mail.com', password: '123456')
     login_as pedro, scope: :owner
-    projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
-                                          description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                          desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
-                                          remote: true, owner: pedro })
-    outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
-                                                description: 'Um site com fotos dos produtos, localização,
-                                                            região de atendimento e whatsapp com mensagem
-                                                            para fazer pedido em domicilio',
-                                                desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-                                                remote: true, owner: pedro })
-    jason = Owner.create!({ email: 'jason@mail.com',
-                            password: '123456' })
-    projeto_de_jason = Project.create!({ title: 'Desenvolvimento web',
-                                         description: 'Applição web para vendas',
-                                         desire_habilities: 'Experiencia com ecommerce',
-                                         max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
-                                         remote: true, owner: jason })
-    outro_projeto_de_jason = Project.create!({ title: 'Back-end de sistema de vendas',
-                                               description: 'manutencion em sistema feito com cobol',
-                                               desire_habilities: 'experiencias previas similares',
-                                               max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-                                               remote: true, owner: jason })
+    projeto_de_predro = create(:project, title: 'Marketing em redes sociais',
+                                description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                                desire_habilities: 'Gerenciamento e marketing rede sociais',
+                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
+                                remote: true, owner: pedro)
+    outro_projeto_de_predro = create(:project, title: 'Site para domicilios de comercio local',
+                                      description: 'Um site com fotos dos produtos, localização,
+                                                  região de atendimento e whatsapp com mensagem
+                                                  para fazer pedido em domicilio',
+                                      desire_habilities: 'desenvolvimento fullstack para comercios',
+                                      max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
+                                      remote: true, owner: pedro)
+    jason = create(:owner, email: 'jason@mail.com', password: '123456')
+    projeto_de_jason = create(:project, title: 'Desenvolvimento web',
+                              description: 'Applição web para vendas',
+                              desire_habilities: 'Experiencia com ecommerce',
+                              max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
+                              remote: true, owner: jason)
+    outro_projeto_de_jason = create(:project, title: 'Back-end de sistema de vendas',
+                                    description: 'manutencion em sistema feito com cobol',
+                                    desire_habilities: 'experiencias previas similares',
+                                    max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
+                                    remote: true, owner: jason)
 
     visit root_path
     click_on 'Meus Projetos'
@@ -48,21 +46,20 @@ describe 'project owner views own projects' do
   end
 
   it 'and view a project' do
-    pedro = Owner.create!({ email: 'pedro@mail.com',
-                            password: '123456' })
+    pedro = create(:owner, email: 'pedro@mail.com', password: '123456')
     login_as pedro, scope: :owner
-    projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
-                                          description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                          desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
-                                          remote: true, owner: pedro })
-    outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
-                                                description: 'Um site com fotos dos produtos, localização,
-                                                            região de atendimento e whatsapp com mensagem
-                                                            para fazer pedido em domicilio',
-                                                desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 5.months,
-                                                face_to_face: true, owner: pedro })
+    projeto_de_predro = create(:project, title: 'Marketing em redes sociais',
+                                description: 'Atrair clientes atravez das nossas redes e criar promoções.',
+                                desire_habilities: 'Gerenciamento e marketing rede sociais',
+                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
+                                remote: true, owner: pedro)
+    outro_projeto_de_predro = create(:project, title: 'Site para domicilios de comercio local',
+                                      description: 'Um site com fotos dos produtos, localização,
+                                                  região de atendimento e whatsapp com mensagem
+                                                  para fazer pedido em domicilio',
+                                      desire_habilities: 'desenvolvimento fullstack para comercios',
+                                      max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 5.months,
+                                      face_to_face: true, owner: pedro)
     data = Time.zone.now + 3.months
 
     visit my_projects_projects_path
@@ -88,34 +85,17 @@ describe 'project owner views own projects' do
   end
 
   it 'has not register any still' do
-    jason = Owner.create!({ email: 'jason@mail.com',
-                            password: '123456' })
-    projeto_de_jason = Project.create!({ title: 'Desenvolvimento web',
-                                         description: 'Applição web para vendas',
-                                         desire_habilities: 'Experiencia com ecommerce',
-                                         max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
-                                         remote: true, owner: jason })
-    outro_projeto_de_jason = Project.create!({ title: 'Back-end de sistema de vendas',
-                                               description: 'manutencion em sistema feito com cobol',
-                                               desire_habilities: 'experiencias previas similares',
-                                               max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-                                               remote: true, owner: jason })
-    pedro = Owner.create!({ email: 'pedro@mail.com',
-                            password: '123456' })
-    projeto_de_predro = Project.create!({ title: 'Marketing em redes sociais',
-                                          description: 'Atrair clientes atravez das nossas redes e criar promoções.',
-                                          desire_habilities: 'Gerenciamento e marketing rede sociais',
-                                          max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 3.months,
-                                          remote: true, owner: pedro })
-    outro_projeto_de_predro = Project.create!({ title: 'Site para domicilios de comercio local',
-                                                description: 'Um site com fotos dos produtos, localização,
-                                                            região de atendimento e whatsapp com mensagem
-                                                            para fazer pedido em domicilio',
-                                                desire_habilities: 'desenvolvimento fullstack para comercios',
-                                                max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
-                                                remote: true, owner: pedro })
-    ana = Owner.create!({ email: 'ana@mail.com',
-                          password: '123456' })
+    jason = create(:owner)
+    projeto_de_jason = create(:project, title: 'Desenvolvimento web',
+                              owner: jason)
+    outro_projeto_de_jason = create(:project, title: 'Back-end de sistema de vendas',
+                                    remote: true, owner: jason)
+    pedro = create(:owner)
+    projeto_de_predro = create(:project, title: 'Marketing em redes sociais',
+                                owner: pedro)
+    outro_projeto_de_predro = create(:project, title: 'Site para domicilios de comercio local',
+                                      owner: pedro)
+    ana = create(:owner)
     login_as ana, scope: :owner
 
     visit root_path
@@ -125,5 +105,7 @@ describe 'project owner views own projects' do
     expect(page).to have_link('Publique um projeto', href: new_project_path)
     expect(page).not_to have_link('Desenvolvimento web')
     expect(page).not_to have_link('Back-end de sistema de vendas')
+    expect(page).not_to have_link('Marketing em redes sociais')
+    expect(page).not_to have_link('Site para domicilios de comercio local')
   end
 end

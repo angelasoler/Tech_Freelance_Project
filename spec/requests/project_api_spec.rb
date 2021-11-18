@@ -73,7 +73,7 @@ describe 'Project API' do
 
   context 'POST /api/v1/projects' do
     it 'should return 201' do
-      owner = Owner.create(email: 'aleatorio@mail.com', password: '123456')
+      owner = create(:owner, email: 'aleatorio@mail.com', password: '123456')
       project_params = { project: { title: 'Site para domicilios de comercio local', 
                                     description: 'Um site com fotos dos produtos, localização, 
                                                   região de atendimento e whatsapp com mensagem 
