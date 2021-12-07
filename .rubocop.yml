@@ -9,18 +9,16 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/**/*'
     - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'spec/rails_helper.rb'
+    - "node_modules/**/*"
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/BlockLength:
- IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'it']
+ IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'it', "draw", "configure"]
 
-AsciiComments:
+Style/AsciiComments:
   Enabled: false

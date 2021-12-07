@@ -13,10 +13,10 @@ describe 'freelancer complete profile' do
     fill_in 'Formação', with: 'Ciencias da computação'
     select 'Dev', from: 'Aréa de atuação'
     fill_in 'Sobre mim',
-            with: 'Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia'
+            with: 'Sou uma pessoa comprometida. Projetos são como plantas.'
     fill_in 'Experiência',
-            with: 'Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
-    attach_file('Foto', Rails.root + 'app/assets/images/image.jpg')
+            with: 'Visite https://meublog.com/ para ver mais do meu portafolio de backend.'
+    attach_file('Foto', Rails.root.join('spec/support/assets/image.jpg'))
     click_on 'Completar Perfil'
 
     expect(page).to have_link('Candidate-se para um projeto.')
@@ -25,9 +25,9 @@ describe 'freelancer complete profile' do
     expect(page).to have_content('Data de nascimento: 08/05/1990')
     expect(page).to have_content('Formação: Ciencias da computação')
     expect(page).to have_content('Aréa de atuação: Dev')
-    expect(page).to have_content('Sobre mim: Sou uma pessoa comprometida e acredito que trabalho em equipe é uma prioridade. Projetos são como plantas, tem que regar elas todo dia')
-    expect(page).to have_content('Experiência: Gerenciamento de bases de dados em Magalu por 3 anos. Visite https://meublog.com/ para ver mais do meu portafolio de backend.')
-    expect(page.has_xpath?('app/assets/images/image.jpg'))
+    expect(page).to have_content('Sobre mim: Sou uma pessoa comprometida. Projetos são como plantas')
+    expect(page).to have_content('Visite https://meublog.com/ para ver mais do meu portafolio de backend.')
+    expect(page).to have_css("img[src*='image.jpg']")
   end
 
   it 'most fill all fields' do

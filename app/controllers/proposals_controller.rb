@@ -13,17 +13,15 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.create(proposal_params)
+    @proposal = current_freelancer.profile.proposals.build(proposal_params)
     @proposal.project = Project.find(params[:project_id])
-    @proposal.profile = current_freelancer.profile
-    @proposal.feed_back = ''
-    @proposal.save
+    return unless @proposal.save
+
     ProposalMailer
       .with(proposal: @proposal)
       .notify_new_proposal
       .deliver_now
-    redirect_to proposal_path(@proposal.id)
-    flash.alert = 'Sua proposta foi enviada para ser avaliada pelo dono do projeto!'
+    redirect_to proposal_path(@proposal.id), notice: 'Sua proposta foi enviada para ser avaliada pelo dono do projeto!'
   end
 
   def proposal_params
@@ -49,18 +47,14 @@ class ProposalsController < ApplicationController
   end
 
   def update
-    if owner_signed_in?
-      @proposal = Proposal.find(params[:id])
-      @proposal.update(params.require(:proposal).permit(:feed_back))
-      @proposal.turned_down!
-      if @proposal.feed_back.present?
-        redirect_to proposal_path(@proposal)
-      else
-        flash[:alert] = 'Deve dar um feedback para recusar'
-        render :edit
-      end
+    @proposal = Proposal.find(params[:id])
+    @proposal.update(params.require(:proposal).permit(:feed_back))
+    @proposal.turned_down!
+    if @proposal.feed_back.present?
+      redirect_to proposal_path(@proposal)
     else
-      redirect_to root_path
+      flash[:alert] = 'Deve dar um feedback para recusar'
+      render :edit
     end
   end
 

@@ -6,13 +6,13 @@ class Project < ApplicationRecord
             presence: true
   validate :greater_than_two_months, on: :create
   belongs_to :owner
-  has_many :proposals
+  has_many :proposals, dependent: :destroy
 
   private
 
   def greater_than_two_months
-    if !deadline_for_proposals.nil? && (deadline_for_proposals < Date.today + 2.months)
-      errors.add(:deadline_for_proposals, 'deve ser maior que dois meses.')
-    end
+    return unless !deadline_for_proposals.nil? && (deadline_for_proposals < Time.zone.today + 2.months)
+
+    errors.add(:deadline_for_proposals, 'deve ser maior que dois meses.')
   end
 end

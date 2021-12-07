@@ -3,5 +3,5 @@ class Profile < ApplicationRecord
             :work_field, :about_me, :work_experience, presence: { on: :create }
   belongs_to :freelancer
   has_one_attached :photo
-  has_many :proposals
+  has_many :proposals, dependent: :destroy
 end

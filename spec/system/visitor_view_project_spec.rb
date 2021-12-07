@@ -43,9 +43,7 @@ describe  'Visitor visits homepage' do
     login_as visitor, scope: :freelancer
     jeff = create(:owner)
     create(:project, title: 'Site para domicilios de comercio local',
-                     description: 'Um site com fotos dos produtos, localização,
-                      região de atendimento e whatsapp com mensagem
-                      para fazer pedido em domicilio',
+                     description: 'Um site para pedidos em domicilio',
                      desire_habilities: 'desenvolvimento fullstack para comercios',
                      max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 5.months,
                      remote: true, owner: jeff)
@@ -59,7 +57,7 @@ describe  'Visitor visits homepage' do
     click_on 'Site para domicilios de comercio'
 
     expect(page).to have_content('Site para domicilios de comercio local')
-    expect(page).to have_content('Descrição: Um site com fotos dos produtos, localização, região de atendimento e whatsapp com mensagem para fazer pedido em domicilio')
+    expect(page).to have_content('Descrição: Um site para pedidos em domicilio')
     expect(page).to have_content('Habilidades desejadas: desenvolvimento fullstack para comercios')
     expect(page).to have_content('Valor maximo por hora: R$ 60,00')
     expect(page).to have_content("Data limite para proposta: #{(Time.zone.now + 5.months).strftime('%d/%m/%Y')}")

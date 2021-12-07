@@ -30,13 +30,13 @@ describe 'freelancer send proposal' do
     fill_in 'Semanas para termino', with: 6
     click_on 'Enviar'
 
-    expect(ProposalMailer).to have_received(:notify_new_proposal)
-    expect(mail).to have_received(:deliver_now)
     expect(page).to have_content('Sou expecialista em redes sociais com 6 anos de experiencia')
     expect(page).to have_content('Tarifa por hora: R$ 60')
     expect(page).to have_content('Horas disponiveis por semana: 10')
     expect(page).to have_content('Semanas para termino: 6')
     expect(page).to have_content('Sua proposta foi enviada para ser avaliada pelo dono do projeto!')
+    expect(ProposalMailer).to have_received(:notify_new_proposal)
+    expect(mail).to have_received(:deliver_now)
   end
 
   it 'and it is accepted' do
