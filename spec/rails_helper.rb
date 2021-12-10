@@ -2,14 +2,14 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
-abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'rspec/rails'
-
 require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter '/helpers/'
   add_filter '/jobs/'
 end
+
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'rspec/rails'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -20,7 +20,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  # [TODO]chamar ele só para o request
   config.include ApiMacro
 
   config.before(type: :system) do

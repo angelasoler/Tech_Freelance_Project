@@ -6,19 +6,21 @@ AllCops:
   NewCops: enable
   SuggestExtensions: false
   Exclude:
-    - 'bin/**/*'
-    - 'vendor/**/*'
-    - 'db/**/*'
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "db/**/*"
     - "node_modules/**/*"
+    - "spec/rails_helper.rb"
+    - "config/initializers/devise.rb"
+    - "config/environments/development.rb"
+Metrics/BlockLength:
+ IgnoredMethods: ["describe", "context", "feature", "scenario", "let", "it", "draw", "configure"]
+
+Style/AsciiComments:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Metrics/BlockLength:
- IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'it', "draw", "configure"]
-
-Style/AsciiComments:
   Enabled: false
