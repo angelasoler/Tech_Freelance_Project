@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html>
- <div class="container-fluid">
-    <head>
-    <a class="navbar-brand" href="#">Tech Freelancers</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if signed_in? %>
-          <% if owner_signed_in? %>
-            <%= current_owner.try(:email) %>
-            <div><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></div>
-          <% else %>
-            <%= current_freelancer.try(:email) %>
-            <div><%= link_to 'Logout', destroy_freelancer_session_path, :method => :delete %></div>
-          <% end %>
-        <% end %>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><%= link_to 'Voltar Ao Inicio', root_path %></a>
-          </li>
-    </div>
-    <div class="bg-success p-3" style="--bs-bg-opacity: .5;">
-        <title>TechFreelancersProject</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
+  <head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Tech Freelancers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if signed_in? %>
+              <% if owner_signed_in? %>
+                <li class="nav-item">
+                  <a class="nav-link disabled"><%= current_owner.try(:email) %></a>
+                <li>
+                <li class="nav-item">
+                  <a class="nav-link", href="/owner/sign_out"><%= link_to 'Logout', destroy_owner_session_path, :method => :delete %></a>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <a class="nav-link disabled"><%= current_freelancer.try(:email) %></a>
+                <li>
+                <li class="nav-item">
+                  <a class="nav-link"><%= link_to 'Logout', destroy_freelancer_session_path, :method => :delete %></a>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <title>TechFreelancersProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
-      </head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>   
+  </head>
+    <div class="bg-success p-3" style="--bs-bg-opacity: .5;">
       <body>
         <%= yield %>
       </body>
-      <div class="container-fluid">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p> 
-      </div>
     </div>
-  </div>
+    <div class="callout">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
 </html>

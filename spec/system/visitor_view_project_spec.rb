@@ -93,7 +93,7 @@ describe  'Visitor visits homepage' do
     click_on 'Site para domicilios de comercio'
     click_on 'Voltar'
 
-    expect(page).to have_content('Tech Freelancers')
+    expect(page).to have_selector('.navbar-brand', visible: false, text: 'Tech Freelancers')
     expect(page).to have_link('Site para domicilios de comercio local')
     expect(page).to have_link('Marketing em redes sociais')
     expect(page).not_to have_content('Descrição: Um site com fotos dos produtos, localização,
