@@ -1,5 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_owner!, only: %i[new create]
+  before_action only: %i[show] do
+    @project = Project.find(params[:id])
+    redirect_to root_path unless current_owner == @project.owner || freelancer_signed_in?
+  end
+
   def show
     @project = Project.find(params[:id])
     @proposal = Proposal.new

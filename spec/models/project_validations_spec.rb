@@ -20,7 +20,6 @@ RSpec.describe Project, type: :model do
 
       it 'should be at least 2 months from now' do
         dono_de_projeto = create(:owner)
-        login_as dono_de_projeto, scope: :owner
         projeto = Project.create({ title: 'Marketing em redes sociais',
                                    description: 'Atrair clientes atravez das nossas redes e criar promoções.',
                                    desire_habilities: 'Gerenciamento e marketing rede sociais',

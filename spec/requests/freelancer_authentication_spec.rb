@@ -1,17 +1,33 @@
 require 'rails_helper'
 
 describe 'freelancer authentication:' do
-  context 'unauthenticated visitor can`t' do
+  context 'unauthenticated visitor cannot' do
     it 'open new profile form' do
       get new_profile_path
 
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to be_present
     end
+
+    it 'see project view' do
+      create(:project)
+
+      get '/projects/1'
+
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'cannot send a proposal' do
+      create(:project)
+
+      post '/projects/1/proposals'
+
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   context 'without complete profile' do
-    it 'can´t send a proposal' do
+    it 'see project view' do
       create(:project)
       angela = create(:freelancer)
       login_as angela, scope: :freelancer
@@ -19,6 +35,29 @@ describe 'freelancer authentication:' do
       get '/projects/1'
 
       expect(response).to redirect_to(new_profile_path)
+    end
+
+    it 'cannot send a proposal' do
+      create(:project)
+      angela = create(:freelancer)
+      login_as angela, scope: :freelancer
+
+      post '/projects/1/proposals'
+
+      expect(response).to redirect_to(new_profile_path)
+    end
+  end
+
+  context 'loged in freelancer' do
+    it 'try to accept or refuse proposal' do
+      proposta_jerry_tom = create(:proposal)
+      angela = create(:freelancer)
+
+      login_as angela, scope: :freelancer
+
+      patch proposal_path(proposta_jerry_tom)
+
+      expect(response).to redirect_to(root_path)
     end
   end
 end
