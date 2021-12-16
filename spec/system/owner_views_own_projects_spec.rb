@@ -55,8 +55,8 @@ describe 'project owner views own projects' do
                      remote: true, owner: pedro)
     create(:project, title: 'Site para domicilios de comercio local',
                      description: 'Um site com fotos dos produtos, localização,
-                                                  região de atendimento e whatsapp com mensagem
-                                                  para fazer pedido em domicilio',
+                     região de atendimento e whatsapp com mensagem
+                     para fazer pedido em domicilio',
                      desire_habilities: 'desenvolvimento fullstack para comercios',
                      max_hour_payment: 70, deadline_for_proposals: Time.zone.now + 5.months,
                      face_to_face: true, owner: pedro)

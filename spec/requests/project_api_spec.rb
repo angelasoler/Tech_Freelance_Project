@@ -31,7 +31,7 @@ describe 'Project API' do
                                       região de atendimento e whatsapp com mensagem
                                       para fazer pedido em domicilio',
                                  desire_habilities: 'desenvolvimento fullstack para comercios',
-                                 max_hour_payment: 40, remote: true)
+                                 max_hour_payment: 51, remote: true)
 
       get "/api/v1/projects/#{project.id}"
 
@@ -42,7 +42,7 @@ describe 'Project API' do
                                       região de atendimento e whatsapp com mensagem
                                       para fazer pedido em domicilio')
       expect(parsed_body[:desire_habilities]).to eq('desenvolvimento fullstack para comercios')
-      expect(parsed_body[:max_hour_payment]).to eq('40.0')
+      expect(parsed_body[:max_hour_payment]).to eq('51.0')
       expect(parsed_body[:remote]).to eq(true)
     end
 
@@ -55,12 +55,7 @@ describe 'Project API' do
     end
 
     it 'shoul return 500 if data base is not available' do
-      project = create(:project, title: 'Site para domicilios de comercio local',
-                                 description: 'Um site com fotos dos produtos, localização,
-                                      região de atendimento e whatsapp com mensagem
-                                      para fazer pedido em domicilio',
-                                 desire_habilities: 'desenvolvimento fullstack para comercios',
-                                 max_hour_payment: 40, remote: true)
+      project = create(:project)
       allow(Project).to receive(:find).with(project.id.to_s)
                                       .and_raise(ActiveRecord::ActiveRecordError)
 
@@ -78,7 +73,7 @@ describe 'Project API' do
                                                   região de atendimento e whatsapp com mensagem
                                                   para fazer pedido em domicilio',
                                     desire_habilities: 'desenvolvimento fullstack para comercios',
-                                    max_hour_payment: 40, deadline_for_proposals: 5.months.from_now,
+                                    max_hour_payment: 51, deadline_for_proposals: 5.months.from_now,
                                     remote: true, owner_id: owner.id } }
 
       post '/api/v1/projects', params: project_params
@@ -91,7 +86,7 @@ describe 'Project API' do
                                                   região de atendimento e whatsapp com mensagem
                                                   para fazer pedido em domicilio')
       expect(parsed_body[:desire_habilities]).to eq('desenvolvimento fullstack para comercios')
-      expect(parsed_body[:max_hour_payment]).to eq('40.0')
+      expect(parsed_body[:max_hour_payment]).to eq('51.0')
       expect(parsed_body[:remote]).to eq(true)
       expect(parsed_body[:owner_id]).to eq(Owner.last.id)
     end
