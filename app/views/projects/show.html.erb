@@ -1,4 +1,4 @@
-<h1><%= @project.title %></h1>
+<h1 class=text-center ><%= @project.title %></h1>
 
 <h5><div><%= t('.description') %><%= @project.description %></div></h5>
 <div><%= t('.desire_habilities')%><%= @project.desire_habilities %></div>
@@ -21,32 +21,32 @@
 <% end %>
 </div>
 
-<% if @proposal.errors.any? %>
-  <% @proposal.errors.full_messages.each do |error| %>
-    <div><%= error %></div>
-  <%end%>
-<% end %>
 
 <% if current_freelancer.present? %>
   <h1><%= 'Mande uma proposta para esse projeto!' %></h1>
   <%= form_with model: [@project, @proposal] do |form| %>
-    <%= form.label :motivation, 'Conte porque está aplicando para o projeto' %>
+    <%= form.label :motivation, t('.motivation') %>
     <%= form.text_field :motivation %><br>
-    <%= form.label :hourly_rate, 'Tarifa por hora' %>
+    <%= form.label :hourly_rate, t('.hourly_rate') %>
     <%= form.number_field :hourly_rate %><br>
-    <%= form.label :hours_per_week, 'Horas diponiveis por semana' %>
+    <%= form.label :hours_per_week, t('.hours_per_week') %>
     <%= form.number_field :hours_per_week %><br>
-    <%= form.label :weeks, 'Semanas para termino' %>
+    <%= form.label :weeks, t('.weeks') %>
     <%= form.number_field :weeks %><br>
     <%= form.submit 'Enviar', class: "btn btn-success" %>
-<% end %>
+  <% end %>
+  <% if @proposal.errors.any? %>
+    <% @proposal.errors.full_messages.each do |error| %>
+      <div><%= error %></div>
+    <%end%>
+  <% end %>
 <% elsif current_owner.present? %>
-    <h5>Veja as propostas desse freelancer para seu projeto</h5>
-    <% current_owner.proposals.each do |proposta| %>
-      <% if proposta.draft? || proposta.accepted? %>
-        <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
-      <% end %>
+  <h5>Veja as propostas desse freelancer para seu projeto</h5>
+  <% current_owner.proposals.each do |proposta| %>
+    <% if proposta.draft? || proposta.accepted? %>
+      <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
     <% end %>
+  <% end %>
 <% end %>
 
-<div><%= link_to 'Voltar', root_path %></div>
+<%= link_to 'Voltar', root_path %>

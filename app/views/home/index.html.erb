@@ -3,7 +3,7 @@
 </head>
 <section>
 <p><h2>
-  <small class="text-muted">Encontre profissionais de tecnologia para seus projetos!</small>
+  <em><small class="text-muted">Encontre profissionais de tecnologia para seus projetos!</small></em>
 </h2></p>
 <% if owner_signed_in? %>
   <nav  class="text-center">
@@ -20,7 +20,7 @@
 <section>
 <% if !owner_signed_in? %>
   <p><h2>
-    <small class="text-muted">Encontre um projeto e faça sua proposta!</small>
+    <em><small class="text-muted">Encontre um projeto e faça sua proposta!</small></em>
   </h2></p>
   <% if current_freelancer.present? %>
     <% if !current_freelancer.profile.blank? %>

@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @proposal = Proposal.new
+    @proposal = @project.proposals.new
     @proposals = @project.proposals.all
     redirect_to new_profile_path if freelancer_signed_in? && current_freelancer.profile.blank?
   end

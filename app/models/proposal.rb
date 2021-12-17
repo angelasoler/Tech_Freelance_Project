@@ -4,6 +4,7 @@ class Proposal < ApplicationRecord
 
   before_save :calculate_total_value
   validates :profile, uniqueness: true, on: :create
+  validates :motivation, :hours_per_week, :hourly_rate, :hours_per_week, :weeks,presence: true, on: :create
   validates :feed_back, presence: true, on: :update, unless: :skip_validation
 
   enum status: { draft: 0, accepted: 1, turned_down: 2 }

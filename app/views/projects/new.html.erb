@@ -41,19 +41,19 @@
   </div>
 
 
-  <div class="row mb-3">
-    <div class="col-sm-10 offset-sm">
+  <fieldset class="row mb-3">
+    <div class="input-group mb-3 center">
       <div class="form-check">
-        <%= form.check_box :face_to_face, class: "form-check-input" %>
-        <%= form.label :face_to_face, 'Presencial', class: "form-check-label" %>
+        <%= form.check_box :face_to_face, class: "form-check-input mt-0" %>
+        <%= form.label :face_to_face, 'Presencial', class: "d-inline p-2 bg-dark text-white rounded-circle" %>
       </div>
 
       <div class="form-check">
-        <%= form.check_box :remote, class: "form-check-input" %>
-        <%= form.label :remote, 'Remoto', class: "form-check-label" %>
+        <%= form.check_box :remote, class: "form-check-input mt-0" %>
+        <%= form.label :remote, 'Remoto', class: "d-inline p-2 bg-dark text-white rounded-circle"%>
       </div>
     </div>
-  </div>
+  </fieldset>
 
   <%= form.submit 'Cadastrar', class: "btn btn-primary mb-3" %>
 <% end %>

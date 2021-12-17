@@ -9,11 +9,7 @@ describe 'freelancer send proposal' do
                      desire_habilities: 'Gerenciamento e marketing rede sociais',
                      max_hour_payment: 60, deadline_for_proposals: Time.zone.now + 2.months,
                      remote: true)
-    create(:profile, full_name: 'Propositor Garcia', social_name: '',
-                     birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                     work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                     work_experience: 'veja portafolio, https://portafolio.com/ ',
-                     freelancer: propositor)
+    create(:profile, freelancer: propositor)
     mailer_spy = class_spy(ProposalMailer)
     stub_const('ProposalMailer', mailer_spy)
     mail = double('ProposalMailer')
@@ -23,10 +19,10 @@ describe 'freelancer send proposal' do
 
     visit root_path
     click_on 'Marketing em redes sociais'
-    fill_in 'Conte porque está aplicando para o projeto',
+    fill_in 'Motivação',
             with: 'Sou expecialista em redes sociais com 6 anos de experiencia'
     fill_in 'Tarifa por hora', with: 60
-    fill_in 'Horas diponiveis por semana', with: 10
+    fill_in 'Horas disponiveis por semana', with: 10
     fill_in 'Semanas para termino', with: 6
     click_on 'Enviar'
 
@@ -83,5 +79,20 @@ describe 'freelancer send proposal' do
     expect(page).to have_content('Sua proposta foi recusada.')
     expect(page).to have_content('Feed Back: Estamos procurando praços mais curtos')
     expect(page).not_to have_link('Enviar menssagem para o dono do projeto')
+  end
+
+  it 'and most fill all fields' do
+    projeto = create(:project)
+    vacilao = create(:profile)
+    login_as vacilao.freelancer, scope: :freelancer
+
+    visit root_path
+    click_on projeto.title
+    click_on 'Enviar'
+
+    expect(page).to have_content('Motivação não pode ficar em branco')
+    expect(page).to have_content('Tarifa por horanão pode ficar em branco')
+    expect(page).to have_content('Horas disponiveis por semana não pode ficar em branco')
+    expect(page).to have_content('Semanas para termino não pode ficar em branco')
   end
 end

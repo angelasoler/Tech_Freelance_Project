@@ -21,3 +21,7 @@ pt-BR:
       deadline_for_proposals: 'Data limite para proposta: '
       face_to_face: 'Presencial: '
       remote: 'Remoto: '
+      motivation: 'Motivação'
+      hourly_rate: 'Tarifa por hora'
+      hours_per_week: 'Horas disponiveis por semana'
+      weeks: 'Semanas para termino'
