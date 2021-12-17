@@ -38,5 +38,14 @@ RSpec.describe Project, type: :model do
       it { should validate_length_of(:description).is_at_least(20).is_at_most(200).on(:create) }
       it { should validate_numericality_of(:max_hour_payment).is_greater_than(50).on(:create) }
     end
+
+    it 'most check a least one type of work' do
+      project = build(:project, remote: false, face_to_face: false)
+
+      project.valid?
+
+      expect(project.errors[:project]).to include('Escolha ao menos um tipo de trabalho')
+      expect(project.valid?).to eq(false)
+    end
   end
 end
