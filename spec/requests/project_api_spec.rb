@@ -80,7 +80,6 @@ describe 'Project API' do
 
       expect(response).to have_http_status(201)
       expect(response.content_type).to include('application/json')
-      expect(parsed_body[:id]).to eq(Project.last.id)
       expect(parsed_body[:title]).to eq('Site para domicilios de comercio local')
       expect(parsed_body[:description]).to eq('Um site com fotos dos produtos, localização,
                                                   região de atendimento e whatsapp com mensagem

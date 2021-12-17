@@ -4,51 +4,59 @@
   <%end%>
 <% end %>
 
-<div class="input-group">
 <%= form_with model: @project do |form| %>
 
   <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">
-      <%= form.label :title, 'Título:' %>
+    <span class="input-group-text">
+      <%= form.label :title, 'Título', class: "text-primary" %>
+      <span class="col-sm-10">
+        <%= form.text_field :title, class: "form-control" %>
+      </span>
     </span>
-    <input type="text" class="form-control">
-    <% form.text_field :title %>
   </div>
+  
+  <%= form.label :description, 'Descrição', class: "input-group-text"%>
+  <%= form.text_field :description, class: "form-control" %>
+  <br>
 
-  <span class="input-group-text">
-  <%= form.label :description, 'Descrição:' %>
-  </span>
-  <textarea class="form-control" aria-label="With textarea">
-  <% form.text_field :description %>
-  </textarea>
 
-  <span class="input-group-text">
-  <%= form.label :desire_habilities, 'Habilidades desejadas:' %>
-  </span>
-  <textarea class="form-control" aria-label="With textarea">
-  <% form.text_field :desire_habilities %>
-  </textarea>
+  <%= form.label :desire_habilities, 'Habilidades desejadas', class: "input-group-text" %>
+  <%= form.text_field :desire_habilities, class: "form-control" %>
+  <br>
 
   <div class="input-group mb-3">
     <span class="input-group-text">
-      <%= form.label :max_hour_payment, 'Valor maximo por hora:' %>
+      <%= form.label :max_hour_payment, 'Valor maximo por hora', class: "text-primary" %>
     </span>
     <span class="input-group-text">
-      <input type="text" class="form-control">
-      <% form.number_field :max_hour_payment %>.00
+      <%= form.number_field :max_hour_payment, class: "form-control" %>.00
     </span>
   </div>
-  <span class="input-group-text">
-  <%= form.label :deadline_for_proposals, 'Data limite para proposta:' %>
-  </span>
-  <textarea class="form-control" aria-label="With textarea">
-  <% form.text_field :deadline_for_proposals %>
-  </textarea>
-  <%= form.check_box :face_to_face %>
-  <%= form.label :face_to_face, 'Presencial' %>
-  <%= form.check_box :remote %>
-  <%= form.label :remote, 'Remoto' %>
-  <%= form.submit 'Cadastrar' %>
-</div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">
+      <%= form.label :deadline_for_proposals, 'Data limite para proposta', class: "text-primary" %>
+    </span>
+    <span class="input-group-text">
+      <%= form.text_field :deadline_for_proposals,  class: "form-control"  %>
+    </span>
+  </div>
+
+
+  <div class="row mb-3">
+    <div class="col-sm-10 offset-sm">
+      <div class="form-check">
+        <%= form.check_box :face_to_face, class: "form-check-input" %>
+        <%= form.label :face_to_face, 'Presencial', class: "form-check-label" %>
+      </div>
+
+      <div class="form-check">
+        <%= form.check_box :remote, class: "form-check-input" %>
+        <%= form.label :remote, 'Remoto', class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit 'Cadastrar', class: "btn btn-primary mb-3" %>
 <% end %>
 

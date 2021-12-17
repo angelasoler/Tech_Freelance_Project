@@ -8,13 +8,13 @@ describe 'project owner register a project' do
 
     visit root_path
     click_on 'Publique um projeto'
-    fill_in 'Título:', with: 'Site para comercio local'
-    fill_in 'Descrição:',
+    fill_in 'Título', with: 'Site para comercio local'
+    fill_in 'Descrição',
             with: 'Site como fotos de produto e contato para pedido em domicilo'
-    fill_in 'Habilidades desejadas:',
+    fill_in 'Habilidades desejadas',
             with: 'Desenvolvedor fullstack com experiencia previa'
-    fill_in 'Valor maximo por hora:', with: 60
-    fill_in 'Data limite para proposta:', with: data_limite
+    fill_in 'Valor maximo por hora', with: 60
+    fill_in 'Data limite para proposta', with: data_limite
     check 'Presencial'
     check 'Remoto'
     click_on 'Cadastrar'

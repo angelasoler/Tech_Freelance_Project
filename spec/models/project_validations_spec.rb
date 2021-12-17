@@ -31,10 +31,6 @@ RSpec.describe Project, type: :model do
         expect(projeto.errors[:deadline_for_proposals]).to include('deve ser maior que dois meses.')
         expect(projeto.valid?).to eq(false)
       end
-
-      context 'most have 10 chars' do
-        it { should validate_length_of(:deadline_for_proposals).is_equal_to(10).on(:create).with_message('deve ser dia/ano/mês. ex. 16, Dez 2021 => 16/12/2021') }
-      end
     end
 
     context 'legth of create form fields:' do
