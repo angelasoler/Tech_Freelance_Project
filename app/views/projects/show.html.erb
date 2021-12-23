@@ -5,30 +5,30 @@
 <div><%= t('.max_hour_payment')%><%= number_to_currency(@project.max_hour_payment) %></div>
 <div><%= t('.deadline_for_proposals')%><%= l(@project.deadline_for_proposals) %></div>
 <div>
-<%= t('.face_to_face')%> 
-<% if @project.face_to_face? %>
-  Sim 
-<% else %>
-  Não	
-<% end %>
+  <%= t('.face_to_face')%> 
+  <% if @project.face_to_face? %>
+    Sim 
+  <% else %>
+    Não	
+  <% end %>
 </div>
 <div>
 <%= t('.remote')%>
-<% if @project.remote? %>
-  Sim 
-<% else %>
-  Não	
-<% end %>
+  <% if @project.remote? %>
+    Sim 
+  <% else %>
+    Não	
+  <% end %>
 </div>
 
-<% if @proposal.errors.any? %>
-  <% @proposal.errors.full_messages.each do |error| %>
-    <div><%= error %></div>
-  <%end%>
-<% end %>
 
 <% if freelancer_signed_in? %>
   <h1><%= 'Mande uma proposta para esse projeto!' %></h1>
+  <% if @proposal.errors.any? %>
+    <% @proposal.errors.full_messages.each do |error| %>
+      <div class="notice alert-primary container-fluid"><%= error %></div>
+    <%end%>
+  <% end %>
   <%= form_with model: [@project, @proposal] do |form| %>
     <%= form.label :motivation, t('.motivation') %>
     <%= form.text_field :motivation %><br>
