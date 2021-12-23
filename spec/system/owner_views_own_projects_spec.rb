@@ -65,23 +65,21 @@ describe 'project owner views own projects' do
     visit my_projects_projects_path
     click_on 'Marketing em redes sociais'
 
-    expect(page).to have_css('h1', text: 'Marketing em redes sociais')
-    expect(page).to have_content('Descrição: Atrair clientes atravez das nossas redes e criar promoções.')
+    expect(page).to have_css('h5', text: 'Marketing em redes sociais')
+    expect(page).to have_content('Atrair clientes atravez das nossas redes e criar promoções.')
     expect(page).to have_content('Habilidades desejadas: Gerenciamento e marketing rede sociais')
     expect(page).to have_content('Valor maximo por hora: R$ 60')
     expect(page).to have_content("Data limite para proposta: #{data.strftime('%d/%m/%Y')}")
-    expect(page).to have_content('Remoto: Sim')
-    expect(page).to have_content('Presencial: Não')
+    expect(page).to have_content('Remoto')
     expect(page).not_to have_link('Marketing em redes sociais')
     expect(page).not_to have_link('Site para domicilios de comercio local')
-    expect(page).not_to have_content('Descrição: Um site com fotos dos produtos, localização,
+    expect(page).not_to have_content('Um site com fotos dos produtos, localização,
                                       região de atendimento e whatsapp com mensagem
                                       para fazer pedido em domicilio')
     expect(page).not_to have_content('Habilidades desejadas: desenvolvimento fullstack para comercios')
     expect(page).not_to have_content('Valor maximo por hora: R$ 70')
     expect(page).not_to have_content("Data limite para proposta: #{(data + 2.months).strftime('%d/%m/%Y')}")
-    expect(page).not_to have_content('Remoto: Não')
-    expect(page).not_to have_content('Presencial: Sim')
+    expect(page).not_to have_content('Presencial')
   end
 
   it 'has not register any still' do

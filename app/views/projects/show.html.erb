@@ -1,52 +1,76 @@
-<h1 class=text-center ><%= @project.title %></h1>
+<div class="card">
+  <h5 class="card-header text-center" ><%= @project.title %></h5>
 
-<h5><div><%= t('.description') %><%= @project.description %></div></h5>
-<div><%= t('.desire_habilities')%><%= @project.desire_habilities %></div>
-<div><%= t('.max_hour_payment')%><%= number_to_currency(@project.max_hour_payment) %></div>
-<div><%= t('.deadline_for_proposals')%><%= l(@project.deadline_for_proposals) %></div>
-<div>
-<%= t('.face_to_face')%> 
-<% if @project.face_to_face? %>
-  Sim 
-<% else %>
-  Não	
-<% end %>
-</div>
-<div>
-<%= t('.remote')%>
-<% if @project.remote? %>
-  Sim 
-<% else %>
-  Não	
-<% end %>
+  <div class="card-body">
+    <p class="card-text text-center"><%= @project.description %></p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-primary"><%= t('.desire_habilities')%><%= @project.desire_habilities %></li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item list-group-item-success"><%= t('.max_hour_payment')%><%= number_to_currency(@project.max_hour_payment) %></li>
+      <li class="list-group-item list-group-item-warning"><%= t('.deadline_for_proposals')%><%= l(@project.deadline_for_proposals) %></li>
+      <li class="list-group-item list-group-item-dark">
+        <%= t('.face_to_face') if @project.face_to_face? %> 
+      </li>
+      <li class="list-group-item list-group-item-dark">
+        <%= t('.remote') if @project.remote?%>
+      </li>
+    </ul>
+  </div>    
 </div>
 
-<% if @proposal.errors.any? %>
-  <% @proposal.errors.full_messages.each do |error| %>
-    <div><%= error %></div>
-  <%end%>
-<% end %>
+<p>
+  <% if freelancer_signed_in? %>
+    <h5 class="text-muted text-center">
+      <p class="alert alert-light"><%= 'Mande uma proposta para esse projeto!' %></p>
+    </h5>
+    <% if @proposal.errors.any? %>
+      <% @proposal.errors.full_messages.each do |error| %>
+        <div class="notice alert-primary container-fluid"><%= error %></div>
+      <%end%>
+    <% end %>
 
-<% if freelancer_signed_in? %>
-  <h1><%= 'Mande uma proposta para esse projeto!' %></h1>
-  <%= form_with model: [@project, @proposal] do |form| %>
-    <%= form.label :motivation, t('.motivation') %>
-    <%= form.text_field :motivation %><br>
-    <%= form.label :hourly_rate, t('.hourly_rate') %>
-    <%= form.number_field :hourly_rate %><br>
-    <%= form.label :hours_per_week, t('.hours_per_week') %>
-    <%= form.number_field :hours_per_week %><br>
-    <%= form.label :weeks, t('.weeks') %>
-    <%= form.number_field :weeks %><br>
-    <%= form.submit 'Enviar', class: "btn btn-success" %>
-  <% end %>
-<% elsif current_owner.present? %>
-  <h5>Veja as propostas desse freelancer para seu projeto</h5>
-  <% current_owner.proposals.each do |proposta| %>
-    <% if proposta.draft? || proposta.accepted? %>
-      <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
+    <%= form_with model: [@project, @proposal] do |form| %>
+      <nav class="text-center">
+        <div class="col-auto">
+          <label class="list-group-item list-group-item-info" >
+            <%= form.label :motivation, t('.motivation')%>
+          </label>
+          <%= form.text_field :motivation, class: "form-control" %>
+        </div>
+        <div class="row g-3 col-auto">
+          <div class="col-auto">
+            <label class="list-group-item list-group-item-info" >
+              <%= form.label :hourly_rate, t('.hourly_rate') %>
+            </label>
+            <%= form.number_field :hourly_rate, class: "form-control" %><br>
+          </div>
+          <div class="col-auto">
+            <label class="list-group-item list-group-item-info" >
+              <%= form.label :hours_per_week, t('.hours_per_week') %>
+            </label>
+            <%= form.number_field :hours_per_week, class: "form-control" %><br>
+          </div>
+          <div class="col-auto">
+            <label class="list-group-item list-group-item-info" >
+              <%= form.label :weeks, t('.weeks') %>
+            </label>
+            <%= form.number_field :weeks, class: "form-control" %><br>
+          </div>
+        </div>
+      </nav>
+
+      <nav class="text-center">
+        <%= form.submit 'Enviar', class: "btn btn-success" %>
+      </nav>
+    <% end %>
+  <% elsif current_owner.present? %>
+    <h5>Veja as propostas desse freelancer para seu projeto</h5>
+    <% current_owner.proposals.each do |proposta| %>
+      <% if proposta.draft? || proposta.accepted? %>
+        <div><%= link_to proposta.profile.full_name, proposal_path(proposta.id) %></div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-
+</p>
 <%= link_to 'Voltar', root_path %>

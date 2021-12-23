@@ -8,23 +8,24 @@
 
   <div class="input-group flex-nowrap mb-3"">
     <span class="input-group-text">
-     <%= form.label :title, 'Título', class: "text-primary" %>
+    
+     <%= form.label :title, t('.title'), class: "text-primary" %>
     </span>
     <%= form.text_field :title, class: "form-control" %>
   </div>
   
-  <%= form.label :description, 'Descrição', class: "input-group-text text-primary"%>
+  <%= form.label :description, t('.description'), class: "input-group-text text-primary"%>
   <%= form.text_field :description, class: "form-control" %>
   <br>
 
 
-  <%= form.label :desire_habilities, 'Habilidades desejadas', class: "input-group-text text-primary" %>
+  <%= form.label :desire_habilities,t('.desire_habilities'), class: "input-group-text text-primary" %>
   <%= form.text_field :desire_habilities, class: "form-control" %>
   <br>
 
   <div class="input-group mb-3">
     <span class="input-group-text">
-      <%= form.label :max_hour_payment, 'Valor maximo por hora', class: "text-primary" %>
+      <%= form.label :max_hour_payment, t('.max_hour_payment'), class: "text-primary" %>
     </span>
     <span class="input-group-text">
       <%= form.number_field :max_hour_payment, class: "form-control" %>.00
@@ -33,7 +34,7 @@
 
   <div class="input-group mb-3">
     <span class="input-group-text">
-      <%= form.label :deadline_for_proposals, 'Data limite para proposta', class: "text-primary" %>
+      <%= form.label :deadline_for_proposals, t('.deadline_for_proposals'), class: "text-primary" %>
     </span>
     <span class="input-group-text">
       <%= form.date_field :deadline_for_proposals,  class: "form-control"  %>
@@ -45,12 +46,12 @@
     <div class="input-group mb-3 center">
       <div class="form-check">
         <%= form.check_box :face_to_face, class: "form-check-input mt-0" %>
-        <%= form.label :face_to_face, 'Presencial', class: "d-inline p-2 bg-dark text-white rounded-circle" %>
+        <%= form.label :face_to_face, t('.face_to_face'), class: "d-inline p-2 bg-dark text-white rounded-circle" %>
       </div>
 
       <div class="form-check">
         <%= form.check_box :remote, class: "form-check-input mt-0" %>
-        <%= form.label :remote, 'Remoto', class: "d-inline p-2 bg-dark text-white rounded-circle"%>
+        <%= form.label :remote, t('.remote'), class: "d-inline p-2 bg-dark text-white rounded-circle"%>
       </div>
     </div>
   </fieldset>
