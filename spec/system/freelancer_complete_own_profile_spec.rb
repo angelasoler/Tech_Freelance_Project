@@ -59,11 +59,10 @@ describe 'freelancer complete profile' do
     click_on 'Marketing em redes sociais'
 
     expect(page).to have_content('Marketing em redes sociais')
-    expect(page).to have_content('Descrição: Atrair clientes atravez das nossas redes e criar promoções.')
+    expect(page).to have_content('Atrair clientes atravez das nossas redes e criar promoções.')
     expect(page).to have_content('Valor maximo por hora: R$ 60')
     expect(page).to have_content("Data limite para proposta: #{(Time.zone.now + 2.months).strftime('%d/%m/%Y')}")
-    expect(page).to have_content('Presencial: Não')
-    expect(page).to have_content('Remoto: Sim')
+    expect(page).to have_content('Remoto')
     expect(page).to have_content('Mande uma proposta para esse projeto!')
   end
 

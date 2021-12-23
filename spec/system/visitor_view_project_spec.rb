@@ -57,18 +57,16 @@ describe  'Visitor visits homepage' do
     click_on 'Site para domicilios de comercio'
 
     expect(page).to have_content('Site para domicilios de comercio local')
-    expect(page).to have_content('Descrição: Um site para pedidos em domicilio')
+    expect(page).to have_content('Um site para pedidos em domicilio')
     expect(page).to have_content('Habilidades desejadas: desenvolvimento fullstack para comercios')
     expect(page).to have_content('Valor maximo por hora: R$ 60,00')
     expect(page).to have_content("Data limite para proposta: #{(Time.zone.now + 5.months).strftime('%d/%m/%Y')}")
-    expect(page).to have_content('Remoto: Sim')
-    expect(page).to have_content('Presencial: Não')
+    expect(page).to have_content('Remoto')
     expect(page).not_to have_content('Marketing em redes sociais')
-    expect(page).not_to have_content('Descrição: Atrair clientes atravez das nossas redes e criar promoções.')
+    expect(page).not_to have_content('Atrair clientes atravez das nossas redes e criar promoções.')
     expect(page).not_to have_content('Habilidades desejadas: Gerenciamento e marketing rede sociais')
     expect(page).not_to have_content("Data limite para proposta: #{(Time.zone.now + 3.months).strftime('%d/%m/%Y')}")
-    expect(page).not_to have_content('Remoto: Não')
-    expect(page).not_to have_content('Presencial: Sim')
+    expect(page).not_to have_content('Presencial')
     expect(page).not_to have_link('Enviar Proposta')
   end
 

@@ -19,13 +19,12 @@ describe 'project owner register a project' do
     check 'Remoto'
     click_on 'Cadastrar'
 
-    expect(page).to have_css('h1', text: 'Site para comercio local')
-    expect(page).to have_css('h5',
-                             text: 'Site como fotos de produto e contato para pedido em domicilo')
+    expect(page).to have_css('h5', text: 'Site para comercio local')
+    expect(page).to have_content('Site como fotos de produto e contato para pedido em domicilo')
     expect(page).to have_content('Desenvolvedor fullstack com experiencia previa')
     expect(page).to have_content('Valor maximo por hora: R$ 60')
-    expect(page).to have_content('Presencial: Sim')
-    expect(page).to have_content('Remoto: Sim')
+    expect(page).to have_content('Presencial')
+    expect(page).to have_content('Remoto')
   end
 
   it 'and fields must be fill' do
