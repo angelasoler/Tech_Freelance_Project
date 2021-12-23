@@ -17,13 +17,12 @@ class ProposalsController < ApplicationController
   def create
     @proposal = current_freelancer.profile.proposals.build(proposal_params)
     @proposal.project = Project.find(params[:project_id])
-    return unless @proposal.save
-
-    ProposalMailer
-      .with(proposal: @proposal)
-      .notify_new_proposal
-      .deliver_now
-    redirect_to proposal_path(@proposal.id), notice: 'Sua proposta foi enviada para ser avaliada pelo dono do projeto!'
+    if @proposal.save
+      redirect_to proposal_path(@proposal.id), notice: t('.success')
+      ProposalMailer.with(proposal: @proposal).notify_new_proposal.deliver_now
+    else
+      render '/projects/show', assigns: { project: @proposal.project }
+    end
   end
 
   def proposal_params

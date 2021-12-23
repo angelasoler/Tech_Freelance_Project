@@ -21,8 +21,13 @@
 <% end %>
 </div>
 
+<% if @proposal.errors.any? %>
+  <% @proposal.errors.full_messages.each do |error| %>
+    <div><%= error %></div>
+  <%end%>
+<% end %>
 
-<% if current_freelancer.present? %>
+<% if freelancer_signed_in? %>
   <h1><%= 'Mande uma proposta para esse projeto!' %></h1>
   <%= form_with model: [@project, @proposal] do |form| %>
     <%= form.label :motivation, t('.motivation') %>
@@ -34,11 +39,6 @@
     <%= form.label :weeks, t('.weeks') %>
     <%= form.number_field :weeks %><br>
     <%= form.submit 'Enviar', class: "btn btn-success" %>
-  <% end %>
-  <% if @proposal.errors.any? %>
-    <% @proposal.errors.full_messages.each do |error| %>
-      <div><%= error %></div>
-    <%end%>
   <% end %>
 <% elsif current_owner.present? %>
   <h5>Veja as propostas desse freelancer para seu projeto</h5>

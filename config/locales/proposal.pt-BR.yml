@@ -15,4 +15,5 @@ pt-BR:
       hourly_rate: 'Tarifa por hora: '
       hours_per_week: 'Horas disponiveis por semana: '
       weeks: 'Semanas para termino: '
-
+    create:
+      success: 'Sua proposta foi enviada para ser avaliada pelo dono do projeto!'

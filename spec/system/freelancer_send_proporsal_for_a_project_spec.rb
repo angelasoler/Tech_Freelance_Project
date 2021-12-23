@@ -91,7 +91,7 @@ describe 'freelancer send proposal' do
     click_on 'Enviar'
 
     expect(page).to have_content('Motivação não pode ficar em branco')
-    expect(page).to have_content('Tarifa por horanão pode ficar em branco')
+    expect(page).to have_content('Tarifa por hora não pode ficar em branco')
     expect(page).to have_content('Horas disponiveis por semana não pode ficar em branco')
     expect(page).to have_content('Semanas para termino não pode ficar em branco')
   end
