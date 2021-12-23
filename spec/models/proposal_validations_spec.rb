@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Proposal, type: :model do
-  context 'validations' do
+  context 'validates' do
     it 'action accept does not need feed back' do
       proposta = create(:proposal, status: 'accepted')
 
@@ -16,6 +16,23 @@ RSpec.describe Proposal, type: :model do
       it { should validate_presence_of(:hourly_rate).on(:create) }
       it { should validate_presence_of(:hours_per_week).on(:create) }
       it { should validate_presence_of(:weeks).on(:create) }
+    end
+
+    context 'characteristiques of each attribute' do
+      it { should validate_length_of(:motivation).is_at_least(15).is_at_most(200).on(:create) }
+      it {
+        should validate_numericality_of(:hourly_rate)
+          .is_less_than_or_equal_to(200)
+          .is_greater_than_or_equal_to(50)
+          .on(:create)
+      }
+      it {
+        should validate_numericality_of(:hours_per_week)
+          .is_less_than_or_equal_to(40)
+          .is_greater_than_or_equal_to(10)
+          .on(:create)
+      }
+      it { should validate_numericality_of(:weeks).on(:create) }
     end
   end
 end

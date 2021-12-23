@@ -13,7 +13,7 @@ RSpec.describe ProposalMailer, type: :mailer do
                                      password: 'achbdiwjf;...  --')
       create(:profile, full_name: 'Genoveva Dos Santos', freelancer: genoveva)
       proposta = create(:proposal, motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                                   hourly_rate: 40, hours_per_week: 8, weeks: 10, project: felipa_project,
+                                   hourly_rate: 50, hours_per_week: 10, weeks: 10, project: felipa_project,
                                    profile: genoveva.profile)
 
       mail = ProposalMailer.with(proposal: proposta).notify_new_proposal
@@ -24,8 +24,8 @@ RSpec.describe ProposalMailer, type: :mailer do
       expect(mail.body).to include 'Tem nova para um dos seus projetos!'
       expect(mail.body).to include 'Seu projeto Marketing em redes sociais recebeu uma proposta de Genoveva Dos Santos'
       expect(mail.body).to include 'Sou expecialista em redes sociais com 6 anos de experiencia'
-      expect(mail.body).to include 'Tarifa por hora: R$ 40'
-      expect(mail.body).to include 'Horas disponiveis por semana: 8'
+      expect(mail.body).to include 'Tarifa por hora: R$ 50'
+      expect(mail.body).to include 'Horas disponiveis por semana: 10'
       expect(mail.body).to include 'Semanas para termino: 10'
       expect(mail.body).to include 'Vai no menu meus projetos para aceitar ou rejeitar.'
     end
