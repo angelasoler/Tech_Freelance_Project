@@ -3,6 +3,8 @@ class Proposal < ApplicationRecord
   belongs_to :profile
 
   before_save :calculate_total_value
+
+  validates_uniqueness_of :profile_id, scope: :project_id
   validates :motivation, :hours_per_week, :hourly_rate, :hours_per_week, :weeks, presence: true, on: :create
   validates :feed_back, presence: true, on: :update, unless: :skip_validation
   validates :motivation, length: { in: 15..200 }
