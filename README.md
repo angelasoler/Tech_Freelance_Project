@@ -12,19 +12,19 @@
 
 ## :computer: PROJETO
 
-Este projeto foi desenvolvido para a primeira etapa do treinamento em desenvolvimento de applicativos web, com base em Ruby On Rails, do [TreinaDev](https://treinadev.com.br).
-Permite postar projetos, receber e oferecer propostas e orçamentos, receber notificações via email, com o objetivo de contratar profissionais de tecnologia freelancers.
+Este projeto foi desenvolvido para a primeira etapa do treinamento em desenvolvimento de applicações web, com base em Ruby On Rails, do [TreinaDev](https://treinadev.com.br).
+Permite postar projetos, receber e oferecer propostas e orçamentos, receber notificações via e-mail, com o objetivo de contratar profissionais de tecnologia freelancers.
 
-## :hammer_and_wrench: CONSTRUIDO COM
+## :hammer_and_wrench: CONSTRUÍDO COM
 
-São usados os frameworks de teste e navegação [Rspec](https://relishapp.com/rspec/rspec-rails/v/4-0/docs) e [Capybara](https://github.com/teamcapybara/capybara#using-capybara-with-rspec) com a API [Rack Test](https://rubygems.org/gems/rack-test/versions/1.1.0) para desenvolver a aplição atravez de TDD(Test Driven Development).
+São usados os frameworks de teste e navegação [Rspec](https://relishapp.com/rspec/rspec-rails/v/4-0/docs) e [Capybara](https://github.com/teamcapybara/capybara#using-capybara-with-rspec) com a API [Rack Test](https://rubygems.org/gems/rack-test/versions/1.1.0) para desenvolver a aplicação através de TDD(Test Driven Development).
 
-Tambem são usados os gems [Devise](https://github.com/heartcombo/devise) para autenticação de usuarios e [devise-i18n](https://github.com/tigrish/devise-i18n) para tradução automatica do Devise ao pt-BR.
+Também são usados os gems [Devise](https://github.com/heartcombo/devise) para autenticação de usuários e [devise-i18n](https://github.com/tigrish/devise-i18n) para tradução automática do Devise ao pt-BR.
 
-Para melhorar o visual do Front-End é usado o framework [BootStrap](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md#a-ruby-on-rails), veja tambem mais documentação sobre installação e uso [aqui](https://getbootstrap.com/docs/4.3/getting-started/download/#rubygems).
+Para melhorar o visual do Front-End é usado o framework [BootStrap](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md#a-ruby-on-rails), veja também mais documentação sobre instalação e uso [aqui](https://getbootstrap.com/docs/4.3/getting-started/download/#rubygems).
 
 ## :gear: PASSO A PASSO PARA CLONAR E NAVEGAR O PROJETO
-- Para intalar o projeto rode os seguintes comandos no seu terminal:
+- Para instalar o projeto rode os seguintes comandos no seu terminal:
 
   ```
   git clone https://github.com/angelasoler/Tech_Freelance_Project.git
@@ -57,7 +57,7 @@ Para melhorar o visual do Front-End é usado o framework [BootStrap](https://git
   ```
 Abra este [link](http://localhost:3000/) no seu navegador
 
-## :raising_hand: DADOS DE USUARIOS PARA LOGIN
+## :raising_hand: DADOS DE USUÁRIOS PARA LOGIN
 
 <p align="center">
   ********
@@ -109,7 +109,7 @@ Abra este [link](http://localhost:3000/) no seu navegador
          ls
          ```
        
-  4. Ver conteudo do arquivo
+  4. Ver conteúdo do arquivo
          ```
          cat <nome do arquivo>
          ```
@@ -121,12 +121,12 @@ Abra este [link](http://localhost:3000/) no seu navegador
 
 ## :gem: Gems adicionais:
 
-- [should matchers](https://matchers.shoulda.io/) para testes unitarios mais resumidos
+- [Should Matchers](https://matchers.shoulda.io/) para testes unitários mais resumidos
 
-- [simplecov](https://github.com/simplecov-ruby/simplecov) para ver dados sobre covertura de testes do projeto
+- [SimpleCov](https://github.com/simplecov-ruby/simplecov) para ver dados sobre cobertura de testes do projeto
 
-- [factorybot](https://github.com/thoughtbot/factory_bot) cria variaves para nossos testes facilitando a legibilidade e poupando tempo
+- [FactoryBot](https://github.com/thoughtbot/factory_bot) cria variáveis para nossos testes facilitando a legibilidade e poupando tempo
 
-- [rubocop](https://rubocop.org/) verifica o estilo do código Ruby, ajudando a manter bons padrões
+- [Rubocop](https://rubocop.org/) verifica o estilo do código Ruby, ajudando a manter bons padrões
 
 
