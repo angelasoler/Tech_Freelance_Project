@@ -2,11 +2,24 @@
   :woman_technologist: TECH FREELANCERS WEB APP
 </h1>
 
+<p>
+  <img alt="repository size" src="https://img.shields.io/github/repo-size/angelasoler/Tech_Freelance_Project">
+  
+  <img alt="languanges" src="https://img.shields.io/github/languages/count/angelasoler/Tech_Freelance_Project">
+
+  <img alt="last commit" src="https://img.shields.io/github/last-commit/angelasoler/Tech_Freelance_Project">
+
+  <img alt="issues" src="https://img.shields.io/github/issues/angelasoler/Tech_Freelance_Project">
+</p>
+
+[PRÉ-REQUISITOS](https://github.com/angelasoler/Tech_Freelance_Project#clipboard-pr%C3%A9-requisitos) | [PROJETO](https://github.com/angelasoler/Tech_Freelance_Project#computer-projeto) | [CONSTRUÍDO COM](https://github.com/angelasoler/Tech_Freelance_Project#hammer_and_wrench-constru%C3%ADdo-com) | [PASSO A PASSO PARA CLONAR E NAVEGAR O PROJETO](https://github.com/angelasoler/Tech_Freelance_Project#gear-passo-a-passo-para-clonar-e-navegar-o-projeto) | [DADOS DE USUÁRIOS PARA LOGIN](https://github.com/angelasoler/Tech_Freelance_Project#raising_hand-dados-de-usu%C3%A1rios-para-login) | [NAVEGANDO OS TESTES COMO DOCUMENTAÇÃO](https://github.com/angelasoler/Tech_Freelance_Project#nut_and_bolt-navegando-os-testes-como-documenta%C3%A7%C3%A3o) | [GEMS ADICIONAIS](https://github.com/angelasoler/Tech_Freelance_Project#gem-gems-adicionais)
+
 ## :clipboard: Pré-requisitos
-  * Ruby
-  * SQLite3
-  * Node.js
-  * Yarn
+  * Ruby On Rails '~> 6.1.4', '>= 6.1.4.1'
+  * Ruby '2.7.0'
+  * SQLite3 '~> 1.4'
+  * Node.js '14.18.1'
+  * Yarn '1.22.17'
   
   Veja a documentação [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) para mais detalhes.
 
@@ -119,7 +132,7 @@ Abra este [link](http://localhost:3000/) no seu navegador
             rspec
             ```
 
-## :gem: Gems adicionais:
+## :gem: Gems adicionais
 
 - [Should Matchers](https://matchers.shoulda.io/) para testes unitários mais resumidos
 
