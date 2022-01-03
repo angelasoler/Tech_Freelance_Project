@@ -4,7 +4,7 @@ class Project < ApplicationRecord
             :max_hour_payment,
             :deadline_for_proposals,
             presence: true
-  validate :greater_than_two_months, on: :create
+  validate :valid_date, :greater_than_two_months, on: :create
   validates :title, length: { in: 8..40 }
   validates :description, length: { in: 20..200 }
   validates :max_hour_payment, numericality: { greater_than: 50 }
@@ -16,12 +16,14 @@ class Project < ApplicationRecord
   private
 
   def greater_than_two_months
-    return unless !deadline_for_proposals.nil? && (deadline_for_proposals < Time.zone.today + 2.months)
-
-    errors.add(:deadline_for_proposals, 'deve ser maior que dois meses.')
+    errors.add(:deadline_for_proposals, I18n.t('greater_than_two_months', scope: 'activerecord.errors.messages')) unless deadline_for_proposals && deadline_for_proposals >= Time.zone.today + 2.months
   end
 
   def type_of_job
-    errors.add(:project, 'Escolha ao menos um tipo de trabalho') if !remote? && !face_to_face?
+    errors.add(:project, I18n.t('type_of_job', scope: 'activerecord.errors.messages')) if !remote? && !face_to_face?
+  end
+
+  def valid_date
+    errors.add(:deadline_for_proposals, I18n.t('valid_date', scope: 'activerecord.errors.messages')) unless deadline_for_proposals && deadline_for_proposals.is_a?(Date)
   end
 end

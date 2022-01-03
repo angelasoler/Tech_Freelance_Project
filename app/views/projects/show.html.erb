@@ -22,7 +22,7 @@
 <p>
   <% if freelancer_signed_in? %>
     <h5 class="text-muted text-center">
-      <p class="alert alert-light"><%= 'Mande uma proposta para esse projeto!' %></p>
+      <p class="alert alert-danger"><%= 'Mande uma proposta para esse projeto!' %></p>
     </h5>
     <% if @proposal.errors.any? %>
       <% @proposal.errors.full_messages.each do |error| %>

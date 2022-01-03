@@ -1,0 +1,9 @@
+---
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        valid_date: 'deve ser uma data valida.'
+        name_and_surname: 'deve incluir nome e sobrenome.'
+        type_of_job: 'Escolha ao menos um tipo de trabalho'
+        greater_than_two_months: 'deve ser maior que dois meses.'

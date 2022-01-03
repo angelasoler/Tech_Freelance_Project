@@ -95,4 +95,12 @@ describe 'freelancer send proposal' do
     expect(page).to have_content('Horas disponiveis por semana não pode ficar em branco')
     expect(page).to have_content('Semanas para termino não pode ficar em branco')
   end
+
+  it 'after dead line' do
+    projeto = build(:project, deadline_for_proposals: Time.zone.now - 1.days)
+
+    visit root_path
+
+    expect(page).not_to have_link(projeto.title)
+  end
 end
