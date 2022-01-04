@@ -28,7 +28,7 @@ RSpec.describe Profile, type: :model do
 
     profile.valid?
 
-    expect(profile.valid?).to eq(false) 
+    expect(profile.valid?).to eq(false)
     expect(profile.errors[:birth_date]).to include('deve ser uma data valida.')
   end
 end

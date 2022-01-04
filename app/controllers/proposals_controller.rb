@@ -18,8 +18,8 @@ class ProposalsController < ApplicationController
     @proposal = current_freelancer.profile.proposals.build(proposal_params)
     @proposal.project = Project.find(params[:project_id])
     if @proposal.save
-      redirect_to proposal_path(@proposal.id), notice: t('.success')
-      ProposalMailer.with(proposal: @proposal).notify_new_proposal.deliver_now
+      redirect_to proposal_path(@proposal), notice: t('.success')
+      proposal_notification
     else
       render '/projects/show', assigns: { project: @proposal.project }
     end
@@ -67,5 +67,9 @@ class ProposalsController < ApplicationController
 
   def verify_freelancer_profile_exists
     redirect_to new_profile_path if Profile.find_by(freelancer: current_freelancer).blank?
+  end
+
+  def proposal_notification
+    ProposalMailer.with(proposal: @proposal).notify_new_proposal.deliver_now
   end
 end

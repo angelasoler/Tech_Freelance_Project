@@ -97,7 +97,7 @@ describe 'freelancer send proposal' do
   end
 
   it 'after dead line' do
-    projeto = build(:project, deadline_for_proposals: Time.zone.now - 1.days)
+    projeto = build(:project, deadline_for_proposals: Time.zone.now - 1.day)
 
     visit root_path
 

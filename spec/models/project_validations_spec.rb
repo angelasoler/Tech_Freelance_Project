@@ -23,10 +23,10 @@ RSpec.describe Project, type: :model do
 
       it 'most be date data type' do
         project = build(:project, deadline_for_proposals: 'dfnkgklndfg')
-    
+
         project.valid?
-    
-        expect(project.valid?).to eq(false) 
+
+        expect(project.valid?).to eq(false)
         expect(project.errors[:deadline_for_proposals]).to include('deve ser uma data valida.')
       end
     end

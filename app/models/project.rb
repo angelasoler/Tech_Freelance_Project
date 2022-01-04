@@ -16,7 +16,12 @@ class Project < ApplicationRecord
   private
 
   def greater_than_two_months
-    errors.add(:deadline_for_proposals, I18n.t('greater_than_two_months', scope: 'activerecord.errors.messages')) unless deadline_for_proposals && deadline_for_proposals >= Time.zone.today + 2.months
+    unless deadline_for_proposals &&
+           deadline_for_proposals >= Time.zone.today + 2.months
+      errors.add(:deadline_for_proposals,
+                 I18n.t('greater_than_two_months',
+                        scope: 'activerecord.errors.messages'))
+    end
   end
 
   def type_of_job
@@ -24,6 +29,10 @@ class Project < ApplicationRecord
   end
 
   def valid_date
-    errors.add(:deadline_for_proposals, I18n.t('valid_date', scope: 'activerecord.errors.messages')) unless deadline_for_proposals && deadline_for_proposals.is_a?(Date)
+    unless deadline_for_proposals
+           .is_a?(Date)
+      errors.add(:deadline_for_proposals,
+                 I18n.t('valid_date', scope: 'activerecord.errors.messages'))
+    end
   end
 end

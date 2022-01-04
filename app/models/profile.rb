@@ -8,7 +8,6 @@ class Profile < ApplicationRecord
   has_one_attached :photo
   has_many :proposals, dependent: :destroy
 
-  
   def name_and_surname
     return unless full_name.present? && full_name.split.size == 1
 
@@ -16,6 +15,6 @@ class Profile < ApplicationRecord
   end
 
   def valid_date
-    errors.add(:birth_date, I18n.t('valid_date', scope: 'activerecord.errors.messages')) unless birth_date && birth_date.is_a?(Date)
+    errors.add(:birth_date, I18n.t('valid_date', scope: 'activerecord.errors.messages')) unless birth_date.is_a?(Date)
   end
 end
