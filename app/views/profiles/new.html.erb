@@ -1,36 +1,79 @@
 <div class="container-fluid">
-  <h3>Preencha seu perfil completo para começar a criar propostas!</h3>
+  <h3 class="alert alert-info">Preencha seu perfil completo para começar a criar propostas!</h3>
 
   <% if @profile.errors.any? %>
     <% @profile.errors.full_messages.each do |error| %>
-      <div class="alert alert-info"><%= error %></div>
+      <div class="notice alert-primary container-fluid"><%= error %></div>
     <%end%>
   <% end %>
 
   <%= form_with model: @profile do |form| %>
-    <%= form.label :full_name, 'Nome completo' %>
-    <%= form.text_field :full_name %><br>
-    <%= form.label :social_name, 'Nome social' %>
-    <%= form.text_field :social_name %><br>
-    <%= form.label :birth_date, 'Data de nascimento' %>
-    <%= form.text_field :birth_date %><br>
-    <%= form.label :educational_background, 'Formação' %>
-    <%= form.text_field :educational_background %><br>
-    <%= form.label :work_field, 'Aréa de atuação' %>
-    <%= form.select :work_field, ['Dev', 'Web Design', 'Segurança', 'Suporte Técnico', 
-                                  'Midias Sociais', 'Sistemas', 'Gerenciamento de projetos', 
-                                  'Jogos digitais', 'E-commerce', 'Redes de informática', 
-                                  'Computação em nuvem', 'Qualidade de software', 'Análise de dados', 
-                                  'Inteligência de negócios', 'UX Design', 
-                                  'Gestão de processos e qualidade'], prompt: true %><br>
-    <%= form.label :about_me, 'Sobre mim' %>
-    <%= form.text_field :about_me %><br>
-    <%= form.label :work_experience, 'Experiência' %>
-    <%= form.text_field :work_experience %><br>
-    <div class="mb-3">
-      <%= form.label :photo, 'Foto', class: "form-label"%>
-      <%= form.file_field :photo, class: "form-control" %><br>
+    <div class="input-group flex-nowrap mb-3">
+      <span class="input-group-text">
+        <%= form.label :full_name, 'Nome completo', class: "text-primary" %>
+      </span>
+      <span class="input-group-text">
+        <%= form.text_field :full_name, class: "form-control" %><br>
+      </span>
     </div>
+
+    <div class="input-group flex-nowrap mb-3">
+      <span class="input-group-text">
+        <%= form.label :social_name, 'Nome social', class: "text-primary" %>
+      </span>
+      <span class="input-group-text">
+        <%= form.text_field :social_name, class: "form-control" %>
+      </span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <%= form.label :birth_date, 'Data de nascimento', class: "text-primary" %>
+      </span>
+      <span class="input-group-text">
+        <%= form.date_field :birth_date, class: "form-control" %>
+      </span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <%= form.label :educational_background, 'Formação', class: "text-primary" %>
+      </span>
+      <span class="input-group-text">
+        <%= form.text_field :educational_background, class: "form-control" %>
+      </span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <%= form.label :work_field, 'Aréa de atuação', class: "text-primary" %>
+      </span>
+      <span class="input-group-text">
+        <%= form.select :work_field, ['Dev', 'Web Design', 'Segurança', 'Suporte Técnico', 
+                                      'Midias Sociais', 'Sistemas', 'Gerenciamento de projetos', 
+                                      'Jogos digitais', 'E-commerce', 'Redes de informática', 
+                                      'Computação em nuvem', 'Qualidade de software', 'Análise de dados', 
+                                      'Inteligência de negócios', 'UX Design', 
+                                      'Gestão de processos e qualidade'], prompt: true %>
+      </span>
+    </div>
+    
+    <%= form.label :about_me, 'Sobre mim', class: "input-group-text text-primary" %>
+    <%= form.text_field :about_me, class: "form-control" %><br>
+
+
+    <%= form.label :work_experience, 'Experiência', class: "input-group-text text-primary" %>
+    <%= form.text_field :work_experience, class: "form-control" %><br>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">
+        <%= form.label :photo, 'Foto', class: "text-primary" %>
+    </span>
+    <span class="input-group-text">
+      <%= form.file_field :photo, class: "form-control" %><br>
+    </span>
+    </div>
+
     <%= form.submit 'Completar Perfil', class: "btn btn-success" %>
   <% end %>
 <div>

@@ -22,7 +22,7 @@
 <p>
   <% if freelancer_signed_in? %>
     <h5 class="text-muted text-center">
-      <p class="alert alert-danger"><%= 'Mande uma proposta para esse projeto!' %></p>
+      <p class="alert alert-warning"><%= 'Mande uma proposta para esse projeto!' %></p>
     </h5>
     <% if @proposal.errors.any? %>
       <% @proposal.errors.full_messages.each do |error| %>
@@ -33,26 +33,29 @@
     <%= form_with model: [@project, @proposal] do |form| %>
       <nav class="text-center">
         <div class="col-auto">
-          <label class="list-group-item list-group-item-info" >
-            <%= form.label :motivation, t('.motivation')%>
+          <label class="list-group-item list-group-item-dark" >
+            <%= form.label :motivation, t('.motivation') %>
           </label>
           <%= form.text_field :motivation, class: "form-control" %>
         </div>
+
         <div class="row g-3 col-auto">
           <div class="col-auto">
-            <label class="list-group-item list-group-item-info" >
+            <label class="list-group-item list-group-item-dark" >
               <%= form.label :hourly_rate, t('.hourly_rate') %>
             </label>
             <%= form.number_field :hourly_rate, class: "form-control" %><br>
           </div>
+
           <div class="col-auto">
-            <label class="list-group-item list-group-item-info" >
+            <label class="list-group-item list-group-item-dark" >
               <%= form.label :hours_per_week, t('.hours_per_week') %>
             </label>
             <%= form.number_field :hours_per_week, class: "form-control" %><br>
           </div>
+
           <div class="col-auto">
-            <label class="list-group-item list-group-item-info" >
+            <label class="list-group-item list-group-item-dark" >
               <%= form.label :weeks, t('.weeks') %>
             </label>
             <%= form.number_field :weeks, class: "form-control" %><br>

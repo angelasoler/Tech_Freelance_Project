@@ -1,6 +1,6 @@
 <% if @project.errors.any? %>
   <% @project.errors.full_messages.each do |error| %>
-    <div><%= error %></div>
+    <div class="notice alert-primary container-fluid"><%= error %></div>
   <%end%>
 <% end %>
 
@@ -8,7 +8,6 @@
 
   <div class="input-group flex-nowrap mb-3"">
     <span class="input-group-text">
-    
      <%= form.label :title, t('.title'), class: "text-primary" %>
     </span>
     <%= form.text_field :title, class: "form-control" %>

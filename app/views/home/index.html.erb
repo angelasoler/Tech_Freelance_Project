@@ -1,18 +1,20 @@
 <head>
   <h1 class="display-1 text-center">Faça projetos realidade!</h1>
+  <% if !signed_in? %>
+    <p><h2>
+      <em><small class="text-muted">Encontre profissionais de tecnologia para seus projetos!</small></em>
+    </h2></p>
+    <nav class="text-center">
+      <%= link_to 'Publique um projeto', new_owner_session_path, class: "btn btn-success" %>
+    </nav>
+  <% end %>
 </head>
+
 <section>
-<p><h2>
-  <em><small class="text-muted">Encontre profissionais de tecnologia para seus projetos!</small></em>
-</h2></p>
 <% if owner_signed_in? %>
   <nav  class="text-center">
     <%= link_to 'Meus Projetos', my_projects_projects_path, class: "btn btn-success" %>
     <%= link_to 'Publique um projeto', new_project_path, class: "btn btn-success" %>
-  </nav>
-<% else %>
-  <nav class="text-center">
-    <%= link_to 'Publique um projeto', new_owner_session_path, class: "btn btn-success" %>
   </nav>
 <% end %>
 </section>
