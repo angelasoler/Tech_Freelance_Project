@@ -30,10 +30,10 @@ RSpec.describe 'Users', type: :request do
 
     it 'cannot accept or turn down proposals' do
       tom = create(:owner)
-      marketin = create(:project, owner: tom)
+      marketing = create(:project, owner: tom)
       jerry = create(:freelancer)
       perfil_jerry = create(:profile, freelancer: jerry)
-      proposta_jerry_tom = create(:proposal, project: marketin,
+      proposta_jerry_tom = create(:proposal, project: marketing,
                                              profile: perfil_jerry)
 
       patch proposal_path(proposta_jerry_tom)

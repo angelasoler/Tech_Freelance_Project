@@ -1,12 +1,34 @@
 require 'rails_helper'
 
 describe 'freelancer complete profile' do
-  it 'successfully' do
+  it 'and is redirect to new profile path after sign in when profile is uncomplete' do
+    create(:freelancer, email: 'no_profile@mail.com', password: '123456')
+
+    visit root_path
+    click_on 'Candidate-se para um projeto!'
+    fill_in 'Email', with: 'no_profile@mail.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Entre'
+
+    expect(current_path).to eq(new_profile_path)
+    expect(page).to have_content('Nome completo')
+    expect(page).to have_content('Nome social')
+    expect(page).to have_content('Data de nascimento')
+    expect(page).to have_content('Formação')
+    expect(page).to have_content('Aréa de atuação')
+    expect(page).to have_content('Sobre mim')
+    expect(page).to have_content('Experiência')
+    expect(page).to have_content('Foto')
+    expect(page).to have_button('Completar Perfil')
+  end
+
+  it 'successfully after trying to access a project show view' do
+    create(:project, title: 'Captação de clientes em redes sociais')
     user = create(:freelancer)
     login_as user, scope: :freelancer
 
     visit root_path
-    click_on 'Candidate-se para um projeto!'
+    click_on 'Captação de clientes em redes sociais'
     fill_in 'Nome completo', with: 'Antonio Silva'
     fill_in 'Nome social', with: 'Paloma'
     fill_in 'Data de nascimento', with: 19_900_508
@@ -45,7 +67,7 @@ describe 'freelancer complete profile' do
     expect(page).to have_content('Experiência não pode ficar em branco')\
   end
 
-  it 'and can access to projects details' do
+  it 'and can access to projects details when profile is complete' do
     user = create(:freelancer)
     create(:profile, freelancer: user)
     login_as user, scope: :freelancer
@@ -76,7 +98,6 @@ describe 'freelancer complete profile' do
     click_on 'Entre'
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_link('Procure um projeto para se candidatar')
     expect(page).to have_content('Login efetuado com sucesso.')
   end
 end
