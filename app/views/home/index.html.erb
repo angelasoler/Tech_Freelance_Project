@@ -1,50 +1,51 @@
-<head>
-  <h1 class="display-1 text-center">Faça projetos realidade!</h1>
+<h1 class="display-1 text-center">
+  Faça projetos realidade!
+</h1>
 
-  <% unless signed_in? %>
-    <p><h2>
-      <em><small class="text-muted">Encontre profissionais de tecnologia para seus projetos!</small></em>
-    </h2></p>
+<% unless signed_in? %>
+  <h2>
+    <em><small class="text-muted">
+      Encontre profissionais de tecnologia para seus projetos!
+    </small></em>
+  </h2>
+  <nav class="text-center">
+    <%= link_to 'Publique um projeto', new_owner_session_path, class: "btn btn-success" %>
+  </nav>
+<% end %>
+
+<% unless owner_signed_in? %>
+  <h2>
+    <em><small class="text-muted">
+      Encontre um projeto e faça sua proposta!
+    </small></em>
+  </h2>
+
+  <% if @projects.blank? %>
+    Não há projetos disponiveis no momento.
+  <% else %>          
+    <% @projects.each do |projeto| %>
+      <span><%= link_to projeto.title, project_path(projeto.id) %><br/></span>
+    <% end %>
+  <% end %><br/>
+
+  <% unless freelancer_signed_in?  %>
     <nav class="text-center">
-      <%= link_to 'Publique um projeto', new_owner_session_path, class: "btn btn-success" %>
-    </nav>
-  <% end %>
-  
-  <% unless owner_signed_in? %>
-    <p><h2>
-      <em><small class="text-muted">Encontre um projeto e faça sua proposta!</small></em>
-    </h2></p>
-
-    <% if @projects.blank? %>
-      Não há projetos disponiveis no momento.
-    <% else %>          
-      <% @projects.each do |projeto| %>
-        <span><%= link_to projeto.title, project_path(projeto.id) %><br/></span>
-      <% end %>
-    <% end %><br/>
-
-    <% unless freelancer_signed_in?  %>
-      <nav class="text-center">
       <%= link_to 'Candidate-se para um projeto!', new_freelancer_session_path, class: "btn btn-success"%>
-      <br/></nav>
-    <% end %>
-    
-  <% end %>
-</head>
+    </nav>
+  <% end %> 
+<% end %>
 
-<section>
-  <% if owner_signed_in? %>
-    <nav  class="text-center">
-      <%= link_to 'Meus Projetos', my_projects_projects_path, class: "btn btn-success" %>
-      <%= link_to 'Publique um projeto', new_project_path, class: "btn btn-success" %>
+<% if owner_signed_in? %>
+  <nav  class="text-center">
+    <%= link_to 'Meus Projetos', my_projects_projects_path, class: "btn btn-success" %>
+    <%= link_to 'Publique um projeto', new_project_path, class: "btn btn-success" %>
+  </nav>
+<% end %>
+
+<% if freelancer_signed_in? %>
+  <% if current_freelancer.profile.present? && current_freelancer.profile.proposals.any? %>
+    <nav>
+      <%= link_to 'Propostas enviadas', my_proposals_freelancer_proposals_path, class: "btn btn-success" %>
     </nav>
   <% end %>
-</section>
-
-<section>
-  <% if freelancer_signed_in? %>
-    <% if current_freelancer.profile.present? && current_freelancer.profile.proposals.any? %>
-        <nav><%= link_to 'Propostas enviadas', my_proposals_freelancer_proposals_path, class: "btn btn-success" %></nav>
-    <% end %>
-  <% end %>
-</section>
+<% end %>
