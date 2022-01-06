@@ -26,7 +26,7 @@
     </h5>
     <% if @proposal.errors.any? %>
       <% @proposal.errors.full_messages.each do |error| %>
-        <div class="notice alert-primary container-fluid"><%= error %></div>
+        <div class="alert alert-danger"><%= error %></div>
       <%end%>
     <% end %>
 

@@ -4,10 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Tech Freelancers</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <% if signed_in? %>
               <% if owner_signed_in? %>
@@ -38,12 +35,20 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>   
   </head>
-    <div class="bg-success p-3" style="--bs-bg-opacity: .5;">
-      <body>
-        <%= yield %>
-      </body>
-    </div>
 
-    <p class="notice alert-primary container-fluid"><%= notice %></p>
-    <p class="alertalert-primary container-fluid"><%= alert %></p>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="my-3">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <p class="notice alert-primary container-fluid"><%= notice %></p>
+  <p class="alertalert-primary container-fluid"><%= alert %></p>
 </html>

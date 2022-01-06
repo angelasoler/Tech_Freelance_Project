@@ -1,9 +1,9 @@
 <div class="container-fluid">
-  <h3 class="alert alert-info">Preencha seu perfil completo para começar a criar propostas!</h3>
+  <h3 class="alert alert-primary">Preencha seu perfil completo para começar a criar propostas!</h3>
 
   <% if @profile.errors.any? %>
     <% @profile.errors.full_messages.each do |error| %>
-      <div class="notice alert-primary container-fluid"><%= error %></div>
+      <div class="alert alert-danger"><%= error %></div>
     <%end%>
   <% end %>
 
