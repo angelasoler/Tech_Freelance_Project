@@ -15,7 +15,7 @@ class Proposal < ApplicationRecord
   private
 
   def calculate_total_value
-    self.total_value = (weeks * hours_per_week).to_i * hourly_rate
+    self.total_value = weeks * hours_per_week * hourly_rate
   end
 
   def skip_validation

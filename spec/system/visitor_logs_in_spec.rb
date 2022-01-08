@@ -16,6 +16,14 @@ describe 'visitor ' do
       expect(page).to have_selector('.nav-item', visible: false, text: 'Logout')
     end
 
+    it 'and does not fill any field on log in view' do
+      visit root_path
+      click_on 'Publique um projeto'
+      click_on 'Entre'
+
+      expect(page).to have_content('Email ou senha inválidos.')
+    end
+
     it 'logs out successfully' do
       ana_paula = create(:owner, email: 'ana_paula@mail.com',
                                  password: '123456')
@@ -46,6 +54,16 @@ describe 'visitor ' do
       expect(page).to have_selector('.nav-item', visible: false, text: 'ana_paula@mail.com')
       expect(page).to have_selector('.nav-item', visible: false, text: 'Logout')
       expect(page).not_to have_link('Entrar')
+    end
+
+    it 'and does not fill any field on sign up view' do
+      visit root_path
+      click_on 'Publique um projeto'
+      click_on 'Inscrever-se'
+      click_on 'Inscrever-se'
+
+      expect(page).to have_content('Email não pode ficar em branco')
+      expect(page).to have_content('Senha não pode ficar em branco')
     end
   end
 

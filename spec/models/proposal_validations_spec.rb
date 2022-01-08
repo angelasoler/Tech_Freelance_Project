@@ -34,5 +34,13 @@ RSpec.describe Proposal, type: :model do
       }
       it { should validate_numericality_of(:weeks).on(:create) }
     end
+
+    it 'should calculate total value before safe' do
+      proposal = create(:proposal, hourly_rate: 60, hours_per_week: 10,
+                                   weeks: 6, status: 'accepted')
+
+      expect(proposal.total_value.present?).to eq(true)
+      expect(proposal.total_value).to eq(3600)
+    end
   end
 end

@@ -5,8 +5,8 @@ describe 'freelancer authentication:' do
     it 'open new profile form' do
       get new_profile_path
 
-      expect(response).to redirect_to(root_path)
-      expect(flash[:alert]).to be_present
+      expect(response).to redirect_to(new_freelancer_session_path)
+      expect(flash[:alert]).to include('Para continuar, faça login ou registre-se.')
     end
 
     it 'see project view' do
@@ -22,7 +22,8 @@ describe 'freelancer authentication:' do
 
       post '/projects/1/proposals'
 
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_freelancer_session_path)
+      expect(flash[:alert]).to include('Para continuar, faça login ou registre-se.')
     end
   end
 
@@ -57,7 +58,8 @@ describe 'freelancer authentication:' do
 
       patch proposal_path(proposta_jerry_tom)
 
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_owner_session_path)
+      expect(flash[:alert]).to include('Para continuar, faça login ou registre-se.')
     end
   end
 end

@@ -33,6 +33,7 @@ describe 'freelancer send proposal' do
     expect(page).to have_content('Sua proposta foi enviada para ser avaliada pelo dono do projeto!')
     expect(ProposalMailer).to have_received(:notify_new_proposal)
     expect(mail).to have_received(:deliver_now)
+    expect(Proposal.last.total_value).to eq(3600)
   end
 
   it 'and it is accepted' do

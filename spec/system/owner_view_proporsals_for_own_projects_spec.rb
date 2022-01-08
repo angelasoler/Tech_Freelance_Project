@@ -6,10 +6,10 @@ describe 'owner view proposals for projects' do
       avaliador = create(:owner)
       login_as avaliador, scope: :owner
       perfil_propositor = create(:profile, full_name: 'Propositor Garcia')
-      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
-                                            owner: avaliador)
+      projeto = create(:project, title: 'Marketing em redes sociais',
+                                 owner: avaliador)
       create(:proposal, motivation: 'Sou expecialista em redes sociais com 6 anos de experiencia',
-                        hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projecto_marketing,
+                        hourly_rate: 60, hours_per_week: 10, weeks: 6, project: projeto,
                         profile: perfil_propositor)
 
       visit my_projects_projects_path
@@ -33,16 +33,14 @@ describe 'owner view proposals for projects' do
                                            birth_date: '19950608', educational_background: 'Publicidade na PUC',
                                            work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
                                            work_experience: 'veja portafolio, https://portafolio.com/ ')
-      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
-                                            owner: avaliador)
-      proposta = create(:proposal, project: projecto_marketing,
-                                   profile: perfil_propositor)
+      projeto = create(:project, title: 'Marketing em redes sociais',
+                                 owner: avaliador)
+      create(:proposal, project: projeto,
+                        profile: perfil_propositor)
 
       visit my_projects_projects_path
       click_on 'Marketing em redes sociais'
       click_on 'Propositor Garcia'
-
-      visit proposal_path(proposta)
       click_on 'Propositor Garcia'
 
       expect(page).to have_current_path(profile_path(perfil_propositor))
@@ -58,18 +56,14 @@ describe 'owner view proposals for projects' do
     it 'and accept' do
       avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
-                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                           work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                           work_experience: 'veja portafolio, https://portafolio.com/ ')
-      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
-                                            owner: avaliador)
-      create(:proposal, project: projecto_marketing,
+      perfil_propositor = create(:profile)
+      projeto = create(:project, owner: avaliador)
+      create(:proposal, project: projeto,
                         profile: perfil_propositor)
 
       visit my_projects_projects_path
-      click_on 'Marketing em redes sociais'
-      click_on 'Propositor Garcia'
+      click_on projeto.title
+      click_on perfil_propositor.full_name
       click_on 'Aceitar'
 
       expect(page).to have_link('Mande uma mensagem')
@@ -81,18 +75,14 @@ describe 'owner view proposals for projects' do
     it 'and turn down' do
       avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
-                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                           work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                           work_experience: 'veja portafolio, https://portafolio.com/ ')
-      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
-                                            owner: avaliador)
-      create(:proposal, project: projecto_marketing,
+      perfil_propositor = create(:profile)
+      projeto = create(:project, owner: avaliador)
+      create(:proposal, project: projeto,
                         profile: perfil_propositor)
 
       visit my_projects_projects_path
-      click_on 'Marketing em redes sociais'
-      click_on 'Propositor Garcia'
+      click_on projeto.title
+      click_on perfil_propositor.full_name
       click_on 'Recusar'
       fill_in 'Porfavor escreva um feedback de porque você recusou',
               with: 'Não é o perfil que estamos procurando'
@@ -109,18 +99,14 @@ describe 'owner view proposals for projects' do
     it 'and cannot turn down without feedback' do
       avaliador = create(:owner)
       login_as avaliador, scope: :owner
-      perfil_propositor = create(:profile, full_name: 'Propositor Garcia', social_name: '',
-                                           birth_date: '19950608', educational_background: 'Publicidade na PUC',
-                                           work_field: 'Midias Sociais', about_me: 'Sou muito marketero',
-                                           work_experience: 'veja portafolio, https://portafolio.com/ ')
-      projecto_marketing = create(:project, title: 'Marketing em redes sociais',
-                                            owner: avaliador)
-      create(:proposal, project: projecto_marketing,
+      perfil_propositor = create(:profile)
+      projeto = create(:project, owner: avaliador)
+      create(:proposal, project: projeto,
                         profile: perfil_propositor)
 
       visit my_projects_projects_path
-      click_on 'Marketing em redes sociais'
-      click_on 'Propositor Garcia'
+      click_on projeto.title
+      click_on perfil_propositor.full_name
       click_on 'Recusar'
       click_on 'Enviar'
 
@@ -132,13 +118,9 @@ describe 'owner view proposals for projects' do
   context 'that does not own' do
     it 'and cannot see it' do
       dono_de_projeto = create(:owner)
-      projeto = create(:project, owner: dono_de_projeto)
-      dono_da_proposta = create(:freelancer)
-      perfil_jerry = create(:profile, freelancer: dono_da_proposta)
-      proposta_jerry = create(:proposal, project: projeto,
-                                         profile: perfil_jerry)
-      outro_owner = create(:owner, email: 'ovacilao@mail.com',
-                                   password: 'O vacilão')
+      create(:project, owner: dono_de_projeto)
+      proposta_jerry = create(:proposal)
+      outro_owner = create(:owner)
       login_as outro_owner, scope: :owner
 
       visit proposal_path(proposta_jerry)
