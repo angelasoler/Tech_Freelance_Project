@@ -2,7 +2,7 @@
   :woman_technologist: TECH FREELANCERS WEB APP
 </h1>
 
-<p>
+<p align="center">
   <img alt="repository size" src="https://img.shields.io/github/repo-size/angelasoler/Tech_Freelance_Project">
   
   <img alt="languanges" src="https://img.shields.io/github/languages/count/angelasoler/Tech_Freelance_Project">
